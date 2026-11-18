@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E2340">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>FACT Taiwan</title>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="FACT Taiwan">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="First Apostolic Church Taiwan – UPC · Taichung · Tainan · Zhongli">
+<meta property="og:title" content="FACT Taiwan">
+<meta property="og:description" content="First Apostolic Church Taiwan – UPC">
+<meta property="og:image" content="https://factaiwan-upc.github.io/icons/og.png">
+<style>
+:root{
+  --navy:#0E2340; --navy2:#16325A; --orange:#F28C28; --orange-soft:#FDF0E2;
+  --wine:#7A1414; --wine-soft:#F8E8E8; --ink:#1C2430; --muted:#5E6878;
+  --line:#E3E6EB; --bg:#F5F6F8; --card:#FFFFFF;
+  --tc:#2F6FB5; --tn:#C2571A; --zl:#2E8B57;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",Roboto,sans-serif;
+  font-size:17px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;
+  padding:calc(env(safe-area-inset-top) + 10px) 16px 10px;display:flex;align-items:center;gap:10px}
+header img{width:38px;height:38px;border-radius:10px}
+header .title{flex:1;font-weight:700;font-size:18px;letter-spacing:.2px}
+header .title small{display:block;font-weight:400;font-size:12.5px;opacity:.75;letter-spacing:0}
+.lang{display:flex;background:rgba(255,255,255,.12);border-radius:20px;padding:3px}
+.lang button{padding:4px 10px;border-radius:16px;font-size:14px;color:#fff;opacity:.8}
+.lang button.on{background:var(--orange);opacity:1;font-weight:700}
+main{padding:14px 14px calc(78px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#fff;border-top:1px solid var(--line);
+  display:flex;padding:4px 4px calc(4px + env(safe-area-inset-bottom))}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 0;font-size:12.5px;color:var(--muted)}
+nav button svg{width:23px;height:23px}
+nav button.on{color:var(--navy);font-weight:700}
+nav button.on svg{stroke:var(--orange)}
+h2{font-size:19px;margin:18px 2px 8px;color:var(--navy)}
+h2:first-child{margin-top:4px}
+.card{background:var(--card);border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 2px rgba(14,35,64,.06)}
+.live{display:flex;align-items:center;gap:10px;background:var(--wine);color:#fff;border-radius:14px;padding:12px 16px;margin-bottom:12px;font-weight:700}
+.live .dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.live span{flex:1}
+.pin{border-left:5px solid var(--orange)}
+.pin .tag{display:inline-block;font-size:12.5px;font-weight:700;color:var(--orange);margin-bottom:2px}
+.pin h3{font-size:17.5px;margin-bottom:2px}
+.pin p{color:var(--muted);font-size:16px}
+.demo{font-size:12px;background:#EEF0F4;color:var(--muted);border-radius:6px;padding:1px 6px;margin-left:6px;font-weight:400;vertical-align:2px}
+.ev{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.ev:last-child{border-bottom:0}
+.ev .date{width:52px;text-align:center;flex:none}
+.ev .date b{display:block;font-size:22px;line-height:1.1;color:var(--navy)}
+.ev .date i{font-style:normal;font-size:13px;color:var(--muted)}
+.ev .info{flex:1;min-width:0}
+.ev .info b{display:block;font-size:17px}
+.ev .info span{font-size:15px;color:var(--muted)}
+.ev .info .chip{color:#fff;font-size:13.5px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;border-radius:12px;padding:1px 9px;color:#fff}
+.icon-btn{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--bg);color:var(--navy)}
+.icon-btn svg{width:20px;height:20px}
+.verse{background:var(--navy);color:#fff}
+.verse p{font-size:18px;line-height:1.65}
+.verse cite{display:block;margin-top:6px;font-style:normal;color:var(--orange);font-weight:700;font-size:15px}
+.note{font-size:14.5px;color:var(--muted);padding:2px 4px 10px}
+.tract h4{font-size:17px;color:var(--wine);margin:18px 0 6px}
+.tract p{font-size:17.5px;line-height:1.8;margin:0 0 12px}
+.tract p.en{color:var(--muted);font-size:15.5px;margin-top:-6px}
+.tract .seg{margin:10px 0 6px}
+.bnr.warm{background:linear-gradient(135deg,#C2571A,#E08A3C)}
+.path{background:#fff;border-radius:16px;box-shadow:0 1px 3px rgba(14,35,64,.08);overflow:hidden;margin-bottom:12px}
+.path button{display:flex;align-items:center;gap:12px;width:100%;border:0;border-bottom:1px solid #EEF1F5;background:#fff;padding:14px 16px;font-family:inherit;text-align:left;cursor:pointer}
+.path button:last-child{border-bottom:0}
+.path i{flex:none;width:32px;height:32px;border-radius:50%;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-style:normal;font-weight:700}
+.path button.done i{background:#2E8B57;color:#fff}
+.path b{display:block;font-size:16.5px;color:var(--navy)}.path span{font-size:14px;color:var(--muted)}
+.qrbox{text-align:center;padding:6px 0 4px}.qrbox img{width:220px;height:220px;border-radius:12px;border:1px solid #E3E7EE;padding:8px;background:#fff}
+.qrbox small{display:block;color:var(--muted);margin-top:6px;font-size:13.5px}
+.sharebtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.sharebtns a,.sharebtns button{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:12px;font-weight:700;font-size:15.5px;text-decoration:none;border:1.5px solid #D9DEE6;background:#fff;color:var(--navy);font-family:inherit;cursor:pointer}
+.sharebtns svg{width:20px;height:20px;flex:none}
+.sharebtns .line{background:#06C755;border-color:#06C755;color:#fff}
+.welcome{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(14,35,64,.08);margin-bottom:12px}
+.welcome h3{margin:0 0 6px;font-size:21px;color:var(--navy)}.welcome p{margin:0;font-size:16.5px;line-height:1.75}
+.tcover{position:relative;height:150px;border-radius:14px;overflow:hidden;color:#fff;margin-bottom:10px}
+.tcover.big{height:210px}
+.tmark{position:absolute;right:-18px;top:-14px;width:190px;height:190px;opacity:.2}
+.tshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55))}
+.ttl{position:absolute;left:16px;right:16px;bottom:13px}
+.ttl small{display:block;font-size:12.5px;letter-spacing:.06em;opacity:.9}
+.ttl b{display:block;font-size:21px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.tcover.big .ttl b{font-size:25px}
+.card.tcard{padding:0;overflow:hidden}
+.tcard .tcover{border-radius:0;margin:0}
+.tcard .tx{padding:12px 16px 14px}
+.tract .tpic{width:100%;border-radius:12px;margin:10px 0 6px;display:block}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:6px}
+.mgrid .dow{font-size:12.5px;color:var(--muted);text-align:center;padding:2px 0 4px}
+.mgrid button{border:1px solid #E3E7EE;background:#fff;border-radius:9px;min-height:62px;padding:4px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:inherit;cursor:pointer}
+.mgrid button b{font-size:14px;color:var(--navy)}
+.mgrid button span{font-size:11px;line-height:1.2;letter-spacing:-.2px;color:var(--ink,#1c2533);overflow-wrap:anywhere;text-align:center}
+.mgrid button.taken{background:#EEF3FA;border-color:#C9D6E8}
+.mgrid button.me{background:var(--orange-soft);border-color:var(--orange)}
+.mgrid button.today b{background:var(--orange);color:#fff;border-radius:50%;width:22px;height:22px;line-height:22px;display:inline-block}
+.mgrid button.past{opacity:.55}
+.mgrid .blank{min-height:62px}
+.belief{background:#fff;border-radius:16px;box-shadow:0 1px 3px rgba(14,35,64,.08);margin-bottom:10px;padding:0 16px}
+.belief summary{font-weight:700;font-size:17.5px;color:var(--navy);padding:15px 0;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+.belief summary::-webkit-details-marker{display:none}
+.belief summary i{width:30px;height:30px;border-radius:50%;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-style:normal;font-size:15px;flex:none}
+.belief summary::after{content:'›';margin-left:auto;color:var(--muted);font-size:22px;transition:transform .2s}
+.belief[open] summary::after{transform:rotate(90deg)}
+.belief p{font-size:16.5px;line-height:1.75;margin:0 0 8px}
+.belief small{display:block;color:var(--muted);font-size:14.5px;padding-bottom:16px}
+.bnr{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--navy),#22406b);color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:12px;cursor:pointer}
+.bnr svg{width:30px;height:30px;flex:none}
+.bnr b{display:block;font-size:18px}.bnr span{font-size:14.5px;opacity:.85}
+.vid{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(14,35,64,.08);margin-bottom:12px}
+.vid iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.vid div{padding:12px 16px 14px}.vid b{display:block;font-size:17px;color:var(--navy)}.vid span{font-size:15px;color:var(--muted)}
+.fbwrap{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(14,35,64,.08);margin-bottom:10px;display:flex;justify-content:center}
+.fbwrap iframe{border:0;display:block;max-width:100%}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.pills button{border:1.5px solid var(--line,#d9dee6);background:#fff;border-radius:999px;padding:7px 14px;font-size:15px;font-weight:600;color:var(--navy);font-family:inherit}
+.pills button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fbbtn{display:flex;align-items:center;justify-content:center;gap:8px;background:#1877F2;color:#fff;border-radius:12px;padding:12px;font-weight:700;font-size:16px;text-decoration:none;margin:4px 0 12px}
+.fbbtn svg{width:20px;height:20px}
+.fbtag{display:inline-flex;align-items:center;gap:3px;color:#1877F2;font-size:13px;font-weight:700;margin-left:6px}
+.fbtag svg{width:14px;height:14px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.filters button{padding:5px 13px;border-radius:16px;background:#fff;border:1.5px solid var(--line);font-size:15px}
+.filters button.on{border-color:var(--navy);background:var(--navy);color:#fff}
+.seg{display:flex;background:#E8EBF0;border-radius:10px;padding:3px;margin-bottom:10px}
+.seg button{flex:1;padding:6px;border-radius:8px;font-size:15px;color:var(--muted)}
+.seg button.on{background:#fff;color:var(--navy);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mhead b{font-size:18px;color:var(--navy)}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.grid .dow{font-size:13px;color:var(--muted);padding:4px 0}
+.grid .d{padding:6px 0 8px;border-radius:10px;font-size:16px;min-height:46px}
+.grid .d.out{color:#B9BFC9}
+.grid .d.today b{background:var(--orange);color:#fff;border-radius:50%;display:inline-block;width:28px;height:28px;line-height:28px}
+.grid .d.sel{background:var(--orange-soft)}
+.grid .dots{display:flex;justify-content:center;gap:3px;height:6px;margin-top:2px}
+.grid .dots i{width:6px;height:6px;border-radius:50%}
+.church h3{font-size:19px;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.church h3 .bar{width:6px;height:22px;border-radius:3px}
+.church .row{display:flex;gap:8px;font-size:16px;margin:3px 0}
+.church .row .k{color:var(--muted);flex:none;width:76px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:10px;background:var(--bg);font-size:15.5px;font-weight:600;color:var(--navy)}
+.btn.primary{background:var(--orange);color:#fff}
+.btn svg{width:18px;height:18px}
+.media{display:flex;gap:12px;align-items:center}
+.media .thumb{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none}
+.media .thumb svg{width:26px;height:26px}
+.media b{display:block;font-size:17px}
+.media span{font-size:15px;color:var(--muted)}
+.menu a,.menu button{display:flex;align-items:center;gap:12px;width:100%;padding:12px 2px;border-bottom:1px solid var(--line);font-size:17px;text-align:left}
+.menu a:last-child,.menu button:last-child{border-bottom:0}
+.menu svg{width:22px;height:22px;color:var(--navy);flex:none}
+.menu .sub{margin-left:auto;font-size:13.5px;color:var(--muted)}
+.toggle{width:46px;height:28px;border-radius:14px;background:#C9CFD8;position:relative;flex:none;margin-left:auto;transition:.2s}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
+.toggle.on{background:var(--orange)}
+.toggle.on::after{left:21px}
+.empty{color:var(--muted);font-size:15.5px;padding:8px 0}
+.hero{text-align:center;padding:18px 10px 8px}
+#toast{width:max-content;max-width:88vw;text-align:center;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:9px 16px;border-radius:20px;font-size:15px;opacity:0;transition:.25s;pointer-events:none;z-index:20}
+#toast.show{opacity:1}
+.h2row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.h2row h2{margin-bottom:8px}
+.addbtn{display:inline-flex;align-items:center;gap:4px;background:var(--orange);color:#fff;font-weight:700;font-size:15px;padding:6px 12px;border-radius:18px;margin-top:10px}
+.addbtn svg{width:18px;height:18px}
+.icon-btn.edit{background:var(--orange-soft);color:var(--orange)}
+.staffbar{display:flex;align-items:center;gap:8px;background:var(--orange-soft);color:#8A4A0C;border-radius:12px;padding:8px 12px;font-size:14.5px;margin-bottom:6px}
+.staffbar svg{width:18px;height:18px;flex:none}
+#sheet{display:none}
+#sheet.open{display:block}
+.sheet-bg{position:fixed;inset:0;background:rgba(14,35,64,.45);z-index:30}
+.sheet-card{position:fixed;left:0;right:0;bottom:0;z-index:31;background:#fff;border-radius:18px 18px 0 0;max-height:88vh;overflow:auto;
+  padding:16px 18px calc(18px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto}
+.sheet-card h3{display:flex;align-items:center;gap:8px;font-size:19px;color:var(--navy);margin-bottom:10px}
+.sheet-card h3 svg{width:22px;height:22px;color:var(--orange)}
+.sheet-card label{display:block;font-size:15px;color:var(--muted);margin-bottom:10px}
+.sheet-card label em{color:var(--wine);font-style:normal}
+.sheet-card input,.sheet-card textarea,.sheet-card select{display:block;width:100%;margin-top:4px;font:inherit;font-size:17px;color:var(--ink);
+  border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff}
+.sheet-card input:focus,.sheet-card textarea:focus,.sheet-card select:focus{outline:none;border-color:var(--orange)}
+.sheet-card .two{display:flex;gap:10px}.sheet-card .two label{flex:1}
+.sheet-card details{margin:2px 0 8px;border-top:1px solid var(--line);padding-top:8px}
+.sheet-card summary{font-size:15.5px;color:var(--navy);font-weight:600;margin-bottom:8px;cursor:pointer}
+.sheet-btns{display:flex;gap:8px;align-items:center;margin-top:6px}
+.btn.danger{background:var(--wine-soft);color:var(--wine)}
+.err{color:var(--wine);font-size:14.5px;min-height:1em}
+.hero img{width:84px;height:84px;border-radius:20px;box-shadow:0 4px 14px rgba(14,35,64,.25)}
+.hero h1{font-size:20px;color:var(--navy);margin-top:10px}
+.hero p{color:var(--muted);font-size:15px}
+.post{cursor:pointer}
+.post h3{font-size:17.5px;margin-bottom:2px}
+.post p{color:var(--muted);font-size:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:15px;color:var(--ink);margin:3px 0}
+.meta svg{width:16px;height:16px;color:var(--orange);vertical-align:-3px;margin-right:3px}
+.deadline{color:var(--wine);font-weight:600}
+.ev.dl .info b{color:var(--wine);font-weight:600}
+.linkrow{display:flex;align-items:center;gap:8px;font-size:15.5px;color:var(--navy);font-weight:600;padding:4px 4px 12px}
+.linkrow svg{width:18px;height:18px}
+.yesno{display:flex;gap:8px;margin:4px 0 12px}
+.yesno button{flex:1;padding:8px;border-radius:10px;border:1.5px solid var(--line);font-size:16px;background:#fff}
+.yesno button.on{border-color:var(--orange);background:var(--orange-soft);color:#8A4A0C;font-weight:700}
+.q{font-size:15.5px;color:var(--navy);font-weight:600;margin:4px 0 2px}
+.pinrow{display:flex;align-items:center;gap:10px;font-size:16px;margin:4px 0 10px;cursor:pointer}
+.detail h2{margin:4px 0 6px;font-size:21px}
+.detail .body{font-size:17px;white-space:pre-wrap;margin:10px 0}
+.ev .info{cursor:pointer}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:2px 0 6px}
+.tile{background:#fff;border-radius:14px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13.5px;font-weight:600;color:var(--navy);box-shadow:0 1px 2px rgba(14,35,64,.06)}
+.tile i{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.tile i svg{width:22px;height:22px}
+.pr .who{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--muted);margin-bottom:4px}
+.pr .who b{color:var(--ink);font-size:15.5px}
+.pr .text{font-size:16.5px;white-space:pre-wrap}
+.pr .acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.pbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:18px;background:var(--bg);font-size:14.5px;font-weight:600;color:var(--navy)}
+.pbtn.on{background:var(--orange-soft);color:#8A4A0C}
+.pbtn svg{width:17px;height:17px}
+.upd{border-left:3px solid var(--line);margin-top:10px;padding:2px 0 2px 10px;font-size:15.5px}
+.upd.ans{border-color:var(--zl)}
+.upd small{display:block;color:var(--muted);font-size:13px}
+.badge{display:inline-block;font-size:12.5px;font-weight:700;border-radius:8px;padding:1px 7px}
+.badge.ans{background:#E3F3EA;color:#1E6B42}
+.badge.priv{background:var(--wine-soft);color:var(--wine)}
+.radio{display:flex;flex-direction:column;gap:6px;margin:4px 0 12px}
+.radio button{display:flex;align-items:center;gap:8px;text-align:left;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:15.5px;background:#fff}
+.radio button.on{border-color:var(--orange);background:var(--orange-soft)}
+.chain h3{font-size:18px;color:var(--navy)}
+.chain .day{font-weight:700;font-size:15.5px;margin:12px 0 6px;color:var(--navy)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slot{border:1.5px dashed #C9CFD8;border-radius:10px;padding:6px 6px;text-align:center;font-size:14px;color:var(--muted);background:#fff}
+.slot b{display:block;font-size:15px;color:var(--ink)}
+.slot.taken{border-style:solid;border-color:transparent;background:#EAF1FA}
+.slot.taken span{color:var(--navy);font-weight:600}
+.slot.me{background:var(--orange-soft)}
+.progress{height:8px;border-radius:4px;background:#E8EBF0;overflow:hidden;margin:6px 0 2px}
+.progress i{display:block;height:100%;background:var(--orange)}
+.art .cat{font-size:13px;font-weight:700;color:var(--orange)}
+.art h3{font-size:17.5px;margin:2px 0}
+.art p{color:var(--muted);font-size:15.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art small{color:var(--muted);font-size:13.5px}
+.reader .body{font-size:17.5px;line-height:1.75;white-space:pre-wrap;margin-top:10px}
+.chsw{display:inline-flex;align-items:center;gap:3px;margin-top:2px;padding:1px 9px 1px 7px;border-radius:12px;background:rgba(255,255,255,.14);color:#fff;font-size:13.5px;font-weight:600}
+#chooser{display:none;position:fixed;inset:0;z-index:50;background:linear-gradient(180deg,#0E2340 0%,#16325A 100%);color:#fff;overflow:auto}
+#chooser.open{display:block}
+.ch-wrap{max-width:460px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 28px) 22px 30px;text-align:center}
+.ch-wrap img{width:96px;height:96px;border-radius:24px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.ch-wrap h1{font-size:22px;margin:14px 0 2px}
+.ch-wrap p{opacity:.8;font-size:15px}
+.ch-wrap .lang{display:inline-flex;margin:16px 0 22px}
+.ch-q{font-size:18px;font-weight:700;margin-bottom:12px}
+.ch-btn{display:flex;align-items:center;gap:14px;width:100%;background:#fff;color:var(--ink);border-radius:16px;padding:14px 16px;margin-bottom:10px;text-align:left}
+.ch-btn i{width:14px;height:44px;border-radius:7px;flex:none}
+.ch-btn b{display:block;font-size:20px}
+.ch-btn span{font-size:14px;color:var(--muted)}
+.ch-btn.on{outline:3px solid var(--orange)}
+.loading{display:flex;flex-direction:column;align-items:center;gap:12px;padding:60px 0;color:var(--muted)}
+.spin{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--orange);animation:sp 0.9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.busy{opacity:.6;pointer-events:none}
+.staff-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.staff-row:last-child{border-bottom:0}
+.staff-row .who{flex:1;min-width:0}
+.staff-row b{display:block;font-size:16.5px}
+.staff-row small{color:var(--muted);font-size:14px}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:2px;background:var(--orange-soft);color:#8A4A0C;border-radius:8px;padding:3px 8px;font-size:16px}
+.staff-row.off{opacity:.5}
+.trbtn{margin:0 0 10px}
+.hint{font-size:14px;color:var(--muted);margin:-4px 0 10px}
+.codein{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:4px;text-transform:uppercase;font-size:22px !important;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <img src="icons/logo-128.png" alt="">
+  <div class="title">FACT Taiwan<small id="subtitle"></small></div>
+  <div class="lang" id="lang"></div>
+</header>
+<main id="main"></main>
+<nav id="nav"></nav>
+<div id="sheet"></div>
+<div id="chooser"></div>
+
+<script>
+/* ---------- Fixed data (church intros) ---------- */
+const CHURCHES = [
+  { id:'tc', color:'var(--tc)', name:{en:'Taichung',zh:'台中',tl:'Taichung'},
+    addr:{en:'4F, No. 200, Jianguo Rd. (corner of Chenggong Rd.), Central District, Taichung 400', zh:'台中市中區建國路 200 號 4 樓（成功路口）'},
+    lat:24.137892557972, lng:120.68569, phone:'0933 714 427', email:'rhoneil07@yahoo.com',
+    fb:'https://www.facebook.com/upcitaiwan/', yt:null, services:[] },
+  { id:'tn', color:'var(--tn)', name:{en:'Tainan',zh:'台南',tl:'Tainan'},
+    addr:{en:'5F-1, No. 76-10, Sec. 2, Minzu Rd., West Central District, Tainan City', zh:'台南市中西區民族路二段 76-10 號 5 樓之 1'},
+    lat:22.99424, lng:120.18681, phone:'0933 714 427', email:'rhoneil_07@yahoo.com',
+    fb:'https://www.facebook.com/profile.php?id=61556734860473', yt:null,
+    services:[ {dow:0,start:'13:30',end:'14:00',kind:'school'}, {dow:0,start:'14:00',end:'16:30',kind:'worship'} ] },
+  { id:'zl', color:'var(--zl)', name:{en:'Zhongli',zh:'中壢',tl:'Zhongli'},
+    addr:{en:'5F, No. 13, Xingjian St., Zhongli District, Taoyuan City 320'},
+    lat:24.96586, lng:121.22488, phone:'0916 412 848', email:'pentecostalsofzhonglitw@gmail.com',
+    fb:'https://www.facebook.com/PentecostalsofZhongli', yt:'https://www.youtube.com/@FACT-PentecostalsofZhongli',
+    services:[ {dow:6,start:'16:00',end:null,kind:'service'}, {dow:0,start:'09:00',end:null,kind:'service'} ] }
+];
+const BELIEFS = [
+  { t:{en:'About the Bible', zh:'關於聖經', tl:'Tungkol sa Biblia'},
+    p:{en:'The Bible is the infallible Word of God and the authority for salvation and Christian living.',
+       zh:'聖經是神無誤的話語，是得救和基督徒生活的權威。',
+       tl:'Ang Biblia ay ang di-nagkakamaling Salita ng Diyos at ang awtoridad para sa kaligtasan at pamumuhay-Kristiyano.'},
+    r:{en:'See II Timothy 3:15-17.', zh:'參提摩太後書 3:15-17', tl:'Tingnan ang II Timoteo 3:15-17.'} },
+  { t:{en:'About God', zh:'關於神', tl:'Tungkol sa Diyos'},
+    p:{en:'There is one God, who has revealed Himself as Father; through His Son, in redemption; and as the Holy Spirit, by emanation. Jesus Christ is God manifested in flesh. He is both God and man.',
+       zh:'神只有一位。祂啟示自己為父；在救贖中，藉著祂的兒子顯明；又以聖靈的身分，從祂自己發出。耶穌基督是神在肉身顯現，祂是神，也是人。',
+       tl:'May iisang Diyos, na nagpakilala bilang Ama; sa pamamagitan ng Kanyang Anak, sa pagtubos; at bilang Espiritu Santo, na nagmumula sa Kanya. Si Jesu-Cristo ay ang Diyos na nahayag sa laman. Siya ay kapwa Diyos at tao.'},
+    r:{en:'See Deuteronomy 6:4; Ephesians 4:4-6; Colossians 2:9; I Timothy 3:16.', zh:'參申命記 6:4；以弗所書 4:4-6；歌羅西書 2:9；提摩太前書 3:16', tl:'Tingnan ang Deuteronomio 6:4; Efeso 4:4-6; Colosas 2:9; I Timoteo 3:16.'} },
+  { t:{en:'About Sin and Salvation', zh:'關於罪與救恩', tl:'Tungkol sa Kasalanan at Kaligtasan'},
+    p:{en:'Everyone has sinned and needs salvation. Salvation comes by grace through faith based on the atoning sacrifice of Jesus Christ.',
+       zh:'世人都犯了罪，都需要救恩。救恩是本乎恩、也因著信，建立在耶穌基督贖罪的犧牲上。',
+       tl:'Lahat ay nagkasala at nangangailangan ng kaligtasan. Ang kaligtasan ay sa biyaya sa pamamagitan ng pananampalataya, batay sa pantubos na sakripisyo ni Jesu-Cristo.'},
+    r:{en:'See Romans 3:23-25; 6:23; Ephesians 2:8-9.', zh:'參羅馬書 3:23-25；6:23；以弗所書 2:8-9', tl:'Tingnan ang Roma 3:23-25; 6:23; Efeso 2:8-9.'} },
+  { t:{en:'About the Gospel', zh:'關於福音', tl:'Tungkol sa Ebanghelyo'},
+    p:{en:'The saving gospel is the good news that Jesus died for our sins, was buried, and rose again. We obey the gospel (II Thessalonians 1:8; I Peter 4:17) by repentance (death to sin), water baptism in the name of Jesus Christ (burial), and the baptism of the Holy Spirit with the initial sign of speaking in tongues as the Spirit gives the utterance (resurrection).',
+       zh:'使人得救的福音，就是耶穌為我們的罪死了、被埋葬、又復活了的好消息。我們順從福音（帖撒羅尼迦後書 1:8；彼得前書 4:17），是藉著悔改（向罪死）、奉耶穌基督的名受水洗（埋葬），以及受聖靈的洗，並以照聖靈所賜的口才說方言為最初的憑據（復活）。',
+       tl:'Ang nagliligtas na ebanghelyo ay ang mabuting balita na si Jesus ay namatay para sa ating mga kasalanan, inilibing, at muling nabuhay. Sinusunod natin ang ebanghelyo (II Tesalonica 1:8; I Pedro 4:17) sa pamamagitan ng pagsisisi (kamatayan sa kasalanan), bautismo sa tubig sa pangalan ni Jesu-Cristo (paglilibing), at bautismo ng Espiritu Santo na may unang tanda ng pagsasalita ng ibang wika ayon sa ibinibigay ng Espiritu (muling pagkabuhay).'},
+    r:{en:'See I Corinthians 15:1-4; Acts 2:4, 37-39; Romans 6:3-4.', zh:'參哥林多前書 15:1-4；使徒行傳 2:4、37-39；羅馬書 6:3-4', tl:'Tingnan ang I Corinto 15:1-4; Gawa 2:4, 37-39; Roma 6:3-4.'} },
+  { t:{en:'About Christian Living', zh:'關於基督徒的生活', tl:'Tungkol sa Pamumuhay-Kristiyano'},
+    p:{en:'As Christians, we are to love God and others. We should live a holy life inwardly and outwardly and worship God joyfully. The supernatural gifts of the Spirit, including healing, are for the church today.',
+       zh:'作為基督徒，我們要愛神、也愛人。我們應當內外都過聖潔的生活，並喜樂地敬拜神。聖靈超自然的恩賜，包括醫治，今日仍是賜給教會的。',
+       tl:'Bilang mga Kristiyano, dapat nating ibigin ang Diyos at ang kapwa. Dapat tayong mamuhay nang banal sa loob at labas, at sumamba sa Diyos nang may kagalakan. Ang mga di-pangkaraniwang kaloob ng Espiritu, kabilang ang pagpapagaling, ay para sa iglesia ngayon.'},
+    r:{en:'See Mark 12:28-31; II Corinthians 7:1; Hebrews 12:14; I Corinthians 12:8-10.', zh:'參馬可福音 12:28-31；哥林多後書 7:1；希伯來書 12:14；哥林多前書 12:8-10', tl:'Tingnan ang Marcos 12:28-31; II Corinto 7:1; Hebreo 12:14; I Corinto 12:8-10.'} },
+  { t:{en:'About the Future', zh:'關於未來', tl:'Tungkol sa Hinaharap'},
+    p:{en:'Jesus Christ is coming again to catch away His church. In the end will be the final resurrection and the final judgment. The righteous will inherit eternal life, and the unrighteous eternal death.',
+       zh:'耶穌基督要再來，把祂的教會提去。末了必有最後的復活和最後的審判。義人要承受永生，不義的人要承受永死。',
+       tl:'Si Jesu-Cristo ay muling darating upang kunin ang Kanyang iglesia. Sa wakas ay ang huling pagkabuhay na muli at ang huling paghuhukom. Ang matuwid ay magmamana ng buhay na walang hanggan, at ang di-matuwid ng walang hanggang kamatayan.'},
+    r:{en:'See I Thessalonians 4:16-17; Revelation 20:11-15.', zh:'參帖撒羅尼迦前書 4:16-17；啟示錄 20:11-15', tl:'Tingnan ang I Tesalonica 4:16-17; Pahayag 20:11-15.'} }
+];
+const BELIEF_VIDS = [
+  { id:'Ji7iBbQG0Mk', t:{en:"Why We Baptize in Jesus' Name", zh:'為什麼奉耶穌的名受洗', tl:'Bakit Nagbabautismo sa Pangalan ni Jesus'},
+    d:{en:'Dr. David K. Bernard (UPCI General Superintendent) and Dr. David S. Norris on what the Bible teaches about baptism in Jesus’ name.',
+       zh:'UPCI 總監督 David K. Bernard 博士與 David S. Norris 博士，談聖經中奉耶穌名受洗的教導。',
+       tl:'Sina Dr. David K. Bernard (UPCI General Superintendent) at Dr. David S. Norris tungkol sa itinuturo ng Biblia sa bautismo sa pangalan ni Jesus.'} },
+  { id:'9m3VLDsF_tU', t:{en:'The Holy Spirit & Tongues', zh:'聖靈與方言', tl:'Ang Espiritu Santo at ang Pagsasalita ng Ibang Wika'},
+    d:{en:'Dr. David K. Bernard and Dr. Jared Runck on what the Bible teaches about the Holy Spirit and tongues.',
+       zh:'David K. Bernard 博士與 Jared Runck 博士，談聖經中關於聖靈和說方言的教導。',
+       tl:'Sina Dr. David K. Bernard at Dr. Jared Runck tungkol sa itinuturo ng Biblia sa Espiritu Santo at pagsasalita ng ibang wika.'} }
+];
+const TRACTS = [{"id":"god","t":{"en":"The Truth About God","zh":"關於神的真理","tl":"Ang Katotohanan Tungkol sa Diyos"},"p":[[1,"INTRODUCTION","引言","PANIMULA"],[0,"About 2,000 years ago a baby was born to a woman named Mary. This baby was named Jesus. Jesus was no ordinary baby. Mary was a virgin and she gave birth to Jesus by the Holy Spirit. His birth was a miracle. Mary did not choose a name for her baby. His name came from heaven. An angel told Joseph, who was to become Mary's husband, \"You will give Him the name Jesus because He will save His people from the punishment of their sins\" (Matthew 1:21 NLT). Jesus was also called by the name Immanuel which means \"God with us\" (Matthew 1:23). Jesus was God, come to earth as a man to save men from the punishment of sin.","大約兩千年前，一位名叫馬利亞的女子生下一個嬰孩。這個嬰孩名叫耶穌。耶穌不是普通的嬰孩。馬利亞是個處女，藉由聖靈（神的靈）懷孕生下了耶穌。祂的降生是一個神蹟。馬利亞沒有自己替孩子取名，這名字是從天上來的。一位天使告訴馬利亞未來的丈夫約瑟：「你要給祂取名叫耶穌，因為祂要把自己的子民從罪的懲罰中拯救出來。」（馬太福音1:21，意譯） 耶穌也被稱為「以馬內利」，意思就是「神與我們同在」（馬太福音1:23，意譯）。耶穌就是神，以人的身分來到世上，要救人脫離罪的懲罰。","Mga 2,000 taon na ang nakalipas, isang sanggol ang isinilang ng isang babaeng nagngangalang Maria. Ang sanggol na ito ay pinangalanang Jesus. Hindi pangkaraniwang sanggol si Jesus. Si Maria ay isang birhen, at ipinanganak niya si Jesus sa pamamagitan ng Espiritu Santo. Ang Kanyang kapanganakan ay isang himala. Hindi si Maria ang pumili ng pangalan ng kanyang sanggol. Ang Kanyang pangalan ay nagmula sa langit. Sinabi ng isang anghel kay Jose, na magiging asawa ni Maria, \"Pangangalanan mo Siyang Jesus, sapagkat ililigtas Niya ang Kanyang bayan mula sa parusa ng kanilang mga kasalanan\" (Mateo 1:21). Tinawag din si Jesus na Emmanuel, na ang ibig sabihin ay \"Ang Diyos ay kasama natin\" (Mateo 1:23). Si Jesus ay ang Diyos na dumating sa lupa bilang tao upang iligtas ang mga tao mula sa parusa ng kasalanan."],[1,"HOW DO YOU KNOW THAT JESUS IS GOD?","你怎麼知道耶穌是神？","PAANO MO MALALAMAN NA SI JESUS AY DIYOS?"],[0,"One day everyone will have to admit that Jesus is Lord. \"And everyone will say with his tongue that Jesus Christ is Lord\" (Philippians 2:11 NLT). To claim Him as Lord of your life now is wise. If He is your Lord, He will also be your Savior. If you wait until you are forced to call Him Lord, it will be too late. You will be punished for your sins.","有一天，每個人都必須承認耶穌是主。「萬口都要宣告耶穌基督是主。」（腓立比書2:11，意譯） 現在就承認祂是你生命的主，是很有智慧的。如果祂是你的主，祂也會是你的救主（拯救我們的那一位）。如果你等到被迫稱祂為主，那就太遲了，你會為自己的罪遭受懲罰。","Darating ang araw na aaminin ng lahat na si Jesus ay Panginoon. \"At ipahahayag ng bawat dila na si Jesu-Cristo ay Panginoon\" (Filipos 2:11). Matalino ang kilalanin Siya ngayon bilang Panginoon ng iyong buhay. Kung Siya ang iyong Panginoon, Siya rin ang magiging Tagapagligtas mo. Kung maghihintay ka hanggang mapilitan kang tawagin Siyang Panginoon, huli na ang lahat. Mapaparusahan ka dahil sa iyong mga kasalanan."],[0,"Jesus has given us proof that He is the Lord God. He has proven it in many ways. These proofs are found in God's record of truth, the Bible. The first proof is Jesus' miraculous birth. The baby, called Jesus, was God come to earth as, a man (I Timothy 3:16).","耶穌已經向我們顯明祂就是主神，祂用許多方式證明了這一點。這些證據都記載在神記錄真理的書——聖經裡。第一個證據就是耶穌神蹟般的降生。這位名叫耶穌的嬰孩，就是以人的身分降臨世上的神（提摩太前書3:16）。","Nagbigay si Jesus ng patunay na Siya ang Panginoong Diyos. Pinatunayan Niya ito sa maraming paraan. Ang mga patunay na ito ay nasa talaan ng katotohanan ng Diyos, ang Biblia. Ang unang patunay ay ang mahimalang kapanganakan ni Jesus. Ang sanggol na tinawag na Jesus ay ang Diyos na dumating sa lupa bilang tao (I Timoteo 3:16)."],[0,"Jesus' ministry and its effects on men adds proof to the claim that Jesus is God. Napoleon Bonaparte, a famous French conqueror, recognized Jesus was more than a man. He said, \"I tell you, I know men. Jesus was more than a man. Charlemagne, Alexander, and I have founded empires, but on what have we founded them? On force! Jesus has founded an empire greater in territorial extent, and vaster in significance, on love. I have inspired men so that they would die for me, but fancy a man dying for me nearly twenty centuries after I am dead, and yet that's what men are doing, the world over, for this man, Jesus of Nazareth.\"","耶穌在世上所做的事以及祂對人的影響，更加證明了耶穌是神。法國著名的征服者拿破崙就承認耶穌不只是一個人。他說：「我告訴你，我很了解人。耶穌不只是一個人。查理曼、亞歷山大和我建立了帝國，但我們靠的是什麼？是武力！耶穌卻是用愛建立了一個疆界更遼闊、意義更深遠的國度。我曾鼓舞人們為我犧牲生命，但想想看，會有人在我死後近兩千年還願意為我捨命嗎？然而全世界的人現在卻都在為這位拿撒勒人耶穌這樣做。」","Ang ministeryo ni Jesus at ang epekto nito sa mga tao ay dagdag na patunay na si Jesus ay Diyos. Si Napoleon Bonaparte, isang tanyag na mananakop na Pranses, ay kumilala na si Jesus ay higit pa sa isang tao. Sinabi niya, \"Sinasabi ko sa inyo, kilala ko ang mga tao. Si Jesus ay higit pa sa isang tao. Kami nina Charlemagne at Alexander ay nagtatag ng mga imperyo, ngunit sa ano namin itinayo ang mga ito? Sa lakas! Si Jesus ay nagtatag ng isang imperyong mas malawak at mas makahulugan, sa pamamagitan ng pag-ibig. Napukaw ko ang mga tao na mamatay para sa akin, ngunit isipin mo ang isang taong mamamatay para sa akin halos dalawampung siglo matapos akong mamatay. Iyan mismo ang ginagawa ng mga tao sa buong mundo para sa taong ito, si Jesus na taga-Nazaret.\""],[0,"Jesus' ministry was one of compassion and love for lost men. Jesus, speaking of Himself, said, \"For the Son of Man came to look for and to save from the punishment of sin those who are lost\" (Luke 19:10 NLT). Jesus' ministry to the lost included many miracles. He caused the lame to walk, opened the ears of the deaf, made the blind to see, and brought the dead back to life. Being God, Jesus could do anything.","耶穌在世上所做的事，充滿了對迷失的人的憐憫與愛。耶穌提到自己時說：「因為人子來，是要尋找並拯救迷失的人，使他們免受罪的懲罰。」（路加福音19:10，意譯） 耶穌為迷失之人所做的事包含許多神蹟。祂使瘸腿的能行走、聾子的耳朵能聽見、瞎眼的能看見，還使死人復活。因為耶穌是神，祂無所不能。","Ang ministeryo ni Jesus ay puno ng habag at pag-ibig sa mga taong naliligaw. Sinabi ni Jesus tungkol sa Kanyang sarili, \"Sapagkat ang Anak ng Tao ay naparito upang hanapin at iligtas sa parusa ng kasalanan ang mga naliligaw\" (Lucas 19:10). Kasama sa Kanyang ministeryo ang maraming himala. Pinalakad Niya ang mga pilay, binuksan ang tainga ng mga bingi, pinakita ang mga bulag, at binuhay ang mga patay. Dahil Siya ay Diyos, kayang gawin ni Jesus ang lahat."],[0,"Some men began to understand that Jesus was God. Jesus asked His followers, \"Who do you say that I am?\" (Matthew 16:15 NLT). Peter answered that He was the promised Savior, the Son of God. Jesus was happy that they understood who He was. Jesus told Peter that no man had taught him this. \"My Father in heaven has shown you this\" (Matthew 16:17 NLT).","有些人開始明白耶穌是神。耶穌問祂的門徒：「你們說我是誰？」（馬太福音16:15，意譯） 彼得回答說，祂就是應許的救主、神的兒子。耶穌很高興他們認出祂是誰。耶穌告訴彼得，這不是任何人教他的：「這是我在天上的父指示你的。」（馬太福音16:17，意譯）","Unti-unting naunawaan ng ilan na si Jesus ay Diyos. Tinanong ni Jesus ang Kanyang mga tagasunod, \"Ano naman ang sabi ninyo kung sino Ako?\" (Mateo 16:15). Sumagot si Pedro na Siya ang ipinangakong Tagapagligtas, ang Anak ng Diyos. Natuwa si Jesus na naunawaan nila kung sino Siya. Sinabi Niya kay Pedro na walang taong nagturo nito sa kanya: \"Ang Aking Ama na nasa langit ang nagpakita nito sa iyo\" (Mateo 16:17)."],[0,"If you want to know who Jesus is, you need to ask God's Spirit to help you to understand. The Spirit will show you that Jesus was God come to earth as a man. He will show you through His Holy Writings and by speaking to your heart. The Holy Spirit which is the Spirit of Jesus will begin to minister to you, showing you the truth about Jesus.","如果你想知道耶穌是誰，你需要祈求神的靈幫助你明白。聖靈會讓你看見耶穌就是以人的身分來到世上的神。祂會透過聖經，並直接對你的心說話來引導你。聖靈也就是耶穌的靈，會開始幫助你，讓你明白關於耶穌的真理。","Kung nais mong malaman kung sino si Jesus, kailangan mong hilingin sa Espiritu ng Diyos na tulungan kang umunawa. Ipapakita sa iyo ng Espiritu na si Jesus ay ang Diyos na dumating sa lupa bilang tao. Ipapakita Niya ito sa pamamagitan ng Kanyang Banal na Kasulatan at sa pagsasalita sa iyong puso. Ang Espiritu Santo, na siyang Espiritu ni Jesus, ay magsisimulang kumilos sa iyong buhay at ipapakita sa iyo ang katotohanan tungkol kay Jesus."],[0,"When you believe that Jesus is God, you will be happy. Thomas, a follower of Jesus, did not believe Jesus had come back to life after cruel men had killed Jesus. However, Jesus did come back to life and He showed Himself to Thomas. When Thomas saw Jesus, he said, \"My Lord and my God! Jesus said to him, Thomas, because you have seen Me, you believe. Those are happy who have never seen Me and yet believe!\" (John 20:28-29 NLT).","當你相信耶穌是神，你會充滿喜樂。耶穌的門徒多馬，在殘暴的人殺害耶穌後，原本不相信耶穌已經復活。然而，耶穌真的復活了，並且向多馬顯現。多馬看見耶穌時說：「我的主，我的神！」耶穌對他說：「多馬，你因為看見了我才信；那些沒有看見就信的人是有福的！」（約翰福音20:28-29，意譯）","Kapag naniwala kang si Jesus ay Diyos, magiging masaya ka. Si Tomas, isang tagasunod ni Jesus, ay hindi naniwala na muling nabuhay si Jesus matapos Siyang patayin ng malulupit na tao. Ngunit talagang muling nabuhay si Jesus at nagpakita Siya kay Tomas. Nang makita ni Tomas si Jesus, sinabi niya, \"Panginoon ko at Diyos ko!\" Sinabi sa kanya ni Jesus, \"Tomas, dahil nakita mo Ako kaya ka naniwala. Mapalad ang mga hindi nakakita sa Akin ngunit naniniwala!\" (Juan 20:28-29)."],[0,"Men who did not believe Jesus was God killed Him. They thought that this would prove He was not God. But you cannot kill God. Jesus took His Spirit out of His body and allowed His body to die. Only Jesus' body bled and died. The blood that Jesus shed was shed for us that we might have life. After three days Jesus returned His Spirit to His body, came out of His grave and proved He was God. Jesus is still alive today. He has returned to heaven and sent His Spirit back to live in our lives if we will believe in Him.","不相信耶穌是神的人殺害了祂，以為這樣就能證明祂不是神。但人是殺不死神的。耶穌讓自己的靈離開身體，容許祂的身體死去。流血和死去的，只有耶穌的身體。耶穌流出的血是為了我們流的，使我們能得著生命。三天後，耶穌讓靈回到身體裡，從墳墓中復活出來，證明了祂就是神。耶穌今天仍然活著。祂已經回到天上，並且差派祂的靈，住在每一個信祂的人生命裡。","Ang mga taong hindi naniwala na si Jesus ay Diyos ang pumatay sa Kanya. Akala nila mapapatunayan nito na hindi Siya Diyos. Ngunit hindi mapapatay ang Diyos. Inalis ni Jesus ang Kanyang Espiritu sa Kanyang katawan at pinahintulutang mamatay ang Kanyang katawan. Ang katawan lamang ni Jesus ang nagdugo at namatay. Ang dugong ibinuhos ni Jesus ay ibinuhos para sa atin upang tayo ay magkaroon ng buhay. Pagkalipas ng tatlong araw, ibinalik ni Jesus ang Kanyang Espiritu sa Kanyang katawan, lumabas sa Kanyang libingan, at pinatunayang Siya ay Diyos. Buhay pa si Jesus hanggang ngayon. Bumalik Siya sa langit at isinugo ang Kanyang Espiritu upang manirahan sa ating buhay kung tayo ay maniniwala sa Kanya."],[1,"CONCLUSION","結論","KONKLUSYON"],[0,"The Bible clearly says there is only one Lord or God. \"The greatest law is this, 'Listen, Jewish People, The Lord our God is one Lord!' '(Mark 12:29 NLT). In order to be saved from the punishment of your sins, you must love the Lord God. \"You must love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength! This is the first law\" (Mark 12:30 NLT).","聖經清楚表明，只有一位主或神。「最重要的誡命（神的命令）就是：『以色列人哪，你們要聽！主我們的神是獨一的主。』」（馬可福音12:29，意譯） 為了從罪的懲罰中得救，你必須愛主神。「你要盡心、盡性、盡意、盡力愛主你的神。這是最重要的誡命。」（馬可福音12:30，意譯）","Malinaw na sinasabi ng Biblia na iisa lamang ang Panginoon o Diyos. \"Ang pinakamahalagang utos ay ito: 'Makinig ka, Israel: Ang Panginoon nating Diyos ay iisang Panginoon!'\" (Marcos 12:29). Upang maligtas sa parusa ng iyong mga kasalanan, kailangan mong ibigin ang Panginoong Diyos. \"Ibigin mo ang Panginoon mong Diyos nang buong puso, nang buong kaluluwa, nang buong pag-iisip, at nang buong lakas! Ito ang unang utos\" (Marcos 12:30)."],[0,"When you understand that Jesus is the Lord God, then you should love Him with all your heart, soul, mind, and strength. When you love Jesus, you will show your love by obeying the gospel of Jesus Christ. The gospel, or good news, of Jesus Christ is repentance, baptism in Jesus' name, and receiving the Holy Spirit (Acts 2:38). \"But these are written so you may believe that Jesus is the Christ, the Son of God. When you put your trust in Him, you-will have life that lasts forever through His name\" (John 20:31 NLT).","當你明白耶穌就是主神，你就應當盡心、盡性、盡意、盡力愛祂。當你愛耶穌，你會藉由順服耶穌基督的福音（好消息）來表達你的愛。耶穌基督的福音就是悔改（承認自己的罪，並轉離罪）、奉耶穌的名受洗（受洗時宣告耶穌的名），以及領受聖靈（使徒行傳2:38，意譯）。「但記載這些事，是要讓你們相信耶穌是基督，是神的兒子；並且讓你們信了祂，就可以因祂的名得著永遠的生命。」（約翰福音20:31，意譯）","Kapag naunawaan mong si Jesus ang Panginoong Diyos, dapat mo Siyang ibigin nang buong puso, kaluluwa, pag-iisip, at lakas. Kapag iniibig mo si Jesus, ipapakita mo ang iyong pag-ibig sa pamamagitan ng pagsunod sa ebanghelyo ni Jesu-Cristo. Ang ebanghelyo, o mabuting balita, ni Jesu-Cristo ay ang pagsisisi, pagpapabautismo sa pangalan ni Jesus, at pagtanggap ng Espiritu Santo (Gawa 2:38). \"Ngunit isinulat ang mga ito upang kayo ay sumampalataya na si Jesus ang Cristo, ang Anak ng Diyos. At kapag nagtiwala kayo sa Kanya, magkakaroon kayo ng buhay na walang hanggan sa pamamagitan ng Kanyang pangalan\" (Juan 20:31)."]]},{"id":"healing","t":{"en":"The Truth About Healing","zh":"關於醫治的真理","tl":"Ang Katotohanan Tungkol sa Pagpapagaling"},"p":[[1,"INTRODUCTION","引言","PANIMULA"],[0,"All men fear sickness. Men do not want to die. Educated men spend their lives searching for cures for men's sicknesses. Progress is made and doctors do help some illness, but some people become ill and die.","所有人都害怕生病，沒有人想死。受過良好教育的人窮盡一生尋找醫治人類疾病的方法。雖然醫學有了進展，醫生也確實能醫治某些疾病，但還是有人生病死去。","Lahat ng tao ay takot magkasakit. Ayaw ng tao na mamatay. Ginugugol ng mga edukadong tao ang kanilang buhay sa paghahanap ng lunas sa mga sakit. May pag-unlad, at nakatutulong ang mga doktor sa ilang karamdaman, ngunit may mga taong nagkakasakit pa rin at namamatay."],[0,"Sickness is the result of men's sin. Our ancestors, Adam and Eve, disobeyed God and God had to punish them. Sickness is a result of this punishment for sin. Since all men are born sinners, all men are troubled by sickness. However, God has provided a way for us to be healed when sickness does come.","疾病是因為人類犯罪，才進入這個世界的。我們的祖先亞當和夏娃不順服神，神不得不懲罰他們，疾病就是這個懲罰所帶來的結果。因為每個人生來就有罪性，所以每個人都會受到疾病的困擾。然而，當疾病來臨時，神已經為我們預備了得醫治的路。","Ang sakit ay bunga ng kasalanan ng tao. Ang ating mga ninuno na sina Adan at Eba ay sumuway sa Diyos, at kinailangan silang parusahan ng Diyos. Ang sakit ay bunga ng parusang ito sa kasalanan. Dahil lahat ng tao ay ipinanganak na makasalanan, lahat ng tao ay dinaranas ang sakit. Gayunpaman, naglaan ang Diyos ng paraan upang tayo ay mapagaling kapag dumating ang sakit."],[1,"GOD IS A HEALER","神是醫治者：","ANG DIYOS AY MANGGAGAMOT"],[0,"God promised His people in His Holy Writings, \"If you listen carefully to the voice of the Lord your God and do what is right in His eyes, if you pay attention to His commands and keep all his decrees, I will not bring on you any of the diseases I brought on the Egyptians, for I am the Lord who heals you\" (Exodus 15:26 NIV). God also warned them if they sin, \"He will bring upon you all the diseases of Egypt that you dreaded, and they will cling to you\" (Deuteronomy 28:60 NIV).","神在聖經中向祂的百姓應許：「如果你們留心聽主你們神的話，照著祂看為對的事去做，留心聽祂的誡命（神的命令），並遵守祂一切的規定，我就不把降在埃及人身上的任何疾病加在你們身上，因為我是醫治你們的耶和華。」（出埃及記15:26，意譯）神也警告他們，如果他們犯罪：「祂必使你們所懼怕、埃及的一切疾病臨到你們身上，緊緊纏著你們。」（申命記28:60，意譯）","Nangako ang Diyos sa Kanyang bayan sa Kanyang Banal na Kasulatan, \"Kung pakikinggan mong mabuti ang tinig ng Panginoon mong Diyos at gagawin ang tama sa Kanyang paningin, kung susundin mo ang Kanyang mga utos at iingatan ang lahat ng Kanyang mga tuntunin, hindi Ko ipararanas sa iyo ang alinman sa mga sakit na ipinadala Ko sa mga Ehipcio, sapagkat Ako ang Panginoon na nagpapagaling sa iyo\" (Exodo 15:26). Binalaan din sila ng Diyos na kung sila ay magkakasala, \"Ipararanas Niya sa iyo ang lahat ng sakit sa Ehipto na kinatatakutan mo, at kakapit ang mga ito sa iyo\" (Deuteronomio 28:60)."],[0,"God warned of sickness for those who disobey and promised healing to those who obeyed. God always keeps His promises.","神警告不順服的人會遭受疾病，並應許醫治那些順服的人。神總是信守祂的承諾。","Nagbabala ang Diyos ng sakit sa mga sumusuway at nangako ng kagalingan sa mga sumusunod. Laging tinutupad ng Diyos ang Kanyang mga pangako."],[0,"David, the Psalmist, praised God because \"He forgives all my sins and heals all my diseases\" (Psalms 103:3 NIV). Jeremiah reminds us of God's promise, \"But I will restore you to health and heal your wounds declares the Lord\" (Jeremiah 30:17 NIV). God loves His people and desires for them to be well and happy.","詩篇作者大衛讚美神，因為「祂赦免我的一切罪，醫治我的一切疾病」（詩篇103:3，意譯）。耶利米也提醒我們神的應許：「耶和華宣告：我必使你恢復健康，醫好你的傷口。」（耶利米書30:17，意譯）神愛祂的子民，渴望他們健康而且充滿喜樂。","Pinuri ni David, ang mang-aawit, ang Diyos dahil \"pinatatawad Niya ang lahat ng aking kasalanan at pinagagaling ang lahat ng aking karamdaman\" (Awit 103:3). Ipinaaalala sa atin ni Jeremias ang pangako ng Diyos: \"Ibabalik Ko ang iyong kalusugan at pagagalingin ang iyong mga sugat, sabi ng Panginoon\" (Jeremias 30:17). Mahal ng Diyos ang Kanyang bayan at nais Niyang sila ay maging malusog at masaya."],[0,"Healing is possible because of Jesus Christ. Jesus died for us so that we might be saved from the punishment of our sins. Yet, Jesus' crucifixion not only provided salvation, it provides healing. \"He carried our sins in His own body when He died on a cross. In doing this, we may be dead to sin and alive to all that is right and good. His wounds have healed you!\" (I Peter 2:24 NLT).","得醫治是可能的，這都是因為耶穌基督。耶穌為我們受死，好讓我們免於罪的刑罰而得救。然而，耶穌被釘十字架不僅帶來了救恩，也帶來了醫治。「祂在十字架上親自承擔了我們的罪，好讓我們跟罪斷絕關係，為一切正直良善的事而活。祂所受的傷使你們得了醫治！」（彼得前書2:24，意譯）","Posible ang kagalingan dahil kay Jesu-Cristo. Namatay si Jesus para sa atin upang tayo ay maligtas sa parusa ng ating mga kasalanan. Ngunit ang pagkakapako kay Jesus ay hindi lamang nagbigay ng kaligtasan, nagbibigay din ito ng kagalingan. \"Pinasan Niya ang ating mga kasalanan sa Kanyang sariling katawan nang Siya ay mamatay sa krus, upang tayo ay mamatay sa kasalanan at mabuhay para sa lahat ng tama at mabuti. Sa Kanyang mga sugat kayo ay gumaling!\" (I Pedro 2:24)."],[0,"Jesus made it possible and the Bible tells us how to receive it. \"Is anyone among you sick? He should send for the church leaders and they should pray for him. They should pour oil on him in the name of the Lord. The prayer given in faith will heal the sick man, and the Lord will raise him up. If he has sinned, he will be forgiven\" (James 5:14-15 NLT). Anoint with oil. Pray in Jesus' name. Pray with faith. Jesus will heal and forgive your sins.","耶穌成就了這一切，聖經也告訴我們該如何領受：「你們當中有人生病了嗎？他應該去請教會的長老，請他們為他禱告，並奉主的名用油抹他。出於信心的禱告會治好病人，主必使他好起來；他如果犯了罪，他的罪也會得到赦免。」（雅各書5:14-15，意譯）用油抹。奉耶穌的名禱告。憑著信心禱告。耶穌必醫治你，並赦免你的罪。","Ginawa itong posible ni Jesus, at sinasabi sa atin ng Biblia kung paano ito tatanggapin. \"May nagkakasakit ba sa inyo? Ipatawag niya ang mga namumuno sa iglesia at ipanalangin nila siya. Pahiran nila siya ng langis sa pangalan ng Panginoon. Ang panalanging may pananampalataya ay magpapagaling sa maysakit, at ibabangon siya ng Panginoon. Kung siya ay nagkasala, patatawarin siya\" (Santiago 5:14-15). Magpahid ng langis. Manalangin sa pangalan ni Jesus. Manalangin nang may pananampalataya. Pagagalingin ka ni Jesus at patatawarin ang iyong mga kasalanan."],[1,"EXAMPLES OF HEALING","醫治的例子：","MGA HALIMBAWA NG KAGALINGAN"],[0,"While Jesus was on earth, He healed many people. Jesus had power over all sickness. Sick people came from long distances to see Jesus so He could heal them. \"They brought all the sick people to Him with many kinds of disease and pains. They brought to Him those who had demons. They brought those who at times lose the use of their minds. They brought those who could not use their hands and legs. He healed them\" (Matthew 4:24 NLT). Sickness and demons had to flee at the command of Jesus.","當耶穌在地上時，祂醫治了許多人。耶穌有掌管一切疾病的能力。病人從很遠的地方趕來見耶穌，好讓祂醫治他們。「人們把患有各種疾病和疼痛的病人都帶到祂面前，也帶來了被惡魔附身的人、精神失常的人，以及癱瘓不能動的人。祂全都治好了。」（馬太福音4:24，意譯）在耶穌的命令下，疾病和惡魔都必須逃跑。","Noong si Jesus ay nasa lupa, marami Siyang pinagaling. May kapangyarihan si Jesus sa lahat ng sakit. Dumating ang mga maysakit mula sa malalayong lugar upang makita si Jesus at mapagaling Niya. \"Dinala nila sa Kanya ang lahat ng maysakit na may iba't ibang karamdaman at sakit. Dinala nila sa Kanya ang mga sinasapian ng demonyo, ang mga paminsan-minsang nawawala sa sarili, at ang mga hindi maigalaw ang kanilang mga kamay at paa. At pinagaling Niya sila\" (Mateo 4:24). Kinailangang tumakas ng sakit at mga demonyo sa utos ni Jesus."],[0,"Jesus gave His followers the power to heal. When they used the name of Jesus they also had power over diseases and demons (Luke 10:17). Jesus said that those who put their trust in Him would do special powerful works. \"They will put their hands on the sick and they will be healed\" (Mark 16:18 NLT).","耶穌賜給祂的門徒醫治的能力。當他們使用耶穌的名時，他們也擁有了勝過疾病和惡魔的能力（路加福音10:17）。耶穌說，信靠祂的人會做特別有能力的事：「他們把手放在病人身上，病人就會好起來。」（馬可福音16:18，意譯）","Binigyan ni Jesus ang Kanyang mga tagasunod ng kapangyarihang magpagaling. Kapag ginamit nila ang pangalan ni Jesus, nagkaroon din sila ng kapangyarihan sa mga sakit at demonyo (Lucas 10:17). Sinabi ni Jesus na ang mga nagtitiwala sa Kanya ay gagawa ng mga natatanging makapangyarihang gawa: \"Ipapatong nila ang kanilang mga kamay sa maysakit at gagaling ang mga ito\" (Marcos 16:18)."],[0,"The Bible tells of the followers of Jesus praying for a lame man (Acts 3). He was healed. Peter prayed for Dorcas who had died (Acts 9). She came back to life. Paul prayed for a man who had fallen out of a window and died (Acts 20). The people were happy to take the young man home alive.","聖經記載，耶穌的門徒為一個瘸腿的人禱告（使徒行傳第3章），他就得了醫治。彼得為已經死去的多加禱告（使徒行傳第9章），她就活了過來。保羅為一個從窗戶掉下去摔死的年輕人禱告（使徒行傳第20章），後來眾人非常高興能把這活生生的年輕人帶回家。","Ikinuwento ng Biblia ang mga tagasunod ni Jesus na nanalangin para sa isang pilay (Gawa 3). Siya ay gumaling. Nanalangin si Pedro para kay Dorcas na namatay na (Gawa 9). Siya ay muling nabuhay. Nanalangin si Pablo para sa isang lalaking nahulog mula sa bintana at namatay (Gawa 20). Masayang iniuwi ng mga tao ang binatang buhay."],[1,"CONCLUSION","結論","KONKLUSYON"],[0,"Followers of Jesus are still being healed. Jesus gave a gift of healing to the Church. He desires for us to use it. He wants His people to be well and happy.","跟隨耶穌的人至今依然在經歷醫治。耶穌把神所賜醫治的能力給了教會。祂渴望我們去運用它，祂希望祂的子民身體健康、充滿喜樂。","Patuloy na pinagagaling ang mga tagasunod ni Jesus hanggang ngayon. Nagbigay si Jesus ng kaloob na pagpapagaling sa Iglesia. Nais Niyang gamitin natin ito. Nais Niyang ang Kanyang bayan ay maging malusog at masaya."],[0,"God does not want you to be sick. Jesus suffered so you could be healed. If you will pray with faith calling on Jesus, He will heal you. People around the world are doing it. The leaders of the church are anointing with oil and praying in Jesus' name. Demons are being cast out. Blinded eyes are beginning to see. Deaf ears are beginning to hear and even the dead are coming back to life. God is still a healer. He wants to be your healer.","神不希望你生病。耶穌受苦，好讓你能得醫治。如果你憑信心禱告呼求耶穌，祂必醫治你。世界各地的人現在都正在這樣做。教會的長老們正用油抹並奉耶穌的名禱告。惡魔被趕逐出去，瞎眼的得以看見，耳聾的得以聽見，甚至死人也復活了。神至今依然是醫治者，祂渴望成為你的醫治者。","Hindi nais ng Diyos na ikaw ay magkasakit. Nagdusa si Jesus upang ikaw ay gumaling. Kung mananalangin ka nang may pananampalataya at tatawag kay Jesus, pagagalingin ka Niya. Ginagawa ito ng mga tao sa buong mundo. Ang mga pinuno ng iglesia ay nagpapahid ng langis at nananalangin sa pangalan ni Jesus. Napapalayas ang mga demonyo. Nakakakita na ang mga bulag. Nakaririnig na ang mga bingi, at maging ang mga patay ay muling nabubuhay. Ang Diyos ay manggagamot pa rin. Nais Niyang maging manggagamot mo."]]},{"id":"church","t":{"en":"The Truth About the Church","zh":"關於教會的真理","tl":"Ang Katotohanan Tungkol sa Iglesia"},"p":[[1,"INTRODUCTION","引言","PANIMULA"],[0,"We live in a time that we call the \"Church Age.\" During this time God is preparing a body of people that is called His Church. These people, the Church, are also called the body of Christ. Jesus is the head of the Church, \"For a husband is the head of his wife as Christ is the head of the Church. It is His body (the Church) that He saves\" (Ephesians 5:23 NLT). To be saved you must be in the Church.","我們現在所處的時代，稱為「教會時代」。在這段時間裡，神正在預備一群人，這群人就是祂的教會，也稱為基督的身體。耶穌是教會的頭：「丈夫是妻子的頭，就像基督是教會的頭一樣；祂所拯救的，就是祂的身體，也就是教會。」（以弗所書5:23，意譯）人要得救，就必須在教會裡。","Nabubuhay tayo sa panahong tinatawag nating \"Panahon ng Iglesia.\" Sa panahong ito, inihahanda ng Diyos ang isang kalipunan ng mga tao na tinatawag na Kanyang Iglesia. Ang mga taong ito, ang Iglesia, ay tinatawag ding katawan ni Cristo. Si Jesus ang ulo ng Iglesia: \"Sapagkat ang asawang lalaki ang ulo ng kanyang asawa, gaya ni Cristo na ulo ng Iglesia. Ang Kanyang katawan (ang Iglesia) ang Kanyang inililigtas\" (Efeso 5:23). Upang maligtas, kailangan mong mapabilang sa Iglesia."],[1,"HOW DO YOU GET INTO THE CHURCH?","怎樣才能成為教會的一員？","PAANO KA MAPAPABILANG SA IGLESIA?"],[0,"You have to be born into the Church. This birth is not the birth of being born of your mother. You must be born again. Jesus told Nicodemus, \"Do not be surprised that I said to you 'You must be born again'\" (John 3:7 NLT). Jesus had told Nicodemus that he must be born of the water and of the Spirit or he could not see the holy nation of God (John 3:5 NLT).","要成為教會的一員，你必須經歷一次「出生」。這不是指從母親腹中出生，而是重生（生命重新開始）。耶穌對尼哥底母說：「我說『你們必須重生』，你不要覺得奇怪。」（約翰福音3:7，意譯）耶穌也告訴尼哥底母，人若不是從水和聖靈重生（受洗並領受聖靈），就不能看見神的國（約翰福音3:5）。","Kailangan kang maipanganak sa Iglesia. Hindi ito ang kapanganakan mula sa iyong ina. Kailangan kang ipanganak na muli. Sinabi ni Jesus kay Nicodemo, \"Huwag kang magtaka na sinabi Ko sa iyo, 'Kailangan kang ipanganak na muli'\" (Juan 3:7). Sinabi ni Jesus kay Nicodemo na kailangan siyang ipanganak sa tubig at sa Espiritu, kung hindi ay hindi niya makikita ang banal na kaharian ng Diyos (Juan 3:5)."],[0,"In Acts chapter 2 the first people were born into the Church. \"All at once there was a sound from heaven like a powerful wind. It filled the house where they were sitting. Then they saw tongues.... These came down on each of them. They were all filled with the Holy Spirit. Then they began to speak in other languages which the Holy Spirit made them able to speak\" (Acts 2:2-4 NLT).","使徒行傳第2章記載了最早因重生而成為教會一員的人：「忽然，從天上傳來一陣像強風的聲音，充滿了他們所坐的整間屋子。接著，他們看見像火焰一樣的舌頭……分別落在每個人身上。他們全都被聖靈充滿，並照著聖靈的帶領，開始說出別種語言。」（使徒行傳2:2-4，意譯）","Sa Gawa kabanata 2, ang mga unang tao ay ipinanganak sa Iglesia. \"Biglang may ugong mula sa langit na tulad ng malakas na hangin. Pinuno nito ang buong bahay na kanilang kinauupuan. Pagkatapos ay nakakita sila ng mga dila... Dumapo ang mga ito sa bawat isa sa kanila. Silang lahat ay napuspos ng Espiritu Santo. At nagsimula silang magsalita ng ibang mga wika ayon sa ibinigay sa kanila ng Espiritu Santo\" (Gawa 2:2-4)."],[0,"There were one hundred and twenty people who were first born into the Church. However, many people saw what was happening and asked how they also could enter the Church. \"Peter said to them, 'Be sorry for your sins and turn from them and be baptized in the name of Jesus Christ, and your sins will be forgiven, You will receive the gift of the Holy Spirit'\" (Acts 2:38 NLT).","最早這樣重生的有一百二十人。許多人看見所發生的事，也問要怎樣才能成為教會的一員。「彼得對他們說：『你們要為自己的罪難過，並且轉離罪，奉耶穌基督的名受洗，你們的罪就會得到赦免，也會領受神所賜的聖靈。』」（使徒行傳2:38，意譯）","Isandaan at dalawampung tao ang unang ipinanganak sa Iglesia. Ngunit maraming tao ang nakakita ng nangyayari at nagtanong kung paano rin sila makapapasok sa Iglesia. \"Sinabi sa kanila ni Pedro, 'Pagsisihan ninyo ang inyong mga kasalanan at talikuran ang mga ito, at magpabautismo kayo sa pangalan ni Jesu-Cristo, at patatawarin ang inyong mga kasalanan. Tatanggapin ninyo ang kaloob na Espiritu Santo'\" (Gawa 2:38)."],[0,"Three thousand people obeyed Peter's words and were also born into the Church that day. This took place on the Day of Pentecost (a Jewish feast). We call the Church that was born that day the Pentecostal Church.","那一天，有三千人聽從彼得的話，也重生成為教會的一員。這件事發生在五旬節（猶太人的節日），所以我們把那天誕生的教會稱為五旬節教會。","Tatlong libong tao ang sumunod sa mga salita ni Pedro at ipinanganak din sa Iglesia nang araw na iyon. Nangyari ito sa Araw ng Pentecostes (isang pista ng mga Judio). Tinatawag natin ang Iglesiang isinilang nang araw na iyon na Iglesiang Pentecostal."],[0,"The saved body of Christ, the Church, was growing rapidly. It continued to grow as was promised. \"This promise is to you and your children. It is to all people everywhere. It is to as many as the Lord our God will call\" (Acts 2:39 NLT).","教會是蒙神拯救的基督身體，不但增長得非常快，而且照著神的應許持續增長：「這個應許是給你們和你們的子孫，也是給世界各地所有被主我們的神呼召的人。」（使徒行傳2:39，意譯）","Mabilis na lumago ang ligtas na katawan ni Cristo, ang Iglesia. Patuloy itong lumago gaya ng ipinangako: \"Ang pangakong ito ay para sa inyo at sa inyong mga anak. Ito ay para sa lahat ng tao saanman, sa lahat ng tatawagin ng Panginoon nating Diyos\" (Gawa 2:39)."],[0,"You also may be born into the Church. You must be born again just as the first believers were born into it. Some would like to teach that there is another way, but there is none. \"No! There is not another kind of good news. There are some who would like to lead you in the wrong way\" (Galatians 1:7 NLT). God warns us about false teachers and we must be careful that they do not lead us the wrong way.","你也可以成為教會的一員，方法跟最早的信徒一樣，就是重生。有些人會教導說還有別的方法，其實沒有。「不！沒有另一種福音。只是有些人想把你們帶上錯誤的道路。」（加拉太書1:7，意譯）神提醒我們要提防傳錯誤教導的人，我們必須小心，不要被他們帶上錯誤的道路。","Maaari ka ring maipanganak sa Iglesia. Kailangan kang ipanganak na muli gaya ng mga unang mananampalataya. May mga nagnanais magturo na may iba pang paraan, ngunit wala. \"Hindi! Walang ibang uri ng mabuting balita. May mga taong nais kayong iligaw\" (Galacia 1:7). Binabalaan tayo ng Diyos tungkol sa mga bulaang guro, at kailangan nating mag-ingat na hindi nila tayo mailigaw."],[0,"The Bible tells of many others who were born into the Church by repenting, being baptized in Jesus' name, and receiving the Holy Ghost. The Samaritans (Acts 8), Cornelius' family and friends (Acts 10), and the Ephesians (Acts 19) also spoke in new languages as they were born into the Church.","聖經還記載了許多人，藉著悔改、奉耶穌的名受洗（受洗時宣告耶穌的名）和領受聖靈而重生，成為教會的一員。撒瑪利亞人（使徒行傳第8章）、哥尼流的家人和朋友（使徒行傳第10章）、以弗所人（使徒行傳第19章），在重生的時候，也都和五旬節那天一樣說了方言。","Isinasalaysay ng Biblia ang marami pang ibang ipinanganak sa Iglesia sa pamamagitan ng pagsisisi, pagpapabautismo sa pangalan ni Jesus, at pagtanggap ng Espiritu Santo. Ang mga taga-Samaria (Gawa 8), ang pamilya at mga kaibigan ni Cornelio (Gawa 10), at ang mga taga-Efeso (Gawa 19) ay nagsalita rin ng mga bagong wika nang sila ay ipanganak sa Iglesia."],[0,"In a short time it was said of the Christians (another name for the Church) that they had filled Jerusalem with their teachings. Later people were saying that the Church had turned the world upside down with the good news of salvation through Jesus.","沒多久，人們就說基督徒（教會的另一個名稱）的教導已經傳遍了整個耶路撒冷。後來，人們更說，教會用耶穌拯救人的好消息，把整個世界都翻轉過來了。","Sa maikling panahon, sinabi tungkol sa mga Kristiyano (isa pang pangalan ng Iglesia) na pinuno nila ang Jerusalem ng kanilang mga turo. Nang lumaon, sinasabi ng mga tao na binaligtad ng Iglesia ang mundo sa pamamagitan ng mabuting balita ng kaligtasan kay Jesus."],[1,"REFORMATION","宗教改革","REPORMASYON"],[0,"Not all people understand the warnings about wrong ways and false teachings. Some began to follow the teachings of men and not the teaching of God. They claimed to be a part of the Church, but they were not. The true Church of Jesus Christ was still called by His name and filled with His Spirit. However, false teachers gained control of the organized church and the government.","可惜，並不是每個人都明白聖經對錯誤教導的警告。有些人開始跟從人的教導，而不是神的教導。他們自稱是教會的一部分，其實並不是。真正屬於耶穌基督的教會，仍然歸在祂的名下，也被祂的靈充滿。然而，掌控當時主流教會和政府的，卻是那些自稱屬於教會的人。","Hindi lahat ng tao ay nakauunawa sa mga babala tungkol sa maling daan at maling turo. Ang ilan ay nagsimulang sumunod sa mga turo ng tao at hindi sa turo ng Diyos. Sinabi nilang bahagi sila ng Iglesia, ngunit hindi. Ang tunay na Iglesia ni Jesu-Cristo ay tinatawag pa rin sa Kanyang pangalan at puspos ng Kanyang Espiritu. Gayunpaman, nakuha ng mga bulaang guro ang kontrol sa organisadong simbahan at sa pamahalaan."],[0,"People who taught that you have to repent, be baptized in Jesus' name, and speak with new tongues when you received the Holy Spirit were persecuted. They still believed the teachings of the Bible. They did not listen to ungodly men who controlled the organized church. Many people died because they stood for truth. Finally more organized church leaders began to stand against false teachings. They tried to lead the organized church back to Bible teachings. Men like John Wycliffe, John Huss, Savonarola, and Martin Luther led what is called the Reformation. They suffered greatly to try to lead men back to Bible truths. False teachers persecuted them because of the truths they taught.","那些教導人必須悔改、奉耶穌的名受洗，並在領受聖靈時說方言的人，都遭到逼迫。但他們仍然相信聖經的教導，不肯聽從那些掌控主流教會、卻不敬畏神的人。許多人為了堅守真理而喪命。後來，主流教會裡也有越來越多領袖站出來反對錯誤的教導，想帶領教會回到聖經。威克利夫、胡斯、薩佛納羅拉和馬丁路德這些人，帶領了歷史上所說的宗教改革。他們為了帶人回到聖經的真理受了許多苦，也因為傳講真理而遭到逼迫。","Ang mga nagtuturo na kailangang magsisi, magpabautismo sa pangalan ni Jesus, at magsalita ng mga bagong wika kapag tinanggap ang Espiritu Santo ay inusig. Patuloy silang naniwala sa mga turo ng Biblia. Hindi sila nakinig sa mga taong hindi maka-Diyos na kumokontrol sa organisadong simbahan. Maraming namatay dahil sa paninindigan sa katotohanan. Sa wakas, mas maraming pinuno ng organisadong simbahan ang nagsimulang tumindig laban sa maling turo. Sinikap nilang ibalik ang organisadong simbahan sa mga turo ng Biblia. Ang mga taong tulad nina John Wycliffe, John Huss, Savonarola, at Martin Luther ang nanguna sa tinatawag na Repormasyon. Labis silang nagdusa sa pagsisikap na ibalik ang mga tao sa katotohanan ng Biblia. Inusig sila ng mga bulaang guro dahil sa mga katotohanang kanilang itinuro."],[1,"RETURN TO PENTECOST","回到五旬節","PAGBABALIK SA PENTECOSTES"],[0,"In the early 1900's, in Topeka, Kansas, U.S.A., there was a group of people who were born again of the Spirit. Just like on the Day of Pentecost, they spoke with new tongues as God filled them with the Holy Spirit. Since then millions of people around the world have received the Holy Spirit, evidenced by speaking in new languages.","二十世紀初，在美國堪薩斯州的托皮卡，有一群人從聖靈重生。就像五旬節那天一樣，當神用聖靈充滿他們時，他們都說了方言。從那時到現在，全世界已經有數百萬人領受了聖靈，並且都有說方言作為證據。","Noong unang bahagi ng 1900s, sa Topeka, Kansas, U.S.A., may isang grupo ng mga taong ipinanganak na muli sa Espiritu. Gaya ng nangyari sa Araw ng Pentecostes, nagsalita sila ng mga bagong wika nang punuin sila ng Diyos ng Espiritu Santo. Mula noon, milyun-milyong tao sa buong mundo ang tumanggap ng Espiritu Santo, na pinatutunayan ng pagsasalita ng mga bagong wika."],[0,"The Holy Spirit, who comes to lead and guide into all truth, has shown many of these people that they must be baptized in Jesus' name also. This is the way the people who were born into the Church in the Bible were baptized. Baptism in Jesus' name was part of Peter's teachings on the Day of Pentecost. Men of God around the world are preaching the full message of salvation as found in the Bible.","聖靈來，是要引導人明白一切的真理；祂也讓許多領受了聖靈的人明白，他們還必須奉耶穌的名受洗。聖經裡重生成為教會一員的人，就是這樣受洗的；五旬節那天，彼得的教導也包括奉耶穌的名受洗。今天，世界各地的傳道人都在傳講聖經裡神拯救人的完整信息。","Ang Espiritu Santo, na dumarating upang manguna at gumabay sa lahat ng katotohanan, ay nagpakita sa marami sa kanila na kailangan din silang magpabautismo sa pangalan ni Jesus. Ganito binautismuhan ang mga taong ipinanganak sa Iglesia sa Biblia. Ang bautismo sa pangalan ni Jesus ay bahagi ng mga turo ni Pedro sa Araw ng Pentecostes. Ang mga lingkod ng Diyos sa buong mundo ay nangangaral ng buong mensahe ng kaligtasan ayon sa Biblia."],[0,"In 1945 two organizations who preached this message joined together to form the United Pentecostal Church. Our basic teaching is:","1945年，兩個傳講這個信息的團體合併，成立了聯合五旬節教會。我們的基本教導是：","Noong 1945, dalawang organisasyon na nangangaral ng mensaheng ito ang nagsama upang bumuo ng United Pentecostal Church. Ang aming pangunahing turo ay:"],[0,"\"The basic and fundamental doctrine of this organization shall be the Bible standard of full salvation, which is repentance, baptism in water by immersion in the name of the Lord Jesus Christ, and the baptism of the Holy Ghost with the initial sign of speaking with other tongues as the Spirit gives utterance. We shall endeavor to keep the unity of the Spirit until we all come into the unity of the faith, at the same time admonishing all brethren that they shall not contend for their different views to the disunity of the body.\"","「本會最根本的教義，是聖經所定完整救恩的標準，就是：悔改；奉主耶穌基督的名，全身浸入水中受洗；以及受聖靈的洗，而最初的證據，就是照著聖靈的帶領說方言。我們要盡力維持聖靈帶來的合一，直到大家在信仰上完全一致；同時也勸勉所有弟兄姊妹，不要為了各自不同的看法爭論導致教會分裂。」","\"Ang pangunahin at saligang doktrina ng organisasyong ito ay ang pamantayan ng Biblia ng ganap na kaligtasan, na binubuo ng pagsisisi, bautismo sa tubig sa pamamagitan ng paglulubog sa pangalan ng Panginoong Jesu-Cristo, at bautismo ng Espiritu Santo na may unang tanda ng pagsasalita ng ibang mga wika ayon sa ibinibigay ng Espiritu. Sisikapin naming ingatan ang pagkakaisa ng Espiritu hanggang makamtan nating lahat ang pagkakaisa ng pananampalataya, kasabay ng pagpapaalala sa lahat ng kapatiran na huwag ipaglaban ang kani-kanilang magkakaibang pananaw hanggang sa magdulot ito ng pagkakawatak-watak ng katawan.\""],[0,"Articles of Faith, Manual, United Pentecostal Church International, (Inc.)","——《聯合五旬節教會國際總會手冊》〈信仰條款〉","Articles of Faith, Manual, United Pentecostal Church International, (Inc.)"],[1,"CONCLUSION","結論","KONKLUSYON"],[0,"\"On this rock I will build My church. The powers of hell will not be able to have power over my Church\" (Matthew 16:18 NLT). Jesus is still building His Church. You can be a part of it, but you must be born again just as the early Church was. Those who are born into His body and live a holy life for Jesus are the ones that He is going to take to heaven to live with Him forever.","「我要把我的教會建造在這塊磐石上，地獄的權勢也不能勝過它。」（馬太福音16:18，意譯）耶穌今天仍在建造祂的教會，你也可以加入。不過，你必須像早期的信徒一樣重生。凡是重生、成為祂身體一部分，並且為耶穌過聖潔生活的人，耶穌將來都要帶他們到天上，永遠和祂同住。","\"Sa batong ito ay itatayo Ko ang Aking Iglesia. Hindi ito mapagtatagumpayan ng kapangyarihan ng impiyerno\" (Mateo 16:18). Patuloy na itinatayo ni Jesus ang Kanyang Iglesia. Maaari kang maging bahagi nito, ngunit kailangan kang ipanganak na muli gaya ng unang Iglesia. Ang mga ipinanganak sa Kanyang katawan at namumuhay nang banal para kay Jesus ang Kanyang dadalhin sa langit upang makasama Niya magpakailanman."]]}];
+const VERSES = [
+  { ref:{en:'John 3:16',zh:'約翰福音 3:16',tl:'Juan 3:16'},
+    text:{en:'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.',
+          zh:'神愛世人，甚至將他的獨生子賜給他們，叫一切信他的，不至滅亡，反得永生。',
+          tl:'Sapagka\'t gayon na lamang ang pagsinta ng Dios sa sanglibutan, na ibinigay niya ang kaniyang bugtong na Anak, upang ang sinomang sumampalataya sa kaniya ay huwag mapahamak, kundi magkaroon ng buhay na walang hanggan.'} },
+  { ref:{en:'Acts 2:38',zh:'使徒行傳 2:38',tl:'Mga Gawa 2:38'},
+    text:{en:'Then Peter said unto them, Repent, and be baptized every one of you in the name of Jesus Christ for the remission of sins, and ye shall receive the gift of the Holy Ghost.',
+          zh:'彼得說：「你們各人要悔改，奉耶穌基督的名受洗，叫你們的罪得赦，就必領受所賜的聖靈。」',
+          tl:'At sinabi sa kanila ni Pedro, Mangagsisi kayo, at mangagbautismo ang bawa\'t isa sa inyo sa pangalan ni Jesucristo sa ikapagpapatawad ng inyong mga kasalanan; at tatanggapin ninyo ang kaloob na Espiritu Santo.'} }
+];
+
+/* ---------- Text ---------- */
+const T = {
+  en:{sub:'First Apostolic Church Taiwan · UPC', home:'Home', cal:'Calendar', media:'Media', churches:'Churches', more:'More',
+      live:'Live now', watch:'Watch', pinned:'Pinned', upcomingEv:'Upcoming events', news:'Announcements', verse:'Verse of the day',
+      school:'Sunday School', worship:'Worship Service', service:'Service', all:'All', month:'Month', list:'List',
+      noEv:'Nothing on this day.', noUp:'No upcoming events yet.', tbd:'Service times coming soon.',
+      regular:'Regular service times are on the Churches page', addr:'Address', phone:'Phone', email:'Email', times:'Services',
+      dir:'Directions', call:'Call', fbPage:'Facebook', ytPage:'YouTube', fbDesc:'Live streams and past sermons', ytDesc:'Sermon videos',
+      mediaNote:'If the posts above do not show, tap the blue button to open Facebook.', fbLatest:'Latest Facebook posts', openFb:'Open on Facebook', viewFb:'View on Facebook', fFb:'Facebook post link (optional)', fbHint:'Copy the link of a Facebook post or video and paste it here.', eBAD_FB:'Please paste a facebook.com link.', otherPages:'All pages', trZh:'中文', trEn:'English', trBoth:'Both', trTl:'Tagalog', newTitle:'First time here? Start here', newSub:'Service times, location, and your first steps', welcomeH:'Welcome!', welcomeP:'We are so glad you are here. This page has everything you need: when we meet, how to get here, and where to start getting to know God and our church.', visitH:'Come worship with us', pathH:'Start getting to know us', pathP:'Read these in order. It takes about 20 minutes. Items you have read get a check mark.', stepSermon:'Watch a recent sermon', needPrayer:'Is there anything we can pray for you about?', invite:'Invite a friend (QR code)', shareTitle:'Share with a friend', shareHint:'Send it by LINE, or let your friend scan the QR code with their phone camera.', copyLink:'Copy link', lineShare:'Send by LINE', moreShare:'More ways', saveQr:'Long-press the QR code to save it as a picture', shareTract:'Share', trBadge:'Tract', mcTitle:'Monthly prayer chain', mcHint:'Tap a date to put your name down. One person per day.', mcTaken:'Someone has already signed up for this day.', daysFilled:'days filled', beliefs:'Our Beliefs', beliefsSub:'A brief overview of our essential doctrines', learnMore:'Learn more (videos in English)', srcUpci:'Source: United Pentecostal Church International', furtherRead:'Books for further study', kNews:'Announcement', kEvent:'Event', kSermon:'Sermon / video', whatAdd:'What would you like to add?', kNewsD:'News for everyone. Not on the calendar.', kEventD:'Has a date. Goes on the calendar automatically.', kSermonD:'Facebook or YouTube link. Shows under Media.', sermons:'Sermons & videos', latestSermon:'Latest sermon', fLink:'Facebook / YouTube link', linkHint:'On Facebook or YouTube tap Share, then Copy link, and paste it here.', eBAD_LINK:'Please paste a Facebook or YouTube link.', fSermonDate:'Sermon date', needLink:'Please paste the video link.', openYt:'Watch on YouTube', moreSermons:'All sermons',
+      newcomer:'First time visiting?', know:'I want to know Jesus', share:'Copy link to share', copied:'Link copied',
+      soon:'Step 2', preview:'Preview the "Live now" bar', addCal:'Add to calendar', protoNote:'Sample',
+      next90:'Next 3 months', allCh:'All churches', deadline:'Sign-up by', dlShort:'Sign-up deadline',
+      staffMode:'Co-worker mode', staffOn:'Co-worker mode · demo: changes stay on this phone only', addPost:'Add',
+      newPost:'New announcement / event', editPost:'Edit', fTitle:'Title (English)', fBody:'Details (English)',
+      fOther:'Chinese / Tagalog (optional)', fTitleZh:'Title (Chinese)', fBodyZh:'Details (Chinese)', fTitleTl:'Title (Tagalog)', fBodyTl:'Details (Tagalog)',
+      fChurch:'Church', qDate:'Does it have an event date?', no:'No', yes:'Yes', fDate:'Date', fEndDate:'Until (multi-day, optional)',
+      fStart:'Start time', fEnd:'End time', fDeadline:'Sign-up deadline (optional)', fPin:'Pin to the top of Home', fPinUntil:'Pinned until (optional)',
+      save:'Save', del:'Delete', cancel:'Cancel', close:'Close', need:'Please fill in the title.', needDate:'Please choose the event date.',
+      saved:'Saved', savedCal:'Saved · added to the calendar', deleted:'Deleted'},
+  zh:{sub:'First Apostolic Church Taiwan · UPC', home:'首頁', cal:'行事曆', media:'影音', churches:'教會', more:'更多',
+      live:'正在直播', watch:'觀看', pinned:'置頂公告', upcomingEv:'近期活動', news:'公告', verse:'每日經文',
+      school:'主日學', worship:'主日崇拜', service:'聚會', all:'全部', month:'月曆', list:'清單',
+      noEv:'這天沒有活動。', noUp:'目前沒有新的活動。', tbd:'聚會時間待補上。',
+      regular:'固定聚會時間請看「教會」頁', addr:'地址', phone:'電話', email:'Email', times:'聚會時間',
+      dir:'導航', call:'打電話', fbPage:'臉書', ytPage:'YouTube', fbDesc:'直播和過去的講道', ytDesc:'講道影片',
+      mediaNote:'如果上面的貼文沒有顯示，請按藍色按鈕到臉書看。', fbLatest:'臉書最新貼文', openFb:'在臉書開啟', viewFb:'在臉書查看', fFb:'臉書貼文連結（可留空）', fbHint:'在臉書貼文或影片按「分享 → 複製連結」，貼到這裡。', eBAD_FB:'請貼上 facebook.com 的連結。', otherPages:'所有頁面', trZh:'中文', trEn:'English', trBoth:'中英對照', trTl:'Tagalog', newTitle:'第一次來嗎？從這裡開始', newSub:'聚會時間、地點，以及認識我們的第一步', welcomeH:'歡迎你！', welcomeP:'很高興認識你！這一頁有你需要知道的：什麼時候聚會、怎麼來，以及從哪裡開始認識神和我們的教會。', visitH:'來和我們一起聚會', pathH:'從這裡開始認識', pathP:'依照順序讀，大約 20 分鐘。讀過的會打勾。', stepSermon:'看一篇最近的講道', needPrayer:'有需要我們為你禱告的事嗎？', invite:'邀請朋友（QR code）', shareTitle:'分享給朋友', shareHint:'用 LINE 傳給朋友，或請對方用手機相機掃描 QR code。', copyLink:'複製連結', lineShare:'用 LINE 傳', moreShare:'其他方式', saveQr:'長按 QR code 可以存成圖片', shareTract:'分享', trBadge:'單張', mcTitle:'每月禱告鏈', mcHint:'點日期登記你的名字，一天一位。', mcTaken:'這一天已經有人登記了。', daysFilled:'天已有人登記', beliefs:'我們的信仰', beliefsSub:'我們基本信仰的簡介', learnMore:'延伸學習（英文影片）', srcUpci:'資料來源：聯合五旬節教會國際總會（UPCI）', furtherRead:'延伸閱讀書籍', kNews:'公告', kEvent:'活動', kSermon:'講道／影片', whatAdd:'要新增什麼？', kNewsD:'給大家的消息，不會進月曆。', kEventD:'有日期，會自動放進月曆。', kSermonD:'貼臉書或 YouTube 連結，放在「影音」。', sermons:'講道影片', latestSermon:'最新講道', fLink:'臉書／YouTube 連結', linkHint:'在臉書或 YouTube 按「分享」→「複製連結」，貼到這裡。', eBAD_LINK:'請貼上臉書或 YouTube 的連結。', fSermonDate:'講道日期', needLink:'請貼上影片連結。', openYt:'在 YouTube 觀看', moreSermons:'所有講道',
+      newcomer:'第一次來？', know:'我想認識耶穌', share:'複製連結分享', copied:'已複製連結',
+      soon:'第二步', preview:'預覽「正在直播」橫條', addCal:'加到行事曆', protoNote:'範例',
+      next90:'接下來 3 個月', allCh:'三間教會', deadline:'報名截止', dlShort:'報名截止',
+      staffMode:'同工模式', staffOn:'同工模式 · 示範：改的內容只存在這支手機', addPost:'新增',
+      newPost:'新增公告／活動', editPost:'修改', fTitle:'標題（英文）', fBody:'內容（英文）',
+      fOther:'中文 / Tagalog（可留空）', fTitleZh:'標題（中文）', fBodyZh:'內容（中文）', fTitleTl:'標題（Tagalog）', fBodyTl:'內容（Tagalog）',
+      fChurch:'教會', qDate:'有活動日期嗎？', no:'沒有', yes:'有', fDate:'活動日期', fEndDate:'到哪天（多天活動，可留空）',
+      fStart:'開始時間', fEnd:'結束時間', fDeadline:'報名截止日（可留空）', fPin:'放在首頁置頂', fPinUntil:'置頂到（可留空）',
+      save:'儲存', del:'刪除', cancel:'取消', close:'關閉', need:'請填標題。', needDate:'請選活動日期。',
+      saved:'已儲存', savedCal:'已儲存，並加到行事曆', deleted:'已刪除'},
+  tl:{sub:'First Apostolic Church Taiwan · UPC', home:'Tahanan', cal:'Kalendaryo', media:'Media', churches:'Simbahan', more:'Iba pa',
+      live:'Live ngayon', watch:'Panoorin', pinned:'Mahalagang anunsyo', upcomingEv:'Mga paparating na event', news:'Mga anunsyo', verse:'Talata ng araw',
+      school:'Sunday School', worship:'Pagsamba', service:'Pagsamba', all:'Lahat', month:'Buwan', list:'Listahan',
+      noEv:'Walang event sa araw na ito.', noUp:'Wala pang paparating na event.', tbd:'Idadagdag pa ang oras ng pagsamba.',
+      regular:'Nasa pahinang Simbahan ang regular na oras ng pagsamba', addr:'Address', phone:'Telepono', email:'Email', times:'Pagsamba',
+      dir:'Direksyon', call:'Tumawag', fbPage:'Facebook', ytPage:'YouTube', fbDesc:'Live stream at mga nakaraang mensahe', ytDesc:'Mga video ng mensahe',
+      mediaNote:'Kung hindi lumabas ang mga post, pindutin ang asul na button para buksan ang Facebook.', fbLatest:'Pinakabagong post sa Facebook', openFb:'Buksan sa Facebook', viewFb:'Tingnan sa Facebook', fFb:'Link ng Facebook post (opsyonal)', fbHint:'Kopyahin ang link ng post o video sa Facebook at i-paste dito.', eBAD_FB:'Mag-paste ng facebook.com na link.', otherPages:'Lahat ng page', trZh:'中文', trEn:'English', trBoth:'Pareho', trTl:'Tagalog', newTitle:'Unang beses mo ba? Magsimula dito', newSub:'Oras at lugar ng pagsamba, at ang iyong mga unang hakbang', welcomeH:'Maligayang pagdating!', welcomeP:'Masaya kaming narito ka. Narito ang lahat ng kailangan mo: kailan kami nagtitipon, paano pumunta, at kung saan magsisimulang makilala ang Diyos at ang aming iglesia.', visitH:'Sumamba kasama namin', pathH:'Magsimulang makilala kami', pathP:'Basahin ang mga ito nang sunod-sunod. Mga 20 minuto lang. May tsek ang mga nabasa mo na.', stepSermon:'Manood ng isang bagong mensahe', needPrayer:'May maipapanalangin ba kami para sa iyo?', invite:'Mag-imbita ng kaibigan (QR code)', shareTitle:'Ibahagi sa kaibigan', shareHint:'Ipadala sa LINE, o ipa-scan sa kaibigan mo ang QR code gamit ang camera ng phone.', copyLink:'Kopyahin ang link', lineShare:'Ipadala sa LINE', moreShare:'Iba pang paraan', saveQr:'Pindutin nang matagal ang QR code para i-save', shareTract:'Ibahagi', trBadge:'Tract', mcTitle:'Buwanang prayer chain', mcHint:'Pindutin ang petsa para ilagay ang pangalan mo. Isang tao bawat araw.', mcTaken:'May nakalista na sa araw na ito.', daysFilled:'araw may nakalista', beliefs:'Ang Aming Paniniwala', beliefsSub:'Maikling buod ng aming mahahalagang doktrina', learnMore:'Alamin pa (mga video sa English)', srcUpci:'Pinagmulan: United Pentecostal Church International', furtherRead:'Mga aklat para sa karagdagang pag-aaral', kNews:'Anunsyo', kEvent:'Event', kSermon:'Mensahe / video', whatAdd:'Ano ang gusto mong idagdag?', kNewsD:'Balita para sa lahat. Wala sa kalendaryo.', kEventD:'May petsa. Awtomatikong nasa kalendaryo.', kSermonD:'Link ng Facebook o YouTube. Nasa Media.', sermons:'Mga mensahe at video', latestSermon:'Pinakabagong mensahe', fLink:'Link ng Facebook / YouTube', linkHint:'Sa Facebook o YouTube, pindutin ang Share, tapos Copy link, at i-paste dito.', eBAD_LINK:'Mag-paste ng Facebook o YouTube na link.', fSermonDate:'Petsa ng mensahe', needLink:'Pakilagay ang link ng video.', openYt:'Panoorin sa YouTube', moreSermons:'Lahat ng mensahe',
+      newcomer:'Unang beses mo ba?', know:'Gusto kong makilala si Hesus', share:'Kopyahin ang link', copied:'Nakopya ang link',
+      soon:'Hakbang 2', preview:'Silipin ang "Live ngayon"', addCal:'Idagdag sa kalendaryo', protoNote:'Halimbawa',
+      next90:'Susunod na 3 buwan', allCh:'Lahat ng simbahan', deadline:'Magpalista bago', dlShort:'Huling araw ng pagpapalista',
+      staffMode:'Co-worker mode', staffOn:'Co-worker mode · demo: sa teleponong ito lang nase-save', addPost:'Magdagdag',
+      newPost:'Bagong anunsyo / event', editPost:'I-edit', fTitle:'Pamagat (English)', fBody:'Detalye (English)',
+      fOther:'Chinese / Tagalog (opsyonal)', fTitleZh:'Pamagat (Chinese)', fBodyZh:'Detalye (Chinese)', fTitleTl:'Pamagat (Tagalog)', fBodyTl:'Detalye (Tagalog)',
+      fChurch:'Simbahan', qDate:'May petsa ba ang event?', no:'Wala', yes:'Mayroon', fDate:'Petsa ng event', fEndDate:'Hanggang (opsyonal)',
+      fStart:'Simula', fEnd:'Tapos', fDeadline:'Huling araw ng pagpapalista (opsyonal)', fPin:'I-pin sa itaas ng Tahanan', fPinUntil:'Naka-pin hanggang (opsyonal)',
+      save:'I-save', del:'Burahin', cancel:'Kanselahin', close:'Isara', need:'Pakilagay ang pamagat.', needDate:'Pumili ng petsa ng event.',
+      saved:'Na-save', savedCal:'Na-save · idinagdag sa kalendaryo', deleted:'Nabura'}
+};
+const T3 = {
+  en:{pray:'Prayer', read:'Read', requests:'Prayer requests', chains:'Prayer chain', askPray:'Send a prayer request',
+      anon:'Anonymous', iPrayed:'I prayed', prayedN:'prayed', addUpd:'Add update', answered:'Answered', privateTag:'Pastor & co-workers only',
+      fName:'Your name (optional)', fReq:'Prayer request', fVis:'Who can see it?', visPub:'Church members can pray with me',
+      visPriv:'Only the pastor and co-workers', fUpd:'Update', fAnswered:'God answered this prayer', needReq:'Please write your prayer request.',
+      sent:'Sent. We are praying with you.', noReq:'No prayer requests yet.', prayNote:'Private requests are only shown to the pastor and co-workers.',
+      newChain:'New prayer chain', fChainTitle:'Title (English)', fStartDate:'Start date', fDays:'Number of days', fFrom:'From', fTo:'To',
+      fStep:'Each slot', min:'min', signUp:'Sign up', open:'Open', yourName:'Your name', needName:'Please enter your name.',
+      signed:'Thank you! You are on the prayer chain.', filled:'filled', noChain:'No prayer chain right now.', clearSlot:'Remove',
+      articles:'Articles', allCat:'All', catT:'Testimony', catS:'Sermon notes', catB:'Bible study', catG:'Gospel tracts', catK:'Faith & knowledge',
+      newArt:'New article', fCat:'Category', fAuthor:'Author (optional)', fArtBody:'Article (English)', noArt:'No articles in this category yet.',
+      quick:'Explore', more2:'More'},
+  zh:{pray:'禱告', read:'文章', requests:'代禱事項', chains:'禱告鏈', askPray:'提出代禱',
+      anon:'匿名', iPrayed:'我已代禱', prayedN:'人代禱', addUpd:'新增近況', answered:'已蒙應允', privateTag:'只給牧師和同工',
+      fName:'你的名字（可留空＝匿名）', fReq:'代禱內容', fVis:'誰可以看到？', visPub:'會友可以一起為我禱告',
+      visPriv:'只給牧師和同工', fUpd:'近況', fAnswered:'感謝主，這個禱告已蒙應允', needReq:'請寫下代禱內容。',
+      sent:'已送出，我們會為你禱告。', noReq:'目前沒有代禱事項。', prayNote:'選「只給牧師和同工」的代禱，其他會友看不到。',
+      newChain:'新增禱告鏈', fChainTitle:'標題（英文）', fStartDate:'開始日期', fDays:'天數', fFrom:'從', fTo:'到',
+      fStep:'每段時間', min:'分鐘', signUp:'報名', open:'空', yourName:'你的名字', needName:'請填名字。',
+      signed:'謝謝！你已加入禱告鏈。', filled:'已報名', noChain:'目前沒有禱告鏈。', clearSlot:'移除',
+      articles:'文章', allCat:'全部', catT:'見證', catS:'講道筆記', catB:'查經', catG:'福音單張', catK:'信仰知識',
+      newArt:'新增文章', fCat:'分類', fAuthor:'作者（可留空）', fArtBody:'內文（英文）', noArt:'這個分類還沒有文章。',
+      quick:'快速前往', more2:'更多'},
+  tl:{pray:'Panalangin', read:'Babasahin', requests:'Mga kahilingan sa panalangin', chains:'Prayer chain', askPray:'Humiling ng panalangin',
+      anon:'Hindi nagpakilala', iPrayed:'Ipinanalangin ko', prayedN:'nanalangin', addUpd:'Magdagdag ng balita', answered:'Sinagot ng Dios', privateTag:'Pastor at tagapaglingkod lang',
+      fName:'Pangalan mo (opsyonal)', fReq:'Kahilingan sa panalangin', fVis:'Sino ang makakakita?', visPub:'Puwedeng manalangin kasama ko ang mga kapatid',
+      visPriv:'Pastor at mga tagapaglingkod lang', fUpd:'Balita', fAnswered:'Sinagot ng Dios ang panalanging ito', needReq:'Pakisulat ang iyong kahilingan.',
+      sent:'Naipadala na. Ipinapanalangin ka namin.', noReq:'Wala pang kahilingan sa panalangin.', prayNote:'Ang mga pribadong kahilingan ay makikita lang ng pastor at mga tagapaglingkod.',
+      newChain:'Bagong prayer chain', fChainTitle:'Pamagat (English)', fStartDate:'Unang araw', fDays:'Ilang araw', fFrom:'Mula', fTo:'Hanggang',
+      fStep:'Bawat oras', min:'min', signUp:'Magpalista', open:'Bakante', yourName:'Pangalan mo', needName:'Pakilagay ang pangalan mo.',
+      signed:'Salamat! Kasama ka na sa prayer chain.', filled:'nakalista', noChain:'Walang prayer chain ngayon.', clearSlot:'Alisin',
+      articles:'Mga babasahin', allCat:'Lahat', catT:'Patotoo', catS:'Tala ng mensahe', catB:'Pag-aaral ng Biblia', catG:'Gospel tract', catK:'Pananampalataya',
+      newArt:'Bagong babasahin', fCat:'Kategorya', fAuthor:'May-akda (opsyonal)', fArtBody:'Nilalaman (English)', noArt:'Wala pang babasahin dito.',
+      quick:'Tingnan', more2:'Iba pa'}
+};
+Object.keys(T3).forEach(k => Object.assign(T[k], T3[k]));
+const T4 = {
+  en:{chooseCh:'Which church do you attend?', chooseSub:'You will see news and events for your church. You can change this anytime.',
+      onlyMine:'Only {c}', allThree:'All three churches', otherCh:'Other churches',
+      visChurch:'{c} church members can pray with me', visAll:'All three churches can pray with me', visPastor:'Pastor only',
+      pastorTag:'Pastor only', prayNote2:'"Pastor only" requests are not shown to other members.'},
+  zh:{chooseCh:'你在哪一間教會聚會？', chooseSub:'之後看到的都是你那間教會的消息和活動，隨時可以更改。',
+      onlyMine:'只有{c}', allThree:'三間教會（全部）', otherCh:'其他教會',
+      visChurch:'{c}的會友可以一起為我禱告', visAll:'三間教會都可以為我禱告', visPastor:'只給牧師',
+      pastorTag:'只給牧師', prayNote2:'選「只給牧師」的代禱，其他會友看不到。'},
+  tl:{chooseCh:'Saang simbahan ka nagsisimba?', chooseSub:'Makikita mo ang balita at event ng iyong simbahan. Puwede mo itong palitan anumang oras.',
+      onlyMine:'{c} lang', allThree:'Lahat ng tatlong simbahan', otherCh:'Ibang simbahan',
+      visChurch:'Ang mga kapatid sa {c} ay puwedeng manalangin kasama ko', visAll:'Lahat ng tatlong simbahan', visPastor:'Pastor lang',
+      pastorTag:'Pastor lang', prayNote2:'Ang "Pastor lang" ay hindi makikita ng ibang miyembro.'}
+};
+Object.keys(T4).forEach(k => Object.assign(T[k], T4[k]));
+const T5 = {
+  en:{login:'Co-worker sign in', logout:'Sign out', loginTitle:'Co-worker sign in', codeLabel:'Your co-worker code',
+      loginHint:'Ask the admin for your 6-letter code.', signIn:'Sign in', signedIn:'Signed in', signedOut:'Signed out',
+      staffMgr:'Manage co-workers', addStaff:'Add co-worker', staffName:'Name', role:'Role', rAdmin:'Admin', rPastor:'Pastor',
+      rStaff:'Co-worker', rTranslator:'Translator', disable:'Turn off', enable:'Turn on', newCodeMsg:'Send this code to {n}:',
+      autoTr:'Auto-translate draft', translating:'Translating…', trHint:'Only empty boxes are filled. Please check the draft before saving.',
+      trOnly:'As a translator you can edit the Chinese and Tagalog text.', loadingTxt:'Loading…', netErr:'Could not connect. Please try again.',
+      removeReq:'Remove', removed:'Removed', saving:'Saving…', retry:'Try again',
+      eNOT_STAFF:'Please sign in again.', eBAD_CODE:'This code is not correct.', eNO_PERMISSION:'You do not have permission for this.',
+      eNEED_TITLE:'Please fill in the title.', eNEED_NAME:'Please enter a name.', eNEED_TEXT:'Please write something.',
+      eSLOT_TAKEN:'Someone just took this time. Please pick another.', eNOT_FOUND:'This item was removed.', eCANNOT_DISABLE_SELF:'You cannot turn off your own account.'},
+  zh:{login:'同工登入', logout:'登出', loginTitle:'同工登入', codeLabel:'你的同工碼',
+      loginHint:'請向管理員索取 6 碼的同工碼。', signIn:'登入', signedIn:'已登入', signedOut:'已登出',
+      staffMgr:'同工管理', addStaff:'新增同工', staffName:'名字', role:'角色', rAdmin:'管理員', rPastor:'牧師',
+      rStaff:'同工', rTranslator:'翻譯同工', disable:'停用', enable:'啟用', newCodeMsg:'請把這組同工碼傳給 {n}：',
+      autoTr:'自動產生翻譯草稿', translating:'翻譯中…', trHint:'只會填入空白的欄位，儲存前請檢查草稿。',
+      trOnly:'翻譯同工可以修改中文和 Tagalog 的內容。', loadingTxt:'載入中…', netErr:'連線失敗，請再試一次。',
+      removeReq:'移除', removed:'已移除', saving:'儲存中…', retry:'再試一次',
+      eNOT_STAFF:'請重新登入。', eBAD_CODE:'同工碼不正確。', eNO_PERMISSION:'你沒有這個權限。',
+      eNEED_TITLE:'請填標題。', eNEED_NAME:'請填名字。', eNEED_TEXT:'請填寫內容。',
+      eSLOT_TAKEN:'這個時段剛被別人報名了，請選其他時段。', eNOT_FOUND:'這筆資料已被刪除。', eCANNOT_DISABLE_SELF:'不能停用自己的帳號。'},
+  tl:{login:'Pag-sign in ng tagapaglingkod', logout:'Mag-sign out', loginTitle:'Pag-sign in ng tagapaglingkod', codeLabel:'Ang iyong code',
+      loginHint:'Hingin sa admin ang iyong 6 na letrang code.', signIn:'Mag-sign in', signedIn:'Naka-sign in', signedOut:'Naka-sign out',
+      staffMgr:'Mga tagapaglingkod', addStaff:'Magdagdag ng tagapaglingkod', staffName:'Pangalan', role:'Tungkulin', rAdmin:'Admin', rPastor:'Pastor',
+      rStaff:'Tagapaglingkod', rTranslator:'Tagasalin', disable:'I-off', enable:'I-on', newCodeMsg:'Ipadala ang code na ito kay {n}:',
+      autoTr:'Gumawa ng draft na salin', translating:'Isinasalin…', trHint:'Ang mga bakanteng kahon lang ang pupunuin. Suriin bago i-save.',
+      trOnly:'Bilang tagasalin, maaari mong baguhin ang Chinese at Tagalog.', loadingTxt:'Naglo-load…', netErr:'Hindi makakonekta. Subukan ulit.',
+      removeReq:'Alisin', removed:'Naalis', saving:'Sine-save…', retry:'Subukan ulit',
+      eNOT_STAFF:'Mag-sign in ulit.', eBAD_CODE:'Mali ang code.', eNO_PERMISSION:'Wala kang pahintulot dito.',
+      eNEED_TITLE:'Pakilagay ang pamagat.', eNEED_NAME:'Pakilagay ang pangalan.', eNEED_TEXT:'Pakisulat ang nilalaman.',
+      eSLOT_TAKEN:'May kumuha na ng oras na ito. Pumili ng iba.', eNOT_FOUND:'Naalis na ito.', eCANNOT_DISABLE_SELF:'Hindi mo puwedeng i-off ang sarili mo.'}
+};
+Object.keys(T5).forEach(k => Object.assign(T[k], T5[k]));
+const DOW = {en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], zh:['日','一','二','三','四','五','六'], tl:['Lin','Lun','Mar','Miy','Huw','Biy','Sab']};
+const MON = {en:['January','February','March','April','May','June','July','August','September','October','November','December'],
+  tl:['Enero','Pebrero','Marso','Abril','Mayo','Hunyo','Hulyo','Agosto','Setyembre','Oktubre','Nobyembre','Disyembre']};
+
+/* ---------- Icons ---------- */
+const I = {
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  media:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>',
+  church:'<path d="M12 2v5M9.5 4.5h5M5 21V11l7-4 7 4v10M10 21v-4a2 2 0 0 1 4 0v4"/>',
+  more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+  pin:'<path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>',
+  phone:'<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  fb:'<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3.5H9V21h3.5v-8.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>',
+  yt:'<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>', left:'<path d="M15 5l-7 7 7 7"/>', right:'<path d="M9 5l7 7-7 7"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  hand:'<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9L9.5 8z"/>',
+  share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+  prayer:'<path d="M12 21V8.5a2.5 2.5 0 0 0-2.5-2.5L6 13v4l3 4z"/><path d="M12 21V8.5a2.5 2.5 0 0 1 2.5-2.5L18 13v4l-3 4z"/><path d="M12 3v1.5"/>',
+  book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/>',
+  link:'<path d="M9 15l6-6"/><path d="M10 6l1-1a4 4 0 0 1 6 6l-1 1M14 18l-1 1a4 4 0 0 1-6-6l1-1"/>',
+  check:'<path d="M5 12l5 5 9-10"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+  out:'<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>',
+  live:'<circle cx="12" cy="12" r="2.5"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/>'
+};
+const svg = (k, sw) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw||1.9}" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
+
+/* ---------- Helpers ---------- */
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const addDays = (k, n) => { const d = new Date(k+'T00:00:00'); d.setDate(d.getDate()+n); return ymd(d); };
+const TODAY = ymd(new Date());
+const loadJSON = (k, d) => { try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } };
+const saveJSON = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
+const store = { get(k,d){ try{ const v = localStorage.getItem(k); return v===null?d:v; }catch(e){ return d; } },
+                set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
+
+/* ---------- Posts: one list for announcements and events ---------- */
+let POSTS = [], PRAYERS = [], CHAINS = [], ARTS = [];
+let ME = null, CODE = store.get('fact-code', ''), APP_URL = 'https://factaiwan-upc.github.io/';
+let TOKENS = loadJSON('fact-tokens', []);
+let PRAYED = loadJSON('fact-prayed', []);
+let LOADED = false, LOAD_ERR = false;
+const API_URL = 'https://script.google.com/macros/s/AKfycbzYdRJfua4lks6ar_ulwr2DXgbzH9cexMt_N-phsKa7Z1y5JYSZDQ4U4akh0xVRoXOr/exec';
+function api(fn, ...args){
+  return fetch(API_URL, { method:'POST', redirect:'follow', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+                          body: JSON.stringify({ fn, args }) })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(j => { if (!j || !j.ok) throw new Error((j && j.error) || 'ERR'); return j.data; });
+}
+function errMsg(e){
+  const m = String((e && e.message) || e || '');
+  const k = ['NOT_STAFF','BAD_CODE','NO_PERMISSION','NEED_TITLE','NEED_NAME','NEED_TEXT','SLOT_TAKEN','NOT_FOUND','CANNOT_DISABLE_SELF'].find(x => m.indexOf(x) >= 0);
+  return k ? t('e'+k) : t('netErr');
+}
+function addToken(tok){ if (tok && !TOKENS.includes(tok)){ TOKENS.push(tok); saveJSON('fact-tokens', TOKENS); } }
+function applyData(d){
+  POSTS = d.posts || []; ARTS = d.articles || []; CHAINS = d.chains || []; PRAYERS = d.prayers || [];
+  ME = d.me || null;
+  if (CODE && !ME){ CODE = ''; store.set('fact-code', ''); }
+  S.staff = !!ME && ME.role !== 'translator';
+  S.tr = !!ME && ME.role === 'translator';
+  LOADED = true; LOAD_ERR = false;
+}
+async function reload(){
+  if (!S.home) return;
+  try{
+    const d = await api('api_load', S.home, CODE, TOKENS);
+    applyData(d);
+    saveJSON('fact-cache-' + S.home, d);
+  }catch(e){ LOAD_ERR = !LOADED; if (LOADED) toast(errMsg(e)); }
+  render();
+}
+const edCh = () => (ME && ME.role !== 'admin') ? ME.church : S.home;
+const CATS = ['T','S','B','G','K'];
+const S = { tr:false, home: store.get('fact-home',''), prayView:'req', cat:'all', staff:false, lang: store.get('fact-lang','en'), tab:'home', filter:'all', calView:'month',
+            ym: (()=>{ const d=new Date(); return [d.getFullYear(), d.getMonth()]; })(), sel: TODAY, live:false };
+const t = k => T[S.lang][k];
+const L = o => (o && (o[S.lang] || o.en)) || '';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const churchOf = id => CHURCHES.find(c=>c.id===id);
+const inFilter = p => !p.church || p.church==='all' || p.church===S.home;
+const myChurch = () => churchOf(S.home) || CHURCHES[0];
+const tc = (k) => t(k).replace('{c}', L(myChurch().name));
+const churchSelect = cur => `<select id="f-church">
+  <option value="${edCh()}" ${cur!=='all'?'selected':''}>${t('onlyMine').replace('{c}', L((churchOf(edCh())||myChurch()).name))}</option>
+  <option value="all" ${cur==='all'?'selected':''}>${t('allThree')}</option></select>`;
+
+function shortDate(k){
+  const d = new Date(k+'T00:00:00');
+  if (S.lang==='zh') return `${d.getMonth()+1}月${d.getDate()}日（${DOW.zh[d.getDay()]}）`;
+  const m = MON[S.lang==='tl'?'tl':'en'][d.getMonth()];
+  return `${DOW[S.lang][d.getDay()]}, ${S.lang==='tl'?m:m.slice(0,3)} ${d.getDate()}`;
+}
+function whenText(p){
+  let s = shortDate(p.date);
+  if (p.endDate && p.endDate !== p.date) s += ` – ${shortDate(p.endDate)}`;
+  if (p.start) s += ` · ${p.start}${p.end?'–'+p.end:''}`;
+  return s;
+}
+const chip = id => id==='all' ? `<span class="chip" style="background:var(--navy)">${t('allCh')}</span>`
+                              : `<span class="chip" style="background:${churchOf(id).color}">${esc(L(churchOf(id).name))}</span>`;
+
+/* calendar entries: each dated post on each of its days + its deadline */
+function entries(from, to){
+  const out = [];
+  POSTS.filter(inFilter).filter(p => kindOf(p)==='event').forEach(p => {
+    if (p.date){
+      let k = p.date, last = p.endDate && p.endDate >= p.date ? p.endDate : p.date;
+      while (k <= last){ if (k >= from && k <= to) out.push({ key:k, p, dl:false }); k = addDays(k, 1); }
+    }
+    if (p.deadline && p.deadline >= from && p.deadline <= to) out.push({ key:p.deadline, p, dl:true });
+  });
+  return out.sort((a,b)=> a.key.localeCompare(b.key) || (a.dl - b.dl) || (a.p.start||'').localeCompare(b.p.start||''));
+}
+const dotColor = p => p.church==='all' ? 'var(--navy)' : churchOf(p.church).color;
+
+function entryRow(e){
+  const d = new Date(e.key+'T00:00:00'), p = e.p;
+  const label = e.dl ? `${t('dlShort')}：${esc(L(p.title))}` : esc(L(p.title));
+  const sub = e.dl ? '' : (p.start ? `${p.start}${p.end?'–'+p.end:''} · ` : '');
+  return `<div class="ev ${e.dl?'dl':''}">
+    <div class="date"><b>${d.getDate()}</b><i>${S.lang==='zh' ? '週'+DOW.zh[d.getDay()] : DOW[S.lang][d.getDay()]}</i></div>
+    <div class="info" onclick="openDetail('${p.id}')"><b>${e.dl?svg('flag')+' ':''}${label}</b><span>${sub}</span>${chip(p.church)}</div>
+    ${(S.staff||S.tr) ? `<button class="icon-btn edit" onclick="openEditor('${p.id}')">${svg('pen')}</button>`
+      : (e.dl ? '' : `<a class="icon-btn" title="${t('addCal')}" href="${calLink(p)}" target="_blank" rel="noopener">${svg('plus')}</a>`)}
+  </div>`;
+}
+function postCard(p, pinned){
+  return `<div class="card post ${pinned?'pin':''}" onclick="openDetail('${p.id}')">
+    ${(S.staff||S.tr)?`<button class="icon-btn edit" style="float:right" onclick="event.stopPropagation();openEditor('${p.id}')">${svg('pen')}</button>`:''}
+    ${pinned?`<span class="tag">\u{1F4CC} ${t('pinned')}</span>`:''}${p.demo?`<span class="demo">${t('protoNote')}</span>`:''}
+    <h3>${esc(L(p.title))}${linkOf(p)?`<span class="fbtag" style="color:${isYt(linkOf(p))?'#E62117':'#1877F2'}">${svg(isYt(linkOf(p))?'yt':'fb',2)}</span>`:''}</h3>
+    ${p.date||p.church!=='all' ? `<div class="meta">${p.date?`<span>${svg('clock')}${whenText(p)}</span>`:''}${chip(p.church)}</div>` : ''}
+    ${p.deadline ? `<div class="meta deadline">${svg('flag')}${t('deadline')} ${shortDate(p.deadline)}</div>` : ''}
+    ${L(p.body)?`<p>${esc(L(p.body))}</p>`:''}
+  </div>`;
+}
+
+/* ---------- Views ---------- */
+function viewHome(){
+  const PP = POSTS.filter(inFilter);
+  const pins = PP.filter(p => p.pinned && (!p.until || p.until >= TODAY)).slice(0,3);
+  const pinIds = new Set(pins.map(p=>p.id));
+  const horizon = addDays(TODAY, 90);
+  const upcoming = PP.filter(p => !pinIds.has(p.id) && kindOf(p)==='event' && p.date && (p.endDate||p.date) >= TODAY && p.date <= horizon)
+                        .sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5);
+  const news = PP.filter(p => !pinIds.has(p.id) && kindOf(p)==='news').reverse().slice(0,5);
+  const serm = PP.filter(p => !pinIds.has(p.id) && kindOf(p)==='sermon').sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+  const v = VERSES[Math.floor(Date.now()/864e5) % VERSES.length];
+  return `
+  ${S.live ? `<a class="live" href="${myChurch().fb}" target="_blank" rel="noopener"><i class="dot"></i><span>${t('live')} · ${esc(L(myChurch().name))}</span>${t('watch')} ›</a>` : ''}
+  <div class="tiles">
+    <button class="tile" onclick="go('media')"><i style="background:var(--wine)">${svg('media')}</i>${t('media')}</button>
+    <button class="tile" onclick="go('churches')"><i style="background:var(--navy)">${svg('church')}</i>${t('churches')}</button>
+    <button class="tile" onclick="go('pray')"><i style="background:var(--orange)">${svg('prayer')}</i>${t('pray')}</button>
+    <button class="tile" onclick="go('read')"><i style="background:var(--zl)">${svg('book')}</i>${t('read')}</button>
+  </div>
+  <div class="bnr warm" onclick="go('new')">${svg('heart')}<div><b>${t('newTitle')}</b><span>${t('newSub')}</span></div></div>
+  ${S.staff ? `<div class="h2row" style="justify-content:flex-end"><button class="addbtn" style="margin-top:0" onclick="openEditor()">${svg('plus')}${t('newPost')}</button></div>` : ''}
+  ${pins.length ? `<h2>${t('pinned')}</h2>${pins.map(p=>postCard(p,true)).join('')}` : ''}
+  <h2>${t('upcomingEv')}</h2>
+  ${upcoming.length ? upcoming.map(p=>postCard(p,false)).join('') : `<div class="card"><p class="empty">${t('noUp')}</p></div>`}
+  ${news.length ? `<h2>${t('news')}</h2>${news.map(p=>postCard(p,false)).join('')}` : ''}
+  ${serm ? `<h2>${t('latestSermon')}</h2>${postCard(serm,false)}<a class="linkrow" onclick="go('media')">${svg('media')}${t('moreSermons')} ›</a>` : ''}
+  <a class="linkrow" onclick="go('churches')">${svg('church')}${t('regular')} ›</a>
+  <h2>${t('verse')}</h2>
+  <div class="card verse"><p>${esc(L(v.text))}</p><cite>${esc(L(v.ref))}</cite></div>`;
+}
+
+function viewCal(){
+  const head = `<div class="h2row"><h2>${t('cal')}</h2>${S.staff?`<button class="addbtn" onclick="openEditor(null, S.sel)">${svg('plus')}${t('addPost')}</button>`:''}</div>
+  <div class="seg"><button class="${S.calView==='month'?'on':''}" onclick="setV('month')">${t('month')}</button>
+    <button class="${S.calView==='list'?'on':''}" onclick="setV('list')">${t('list')}</button></div>`;
+  const foot = `<a class="linkrow" onclick="go('churches')">${svg('church')}${t('regular')} ›</a>`;
+  if (S.calView === 'list'){
+    const ev = entries(TODAY, addDays(TODAY, 90));
+    return `${head}<p class="note">${t('next90')}</p>
+      <div class="card">${ev.length ? ev.map(entryRow).join('') : `<p class="empty">${t('noUp')}</p>`}</div>${foot}`;
+  }
+  const [y, m] = S.ym;
+  const first = new Date(y, m, 1), g0 = new Date(y, m, 1 - first.getDay());
+  const from = ymd(g0), to = addDays(from, 41);
+  const byDay = {}; entries(from, to).forEach(e => (byDay[e.key] = byDay[e.key] || []).push(e));
+  let cells = DOW[S.lang].map(d => `<div class="dow">${d}</div>`).join('');
+  for (let i = 0; i < 42; i++){
+    const k = addDays(from, i), d = new Date(k+'T00:00:00'), list = byDay[k] || [];
+    const dots = list.slice(0,4).map(e => e.dl ? `<i style="background:#fff;border:1.5px solid var(--wine);width:7px;height:7px"></i>`
+                                              : `<i style="background:${dotColor(e.p)}"></i>`).join('');
+    cells += `<div class="d ${d.getMonth()!==m?'out':''} ${k===TODAY?'today':''} ${k===S.sel?'sel':''}" onclick="selDay('${k}')">
+      <b>${d.getDate()}</b><div class="dots">${dots}</div></div>`;
+  }
+  const title = S.lang==='zh' ? `${y} 年 ${m+1} 月` : `${MON[S.lang==='tl'?'tl':'en'][m]} ${y}`;
+  const selEv = (byDay[S.sel] || []);
+  return `${head}
+  <div class="card"><div class="mhead"><button class="icon-btn" onclick="mv(-1)">${svg('left')}</button><b>${title}</b>
+    <button class="icon-btn" onclick="mv(1)">${svg('right')}</button></div><div class="grid">${cells}</div></div>
+  <h2>${shortDate(S.sel)}</h2>
+  <div class="card">${selEv.length ? selEv.map(entryRow).join('') : `<p class="empty">${t('noEv')}</p>`}</div>${foot}`;
+}
+
+const kindOf = p => p.kind || (p.date ? 'event' : 'news');
+const linkOf = p => p.link || p.fb || '';
+const isYt = u => /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i.test(u||'');
+const linkOk = u => isYt(u) || fbOk(u);
+function ytId(u){ const m = String(u).match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/); return m ? m[1] : ''; }
+function embedLink(u, w){
+  if (isYt(u)){ const id = ytId(u); return id ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}" width="${w}" height="${Math.round(w*0.5625)}" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>` : ''; }
+  if (/\/share\//i.test(u)) return '';
+  return fbEmbed(u, w);
+}
+function linkBtn(u){ return isYt(u) ? `<a class="fbbtn" style="background:#E62117" href="${esc(u)}" target="_blank" rel="noopener">${svg('yt',2)}${t('openYt')}</a>`
+  : `<a class="fbbtn" href="${esc(u)}" target="_blank" rel="noopener">${svg('fb',2)}${t('viewFb')}</a>`; }
+function fbOk(u){ return /^https:\/\/((www|m|web)\.)?(facebook\.com|fb\.watch)\//i.test(u||''); }
+function fbEmbed(u, w){
+  const vid = /\/videos?\/|\/watch|\/reel\/|fb\.watch/i.test(u);
+  const q = 'href=' + encodeURIComponent(u) + '&show_text=true&width=' + w;
+  return vid ? `<iframe src="https://www.facebook.com/plugins/video.php?${q}" width="${w}" height="${Math.round(w*0.56)+160}" scrolling="no" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+             : `<iframe src="https://www.facebook.com/plugins/post.php?${q}" width="${w}" height="520" scrolling="no" allow="clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+}
+function fbWidth(){ const m = document.getElementById('main'); return Math.max(260, Math.min(500, (m ? m.clientWidth : 360) - 4)); }
+function setFbCh(id){ S.fbCh = id; render(); }
+function viewMedia(){
+  const sel = CHURCHES.find(c => c.id === S.fbCh) || myChurch();
+  const w = fbWidth();
+  const plug = 'https://www.facebook.com/plugins/page.php?' + new URLSearchParams({ href: sel.fb, tabs:'timeline', width:String(w), height:'640',
+    small_header:'true', adapt_container_width:'true', hide_cover:'false', show_facepile:'false' }).toString();
+  const feed = `<h2>${t('fbLatest')}</h2>
+  <div class="pills">${[myChurch(), ...CHURCHES.filter(c => c !== myChurch())].map(c =>
+    `<button class="${c===sel?'on':''}" onclick="setFbCh('${c.id}')">${esc(L(c.name))}</button>`).join('')}</div>
+  <div class="fbwrap"><iframe src="${plug}" width="${w}" height="640" scrolling="no" allow="encrypted-media; clipboard-write; web-share"></iframe></div>
+  <a class="fbbtn" href="${sel.fb}" target="_blank" rel="noopener">${svg('fb',2)}${esc(L(sel.name))} · ${t('openFb')}</a>
+  <p class="note">${t('mediaNote')}</p>`;
+  const SS = POSTS.filter(inFilter).filter(p => kindOf(p)==='sermon').sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,20);
+  const top = `<div class="h2row"><h2>${t('sermons')}</h2>${S.staff?`<button class="addbtn" onclick="openEditor(null,null,'sermon')">${svg('plus')}${t('addPost')}</button>`:''}</div>`
+    + (SS.length ? SS.map(p=>postCard(p,false)).join('') : `<div class="card"><p class="empty">—</p></div>`);
+  return top + feed + _viewMediaLinks();
+}
+function _viewMediaLinks(){
+  const rows = [];
+  [myChurch(), ...CHURCHES.filter(c => c !== myChurch())].forEach((c, i) => {
+    rows.push(`<a class="card media" href="${c.fb}" target="_blank" rel="noopener">
+      <div class="thumb" style="background:#1877F2">${svg('fb',2)}</div>
+      <div><b>${esc(L(c.name))} · ${t('fbPage')}</b><span>${t('fbDesc')}</span></div></a>`);
+    if (c.yt) rows.push(`<a class="card media" href="${c.yt}" target="_blank" rel="noopener">
+      <div class="thumb" style="background:#E62117">${svg('yt',2)}</div>
+      <div><b>${esc(L(c.name))} · ${t('ytPage')}</b><span>${t('ytDesc')}</span></div></a>`);
+  });
+  return `<h2>${t('otherPages')}</h2>${rows.join('')}`;
+}
+
+function viewChurches(){
+  const card = c => {
+    const times = c.services.length
+      ? c.services.map(s => `${S.lang==='zh' ? '週'+DOW.zh[s.dow] : DOW[S.lang][s.dow]} ${s.end?`${s.start}–${s.end}`:s.start} ${t(s.kind)}`).join('<br>')
+      : `<span style="color:var(--muted)">${t('tbd')}</span>`;
+    const map = `https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lng}`;
+    return `<div class="card church">
+      <h3><i class="bar" style="background:${c.color}"></i>${esc(L(c.name))}</h3>
+      <div class="row"><span class="k">${t('times')}</span><span>${times}</span></div>
+      <div class="row"><span class="k">${t('addr')}</span><span>${esc(L(c.addr))}</span></div>
+      <div class="row"><span class="k">${t('phone')}</span><span>${c.phone}</span></div>
+      <div class="row"><span class="k">${t('email')}</span><span style="word-break:break-all">${esc(c.email)}</span></div>
+      <div class="btns">
+        <a class="btn primary" href="${map}" target="_blank" rel="noopener">${svg('pin')}${t('dir')}</a>
+        <a class="btn" href="tel:${c.phone.replace(/\s/g,'')}">${svg('phone')}${t('call')}</a>
+        <a class="btn" href="mailto:${c.email}">${svg('mail')}${t('email')}</a>
+        <a class="btn" href="${c.fb}" target="_blank" rel="noopener">${svg('fb')}${t('fbPage')}</a>
+      </div></div>`;
+  };
+  const mine = myChurch(), others = CHURCHES.filter(c => c !== mine);
+  return `<h2>${t('churches')}</h2>${card(mine)}<h2>${t('otherCh')}</h2>${others.map(card).join('')}`;
+}
+
+const linkTo = q => { const base = APP_URL || ''; const u = new URLSearchParams(Object.assign({c:S.home}, q)).toString(); return base ? base + '?' + u : ''; };
+function openShare(url, title){
+  if (!url){ toast(t('netErr')); return; }
+  const qr = 'https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=10&data=' + encodeURIComponent(url);
+  const line = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url);
+  window.__shareUrl = url; window.__shareTitle = title;
+  openSheet(`<h3>${svg('share')} ${t('shareTitle')}</h3>
+    <p class="note" style="padding:0 0 6px">${esc(title)}</p>
+    <div class="qrbox"><img src="${qr}" alt="QR code"><small>${t('saveQr')}</small></div>
+    <p class="note" style="padding:8px 0 0">${t('shareHint')}</p>
+    <div class="sharebtns">
+      <a class="line" href="${line}" target="_blank" rel="noopener">${t('lineShare')}</a>
+      <button onclick="copyShare()">${svg('link')}${t('copyLink')}</button>
+      ${navigator.share ? `<button style="grid-column:1/-1" onclick="nativeShare()">${svg('share')}${t('moreShare')}</button>` : ''}
+    </div>
+    <div class="sheet-btns"><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('close')}</button></div>`);
+}
+function copyShare(){ const u = window.__shareUrl; try{ navigator.clipboard.writeText(u).then(()=>toast(t('copied')), ()=>prompt(t('copyLink'), u)); }catch(e){ prompt(t('copyLink'), u); } }
+function nativeShare(){ try{ navigator.share({ title: window.__shareTitle, url: window.__shareUrl }); }catch(e){} }
+const readDone = k => !!store.get('fact-read-' + k, '');
+const markRead = k => store.set('fact-read-' + k, '1');
+function viewNew(){
+  const c = myChurch();
+  const times = c.services.length
+    ? c.services.map(s => `${S.lang==='zh' ? '週'+DOW.zh[s.dow] : DOW[S.lang][s.dow]} ${s.end?`${s.start}–${s.end}`:s.start} ${t(s.kind)}`).join('<br>')
+    : `<span style="color:var(--muted)">${t('tbd')}</span>`;
+  const map = `https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lng}`;
+  const lg = tLg(), tt = id => { const x = TRACTS.find(y => y.id===id); return x ? (x.t[lg] || x.t.en) : id; };
+  const serm = POSTS.filter(inFilter).filter(p => kindOf(p)==='sermon').sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+  const steps = [
+    ['beliefs', t('beliefs'), t('beliefsSub'), "go('beliefs')"],
+    ['god', tt('god'), catName('G'), "openTract('god')"],
+    ['church', tt('church'), catName('G'), "openTract('church')"],
+    ['healing', tt('healing'), catName('G'), "openTract('healing')"],
+    ['sermon', t('stepSermon'), serm ? esc(L(serm.title)) : t('media'), serm ? `markRead('sermon');openDetail('${serm.id}')` : "markRead('sermon');go('media')"],
+  ];
+  return `<div class="welcome"><h3>${t('welcomeH')}</h3><p>${t('welcomeP')}</p></div>
+  <h2>${t('visitH')}</h2>
+  <div class="card church">
+    <h3><i class="bar" style="background:${c.color}"></i>${esc(L(c.name))}</h3>
+    <div class="row"><span class="k">${t('times')}</span><span>${times}</span></div>
+    <div class="row"><span class="k">${t('addr')}</span><span>${esc(L(c.addr))}</span></div>
+    <div class="row"><span class="k">${t('phone')}</span><span>${c.phone}</span></div>
+    <div class="btns">
+      <a class="btn primary" href="${map}" target="_blank" rel="noopener">${svg('pin')}${t('dir')}</a>
+      <a class="btn" href="tel:${c.phone.replace(/\s/g,'')}">${svg('phone')}${t('call')}</a>
+      <a class="btn" href="${c.fb}" target="_blank" rel="noopener">${svg('fb')}${t('fbPage')}</a>
+    </div></div>
+  <h2>${t('pathH')}</h2><p class="note">${t('pathP')}</p>
+  <div class="path">${steps.map(([k,ti,sub,act],i) => `<button class="${readDone(k)?'done':''}" onclick="${act}"><i>${readDone(k)?'✓':i+1}</i><div><b>${ti}</b><span>${sub}</span></div></button>`).join('')}</div>
+  <a class="linkrow" onclick="go('pray')">${svg('prayer')}${t('needPrayer')} ›</a>
+  <a class="linkrow" onclick="openShare(linkTo({p:'new'}), t('newTitle'))">${svg('share')}${t('invite')} ›</a>`;
+}
+function viewMore(){
+  return `<div class="hero"><img src="${document.querySelector('header img').src}" alt=""><h1>FACT Taiwan</h1><p>${t('sub')}</p></div>
+  <div class="card menu">
+    <button onclick="go('churches')">${svg('church')}${t('churches')}</button>
+    <button onclick="go('media')">${svg('media')}${t('media')}</button>
+    <button onclick="go('beliefs')">${svg('book')}${t('beliefs')}</button>
+  </div>
+  <div class="card menu">
+    <button onclick="go('new')">${svg('heart')}${t('newcomer')}</button>
+    <button onclick="openShare(linkTo({}), 'FACT Taiwan')">${svg('share')}${t('invite')}</button>
+  </div>
+  <div class="card menu">
+    ${ME ? `${ME.role==='admin' ? `<button onclick="go('staffmgr')">${svg('users')}${t('staffMgr')}</button>` : ''}
+      <button onclick="logout()">${svg('out')}${t('logout')}<span class="sub">${esc(ME.name)} · ${roleName(ME.role)}</span></button>`
+      : `<button onclick="openLogin()">${svg('lock')}${t('login')}</button>`}
+  </div>`;
+}
+
+/* ---------- Prayer ---------- */
+const whoName = r => r.name ? esc(r.name) : t('anon');
+function prayerCard(r){
+  const chipHtml = r.vis==='all' ? chip('all') : '';
+  return `<div class="card pr">
+    <div class="who"><b>${whoName(r)}</b>${chipHtml}<span>${shortDate(r.date)}</span>
+      ${r.demo?`<span class="demo">${t('protoNote')}</span>`:''}
+      ${r.vis==='pastor'?`<span class="badge priv">\u{1F512} ${t('pastorTag')}</span>`:''}
+      ${r.answered?`<span class="badge ans">✓ ${t('answered')}</span>`:''}</div>
+    <div class="text">${esc(r.text)}</div>
+    ${r.updates.map(u => `<div class="upd ${u.answered?'ans':''}"><small>${shortDate(u.date)}${u.answered?' · '+t('answered'):''}</small>${esc(u.text)}</div>`).join('')}
+    <div class="acts">
+      <button class="pbtn ${PRAYED.includes(r.id)?'on':''}" onclick="prayFor('${r.id}')">${svg('prayer')}${t('iPrayed')} · ${r.count} ${t('prayedN')}</button>
+      ${(r.mine||S.staff)?`<button class="pbtn" onclick="openUpdate('${r.id}')">${svg('pen')}${t('addUpd')}</button>
+        <button class="pbtn" onclick="hidePrayer('${r.id}')">${t('removeReq')}</button>`:''}
+    </div></div>`;
+}
+function chainCard(c){
+  const slots = [];
+  for (let d = 0; d < c.days; d++){
+    const day = addDays(c.start, d);
+    const list = [];
+    for (let m = c.from*60; m < c.to*60; m += c.step){
+      const hh = String(Math.floor(m/60)).padStart(2,'0'), mm = String(m%60).padStart(2,'0');
+      list.push({ key:`${day}T${hh}:${mm}`, label:`${hh}:${mm}` });
+    }
+    slots.push({ day, list });
+  }
+  const total = slots.reduce((n,d)=>n+d.list.length,0), taken = Object.keys(c.slots).length;
+  return `<div class="card chain">
+    ${S.staff?`<button class="icon-btn edit" style="float:right" onclick="openChainEditor('${c.id}')">${svg('pen')}</button>`:''}
+    ${c.demo?`<span class="demo" style="margin-left:0">${t('protoNote')}</span>`:''}
+    <h3>${esc(L(c.title))}</h3>
+    <div class="meta"><span>${svg('clock')}${shortDate(c.start)}${c.days>1?' – '+shortDate(addDays(c.start,c.days-1)):''}</span>${chip(c.church)}</div>
+    <div class="progress"><i style="width:${total?Math.round(taken/total*100):0}%"></i></div>
+    <small style="color:var(--muted)">${taken} / ${total} ${t('filled')}</small>
+    ${slots.map(d => `<div class="day">${shortDate(d.day)}</div><div class="slots">
+      ${d.list.map(sl => { const who = c.slots[sl.key];
+        return `<button class="slot ${who?'taken':''} ${who && who.mine?'me':''}" onclick="openSlot('${c.id}','${sl.key}')"><b>${sl.label}</b><span>${who?esc(who.name):t('open')}</span></button>`; }).join('')}
+    </div>`).join('')}
+  </div>`;
+}
+function monthChain(){
+  const ym = S.mcYm || TODAY.slice(0,7), [y,m] = ym.split('-').map(Number);
+  const cid = `m-${S.home}-${ym}`, c = CHAINS.find(x => x.id === cid) || { slots:{} };
+  const first = new Date(y, m-1, 1).getDay(), n = new Date(y, m, 0).getDate();
+  const title = S.lang==='zh' ? `${y} 年 ${m} 月` : `${MON[S.lang==='tl'?'tl':'en'][m-1]} ${y}`;
+  const cells = [];
+  for (let i = 0; i < first; i++) cells.push('<div class="blank"></div>');
+  let filled = 0;
+  for (let d = 1; d <= n; d++){
+    const key = `${ym}-${String(d).padStart(2,'0')}`, who = c.slots[key]; if (who) filled++;
+    cells.push(`<button class="${who?'taken':''} ${who&&who.mine?'me':''} ${key===TODAY?'today':''} ${key<TODAY?'past':''}" onclick="openMSlot('${key}')"><b>${d}</b><span>${who?esc(who.name):''}</span></button>`);
+  }
+  const DW = S.lang==='zh' ? DOW.zh.map(x=>x) : DOW[S.lang];
+  return `<div class="card">
+    <div class="mhead"><button class="icon-btn" onclick="mvMc(-1)">${svg('left')}</button><b>${t('mcTitle')} · ${title}</b><button class="icon-btn" onclick="mvMc(1)">${svg('right')}</button></div>
+    <p class="note" style="padding:0 2px 4px">${t('mcHint')}</p>
+    <div class="mgrid">${DW.map(x=>`<div class="dow">${x}</div>`).join('')}${cells.join('')}</div>
+    <small style="color:var(--muted);display:block;margin-top:8px">${filled} / ${n} ${t('daysFilled')}</small></div>`;
+}
+function mvMc(k){ let [y,m] = (S.mcYm || TODAY.slice(0,7)).split('-').map(Number); m += k; if (m<1){m=12;y--;} if (m>12){m=1;y++;}
+  S.mcYm = `${y}-${String(m).padStart(2,'0')}`; render(); }
+function openMSlot(key){
+  const ym = key.slice(0,7), cid = `m-${S.home}-${ym}`, c = CHAINS.find(x => x.id === cid) || { slots:{} }, who = c.slots[key];
+  if (who && !(who.mine || S.staff)){ toast(t('mcTaken')); return; }
+  ED = { cid, key };
+  openSheet(`<h3>${svg('prayer')} ${t('mcTitle')}</h3>
+    <div class="meta"><span>${svg('clock')}${shortDate(key)}</span>${chip(S.home)}</div>
+    <label style="margin-top:10px">${t('yourName')} <em>*</em><input id="f-name" value="${esc(who ? who.name : store.get('fact-myname',''))}"></label>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns">${who?`<button class="btn danger" onclick="clearSlot()">${t('clearSlot')}</button>`:''}<span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="saveSlot()">${t('signUp')}</button></div>`);
+}
+function viewPray(){
+  const seg = `<div class="seg"><button class="${S.prayView==='req'?'on':''}" onclick="S.prayView='req';render()">${t('requests')}</button>
+    <button class="${S.prayView==='chain'?'on':''}" onclick="S.prayView='chain';render()">${t('chains')}</button></div>`;
+  if (S.prayView === 'chain'){
+    return `<div class="h2row"><h2>${t('chains')}</h2>${S.staff?`<button class="addbtn" onclick="openChainEditor()">${svg('plus')}${t('newChain')}</button>`:''}</div>${seg}
+      ${monthChain()}
+      ${CHAINS.filter(inFilter).filter(c => c.kind!=='month').map(chainCard).join('')}`;
+  }
+  const list = PRAYERS;
+  return `<div class="h2row"><h2>${t('requests')}</h2><button class="addbtn" onclick="openPrayForm()">${svg('plus')}${t('askPray')}</button></div>${seg}
+    ${list.length ? list.map(prayerCard).join('') : `<div class="card"><p class="empty">${t('noReq')}</p></div>`}
+    <p class="note">${t('prayNote2')}</p>`;
+}
+function openPrayForm(){
+  ED = { vis:'church' };
+  openSheet(`<h3>${svg('prayer')} ${t('askPray')}</h3>
+    <label>${t('fName')}<input id="f-name"></label>
+    <label>${t('fReq')} <em>*</em><textarea id="f-req" rows="4"></textarea></label>
+    <p class="q">${t('fVis')}</p>
+    <div class="radio"><button id="v-church" class="on" onclick="setVis('church')">⛪ ${tc('visChurch')}</button>
+      <button id="v-all" onclick="setVis('all')">\u{1F465} ${t('visAll')}</button>
+      <button id="v-pastor" onclick="setVis('pastor')">\u{1F512} ${t('visPastor')}</button></div>
+    ${sheetBtns('savePrayer()')}`);
+}
+function setVis(v){ ED.vis = v; ['church','all','pastor'].forEach(k => document.getElementById('v-'+k).className = v===k?'on':''); }
+function openUpdate(id){
+  ED = { id, answered:false };
+  openSheet(`<h3>${svg('pen')} ${t('addUpd')}</h3>
+    <label>${t('fUpd')} <em>*</em><textarea id="f-upd" rows="3"></textarea></label>
+    <div class="pinrow" onclick="ED.answered=!ED.answered;document.getElementById('f-ans').className='toggle'+(ED.answered?' on':'')"><i id="f-ans" class="toggle" style="margin-left:0"></i>${t('fAnswered')}</div>
+    ${sheetBtns('saveUpdate()')}`);
+}
+function openSlot(cid, key){
+  const c = CHAINS.find(x=>x.id===cid), who = c.slots[key];
+  ED = { cid, key };
+  const [day, time] = key.split('T');
+  if (who && !(who.mine || S.staff)) return;
+  openSheet(`<h3>${svg('prayer')} ${esc(L(c.title))}</h3>
+    <div class="meta"><span>${svg('clock')}${shortDate(day)} · ${time}</span></div>
+    <label style="margin-top:10px">${t('yourName')} <em>*</em><input id="f-name" value="${who?esc(who.name):''}"></label>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns">${who?`<button class="btn danger" onclick="clearSlot()">${t('clearSlot')}</button>`:''}<span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="saveSlot()">${t('signUp')}</button></div>`);
+}
+function openChainEditor(id){
+  const c = id ? CHAINS.find(x=>x.id===id) : { title:{}, church:edCh(), start:addDays(TODAY,7), days:1, from:6, to:22, step:60 };
+  ED = { id: id||null };
+  const g = (o,k) => esc((o && o[k]) ?? '');
+  const hours = (sel) => Array.from({length:25},(_,h)=>`<option value="${h}" ${h==sel?'selected':''}>${String(h).padStart(2,'0')}:00</option>`).join('');
+  openSheet(`<h3>${svg('prayer')} ${t('newChain')}</h3>
+    <label>${t('fChainTitle')} <em>*</em><input id="f-title" value="${g(c.title,'en')}"></label>
+    <label>${t('fTitleZh')}<input id="f-title-zh" value="${g(c.title,'zh')}"></label>
+    <label>${t('fChurch')}${churchSelect(c.church)}</label>
+    <div class="two"><label>${t('fStartDate')}<input type="date" id="f-date" value="${g(c,'start')}"></label>
+      <label>${t('fDays')}<input type="number" min="1" max="14" id="f-days" value="${g(c,'days')}"></label></div>
+    <div class="two"><label>${t('fFrom')}<select id="f-from">${hours(c.from)}</select></label>
+      <label>${t('fTo')}<select id="f-to">${hours(c.to)}</select></label>
+      <label>${t('fStep')}<select id="f-step"><option value="30" ${c.step==30?'selected':''}>30 ${t('min')}</option><option value="60" ${c.step==60?'selected':''}>60 ${t('min')}</option></select></label></div>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns">${id?`<button class="btn danger" onclick="delChain()">${t('del')}</button>`:''}<span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="saveChain()">${t('save')}</button></div>`);
+}
+
+/* ---------- Articles ---------- */
+const catName = c => t('cat'+c);
+function viewBeliefs(){
+  markRead('beliefs');
+  return `<h2>${t('beliefs')}</h2><p class="note">${t('beliefsSub')}</p>
+  ${BELIEFS.map((b,i) => `<details class="belief" ${i===0?'open':''}><summary><i>${i+1}</i>${esc(L(b.t))}</summary>
+    <p>${esc(L(b.p))}</p><small>${esc(L(b.r))}</small></details>`).join('')}
+  <h2>${t('learnMore')}</h2>
+  ${BELIEF_VIDS.map(v => `<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${v.id}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div><b>${esc(L(v.t))}</b><span>${esc(L(v.d))}</span></div></div>`).join('')}
+  <a class="linkrow" href="https://pentecostalpublishing.com/" target="_blank" rel="noopener">${svg('book')}${t('furtherRead')} ›</a>
+  <a class="linkrow" href="https://upci.org/our-beliefs/" target="_blank" rel="noopener">${svg('link')}${t('srcUpci')} ›</a>`;
+}
+const TRACT_IMG = {god:{cover:'https://lh3.googleusercontent.com/d/1_lIX9CzrmvLlAgXULgV_Ss5xpKaq2AjA=w1000',pics:['https://lh3.googleusercontent.com/d/1W4UZ6V2FRRVgFQnSDEdrYnemsC4HYn-T=w1000']}, healing:{cover:'https://lh3.googleusercontent.com/d/1_6qeVHPz2t_muDMbfsFWs6qS5qiCrd1i=w1000',pics:['https://lh3.googleusercontent.com/d/1JeTDh6IJxUB67kqDT2lO4lHCX_8rr0z9=w1000']}, church:{cover:'https://lh3.googleusercontent.com/d/1u-zcd05MldFQzLaovJUga1gTJUN7kGf1=w1000',pics:['https://lh3.googleusercontent.com/d/1bN2KN3DJMy8JQhl94naZPPbH9T6u4y1K=w1000']}};
+const TCOL = {god:['#0E2340','#2F6FB5'], healing:['#14594A','#3FA084'], church:['#6E1A26','#C2571A']};
+const tLg = () => S.lang==='zh' ? 'zh' : S.lang==='tl' ? 'tl' : 'en';
+function tractCover(x, big, lg){
+  const img = TRACT_IMG[x.id] && TRACT_IMG[x.id].cover, [c1,c2] = TCOL[x.id] || TCOL.god;
+  lg = lg || tLg();
+  let rays = ''; for (let i = 0; i < 16; i++){ const a = i*Math.PI/8; rays += `<line x1="50" y1="42" x2="${(50+60*Math.cos(a)).toFixed(1)}" y2="${(42+60*Math.sin(a)).toFixed(1)}"/>`; }
+  return `<div class="tcover ${big?'big':''}" style="background:${img ? `url(${img}) center/cover` : `linear-gradient(135deg,${c1},${c2})`}">
+    ${img ? '' : `<svg class="tmark" viewBox="0 0 100 100"><g stroke="#fff" stroke-width="1.2">${rays}</g><rect x="45" y="16" width="10" height="66" rx="1" fill="#fff"/><rect x="30" y="32" width="40" height="10" rx="1" fill="#fff"/></svg>`}
+    <div class="tshade"></div><div class="ttl"><small>${catName('G')}</small><b>${esc(x.t[lg] || x.t.en)}</b></div></div>`;
+}
+function tractCard(x){
+  const lg = tLg(), first = x.p.find(p => !p[0]) || x.p[0], txt = lg==='zh' ? first[2] : lg==='tl' ? first[3] : first[1];
+  return `<div class="card art tcard" onclick="openTract('${x.id}')">${tractCover(x)}
+    <div class="tx"><p>${esc(txt)}</p><small>FACT · ${esc(lg==='zh' ? x.t.en : x.t.zh)}</small></div></div>`;
+}
+function openTract(id, mode){
+  const x = TRACTS.find(y => y.id===id); if (!x) return; markRead(id);
+  const m = mode || S.trMode || tLg(); S.trMode = m;
+  const pick = p => m==='zh' ? p[2] : m==='tl' ? p[3] : p[1];
+  const pics = (TRACT_IMG[x.id] && TRACT_IMG[x.id].pics) || [];
+  let hcount = 0;
+  const body = x.p.map(p => {
+    let pre = '';
+    if (p[0]){ hcount++; if (hcount >= 2 && pics[hcount-2]) pre = `<img class="tpic" src="${pics[hcount-2]}" alt="">`; }
+    if (p[0]) return pre + `<h4>${esc(m==='both' ? p[2] : pick(p))}${m==='both' ? ' · '+esc(p[1]) : ''}</h4>`;
+    return m==='both' ? `<p>${esc(p[2])}</p><p class="en">${esc(p[1])}</p>` : `<p>${esc(pick(p))}</p>`;
+  }).join('');
+  const tl = m==='both' ? 'zh' : m;
+  openSheet(`<div class="reader tract">${tractCover(x, true, tl)}
+    <small style="color:var(--muted)">${esc(tl==='zh' ? x.t.en : x.t.zh)}</small>
+    <div class="seg">${[['zh','trZh'],['en','trEn'],['tl','trTl'],['both','trBoth']].map(([k,l]) => `<button class="${m===k?'on':''}" onclick="openTract('${x.id}','${k}')">${t(l)}</button>`).join('')}</div>
+    ${body}</div>
+    <div class="sheet-btns"><button class="btn" onclick="openShare(linkTo({t:'${x.id}', l:'${tl}'}), '${esc((x.t[tl]||x.t.en)).replace(/'/g,'&#39;')}')">${svg('share')}${t('shareTract')}</button><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('close')}</button></div>`);
+  const sc = document.querySelector('.sheet-card'); if (sc && mode) sc.scrollTop = 0;
+}
+function viewRead(){
+  const list = ARTS.filter(inFilter).filter(a => S.cat==='all' || a.cat===S.cat);
+  const tr = (S.cat==='all' || S.cat==='G') ? TRACTS.map(tractCard).join('') : '';
+  return `<div class="bnr" onclick="go('beliefs')">${svg('book')}<div><b>${t('beliefs')}</b><span>${t('beliefsSub')}</span></div></div>
+  <div class="h2row"><h2>${t('articles')}</h2>${S.staff?`<button class="addbtn" onclick="openArtEditor()">${svg('plus')}${t('newArt')}</button>`:''}</div>
+  <div class="filters"><button class="${S.cat==='all'?'on':''}" onclick="S.cat='all';render()">${t('allCat')}</button>
+    ${CATS.map(c=>`<button class="${S.cat===c?'on':''}" onclick="S.cat='${c}';render()">${catName(c)}</button>`).join('')}</div>
+  ${tr}${list.length ? list.map(a => `<div class="card art" onclick="openArt('${a.id}')">
+      ${(S.staff||S.tr)?`<button class="icon-btn edit" style="float:right" onclick="event.stopPropagation();openArtEditor('${a.id}')">${svg('pen')}</button>`:''}
+      <span class="cat">${catName(a.cat)}</span>${a.demo?`<span class="demo">${t('protoNote')}</span>`:''}
+      <h3>${esc(L(a.title))}</h3><p>${esc(L(a.body))}</p>
+      <small>${shortDate(a.date)}${a.author?' · '+esc(a.author):''}</small></div>`).join('')
+    : (tr ? '' : `<div class="card"><p class="empty">${t('noArt')}</p></div>`)}`;
+}
+function openArt(id){
+  const a = ARTS.find(x=>x.id===id);
+  openSheet(`<div class="reader"><span class="cat" style="color:var(--orange);font-weight:700;font-size:13.5px">${catName(a.cat)}</span>
+    <h2 style="margin:4px 0;font-size:22px;color:var(--navy)">${esc(L(a.title))}</h2>
+    <small style="color:var(--muted)">${shortDate(a.date)}${a.author?' · '+esc(a.author):''}</small>
+    <div class="body">${esc(L(a.body))}</div></div>
+    <div class="sheet-btns">${(S.staff||S.tr)?`<button class="btn" onclick="openArtEditor('${a.id}')">${svg('pen')}${t('editPost')}</button>`:''}<span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('close')}</button></div>`);
+}
+function openArtEditor(id){
+  const a = id ? ARTS.find(x=>x.id===id) : { cat:'T', church:edCh(), title:{}, body:{}, author:'' };
+  ED = { id: id||null };
+  const g = (o,k) => esc((o && o[k]) || '');
+  openSheet(`<h3>${svg('book')} ${id?t('editPost'):t('newArt')}</h3>
+    <label>${t('fCat')}<select id="f-cat">${CATS.map(c=>`<option value="${c}" ${a.cat===c?'selected':''}>${catName(c)}</option>`).join('')}</select></label>
+    <label>${t('fChurch')}${churchSelect(a.church||'all')}</label>
+    <label>${t('fTitle')} <em>*</em><input id="f-title" value="${g(a.title,'en')}"></label>
+    <label>${t('fArtBody')}<textarea id="f-body" rows="7">${g(a.body,'en')}</textarea></label>
+    <label>${t('fAuthor')}<input id="f-author" value="${esc(a.author||'')}"></label>
+    <details ${S.tr?'open':''}><summary>${t('fOther')}</summary>
+      <button type="button" class="btn trbtn" onclick="autoTr(this)">${svg('globe')}${t('autoTr')}</button><p class="hint">${t('trHint')}</p>
+      <label>${t('fTitleZh')}<input id="f-title-zh" value="${g(a.title,'zh')}"></label>
+      <label>${t('fBodyZh')}<textarea id="f-body-zh" rows="5">${g(a.body,'zh')}</textarea></label>
+      <label>${t('fTitleTl')}<input id="f-title-tl" value="${g(a.title,'tl')}"></label>
+      <label>${t('fBodyTl')}<textarea id="f-body-tl" rows="5">${g(a.body,'tl')}</textarea></label>
+    </details>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns">${id?`<button class="btn danger" onclick="delArt()">${t('del')}</button>`:''}<span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="saveArt()">${t('save')}</button></div>`);
+}
+
+/* ---------- Sheet helpers ---------- */
+function openSheet(inner){
+  document.getElementById('sheet').innerHTML = `<div class="sheet-bg" onclick="closeSheet()"></div><div class="sheet-card">${inner}</div>`;
+  document.getElementById('sheet').className = 'open';
+}
+const sheetBtns = fn => `<p class="err" id="f-err"></p><div class="sheet-btns"><span style="flex:1"></span>
+  <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="${fn}">${t('save')}</button></div>`;
+
+/* ---------- Detail ---------- */
+function openDetail(id){
+  const p = POSTS.find(x=>x.id===id); if (!p) return;
+  document.getElementById('sheet').innerHTML = `<div class="sheet-bg" onclick="closeSheet()"></div>
+   <div class="sheet-card detail">
+    ${p.demo?`<span class="demo" style="margin-left:0">${t('protoNote')}</span>`:''}
+    <h2>${esc(L(p.title))}</h2>
+    <div class="meta">${p.date?`<span>${svg('clock')}${whenText(p)}</span>`:''}${chip(p.church)}</div>
+    ${p.deadline ? `<div class="meta deadline">${svg('flag')}${t('deadline')} ${shortDate(p.deadline)}</div>` : ''}
+    ${L(p.body)?`<div class="body">${esc(L(p.body))}</div>`:''}
+    ${linkOk(linkOf(p)) ? (()=>{ const em = embedLink(linkOf(p), Math.min(500, Math.max(260, window.innerWidth - 60))); return (em?`<div class="fbwrap">${em}</div>`:'') + linkBtn(linkOf(p)); })() : ''}
+    <div class="sheet-btns">
+      ${(S.staff||S.tr) ? `<button class="btn" onclick="openEditor('${p.id}')">${svg('pen')}${t('editPost')}</button>` : ''}
+      <span style="flex:1"></span>
+      ${p.date ? `<a class="btn primary" href="${calLink(p)}" target="_blank" rel="noopener">${svg('plus')}${t('addCal')}</a>` : ''}
+      <button class="btn" onclick="closeSheet()">${t('close')}</button>
+    </div></div>`;
+  document.getElementById('sheet').className = 'open';
+}
+
+/* ---------- Editor ---------- */
+let ED = null;
+function openEditor(id, presetDate, kind){
+  const item = id ? POSTS.find(x=>x.id===id) : null;
+  if (!item && !kind && !presetDate){
+    document.getElementById('sheet').innerHTML = `<div class="sheet-bg" onclick="closeSheet()"></div>
+     <div class="sheet-card"><h3>${svg('plus')}${t('whatAdd')}</h3>
+      ${[['news','pen','var(--navy)'],['event','cal','var(--orange)'],['sermon','media','var(--wine)']].map(([k,ic,col]) =>
+        `<button class="card media" style="width:100%;text-align:left;border:0;cursor:pointer;font-family:inherit" onclick="openEditor(null,null,'${k}')">
+          <div class="thumb" style="background:${col}">${svg(ic,2)}</div>
+          <div><b>${t(k==='news'?'kNews':k==='event'?'kEvent':'kSermon')}</b><span>${t(k==='news'?'kNewsD':k==='event'?'kEventD':'kSermonD')}</span></div></button>`).join('')}
+      <div class="sheet-btns"><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('cancel')}</button></div></div>`;
+    document.getElementById('sheet').className = 'open'; return;
+  }
+  const v = item || { title:{}, body:{}, church:edCh(), pinned:false, until:'',
+                      date: presetDate || (kind==='sermon' ? TODAY : ''), endDate:'', start:'', end:'', deadline:'' };
+  const k0 = item ? kindOf(item) : (kind || 'event');
+  ED = { id: item ? item.id : null, kind: k0, pinned: !!v.pinned };
+  const g = (o,k) => esc((o && o[k]) || '');
+  const hasOther = !!(g(v.title,'zh')||g(v.title,'tl')||g(v.body,'zh')||g(v.body,'tl'));
+  document.getElementById('sheet').innerHTML = `<div class="sheet-bg" onclick="closeSheet()"></div>
+   <div class="sheet-card">
+    <h3>${item ? svg('pen')+t('editPost') : svg('plus')+t('addPost')}</h3>
+    <div class="seg" id="kindseg">${['news','event','sermon'].map(k =>
+      `<button data-k="${k}" class="${k===k0?'on':''}" onclick="setKind('${k}')">${t(k==='news'?'kNews':k==='event'?'kEvent':'kSermon')}</button>`).join('')}</div>
+    <label>${t('fTitle')} <em>*</em><input id="f-title" value="${g(v.title,'en')}"></label>
+    <label>${t('fBody')}<textarea id="f-body" rows="3">${g(v.body,'en')}</textarea></label>
+    <label>${t('fChurch')}${churchSelect(v.church)}</label>
+    <div id="datebox">
+      <label><span id="datelbl">${t('fDate')}</span> <em>*</em><input type="date" id="f-date" value="${g(v,'date')}"></label>
+      <div id="evextra">
+      <label>${t('fEndDate')}<input type="date" id="f-enddate" value="${g(v,'endDate')}"></label>
+      <div class="two"><label>${t('fStart')}<input type="time" id="f-start" value="${g(v,'start')}"></label>
+        <label>${t('fEnd')}<input type="time" id="f-end" value="${g(v,'end')}"></label></div>
+      <label>${t('fDeadline')}<input type="date" id="f-deadline" value="${g(v,'deadline')}"></label>
+      </div>
+    </div>
+    <label><span>${t('fLink')}</span><span id="linkreq"> <em>*</em></span><input id="f-fb" type="url" inputmode="url" placeholder="https://..." value="${esc(linkOf(v))}"></label><p class="hint">${t('linkHint')}</p>
+    <div class="pinrow" onclick="togglePin()"><i id="f-pin" class="toggle ${ED.pinned?'on':''}" style="margin-left:0"></i>${t('fPin')}</div>
+    <label id="untilbox" style="display:${ED.pinned?'block':'none'}">${t('fPinUntil')}<input type="date" id="f-until" value="${g(v,'until')}"></label>
+    <details ${hasOther||S.tr?'open':''}><summary>${t('fOther')}</summary>
+      <button type="button" class="btn trbtn" onclick="autoTr(this)">${svg('globe')}${t('autoTr')}</button><p class="hint">${t('trHint')}</p>
+      <label>${t('fTitleZh')}<input id="f-title-zh" value="${g(v.title,'zh')}"></label>
+      <label>${t('fBodyZh')}<textarea id="f-body-zh" rows="2">${g(v.body,'zh')}</textarea></label>
+      <label>${t('fTitleTl')}<input id="f-title-tl" value="${g(v.title,'tl')}"></label>
+      <label>${t('fBodyTl')}<textarea id="f-body-tl" rows="2">${g(v.body,'tl')}</textarea></label>
+    </details>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns">
+      ${item ? `<button class="btn danger" onclick="delItem()">${t('del')}</button>` : ''}
+      <span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button>
+      <button class="btn primary" onclick="saveItem()">${t('save')}</button>
+    </div></div>`;
+  document.getElementById('sheet').className = 'open';
+  setKind(k0);
+}
+function setKind(k){ ED.kind = k;
+  document.querySelectorAll('#kindseg button').forEach(b => b.className = b.dataset.k===k ? 'on' : '');
+  document.getElementById('datebox').style.display = k==='news' ? 'none' : 'block';
+  document.getElementById('evextra').style.display = k==='event' ? 'block' : 'none';
+  document.getElementById('datelbl').textContent = t(k==='sermon' ? 'fSermonDate' : 'fDate');
+  document.getElementById('linkreq').style.display = k==='sermon' ? 'inline' : 'none'; }
+function setHasDate(b){ ED.hasDate = b;
+  document.getElementById('yn-yes').className = b?'on':''; document.getElementById('yn-no').className = b?'':'on';
+  document.getElementById('datebox').style.display = b?'block':'none'; }
+function togglePin(){ ED.pinned = !ED.pinned;
+  document.getElementById('f-pin').className = 'toggle' + (ED.pinned?' on':'');
+  document.getElementById('untilbox').style.display = ED.pinned?'block':'none'; }
+function closeSheet(){ document.getElementById('sheet').className = ''; ED = null; }
+const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+
+/* ---------- Actions ---------- */
+function go(tab){ S.tab = tab; render(); window.scrollTo(0,0); }
+function setF(f){ S.filter = f; render(); }
+function setV(v){ S.calView = v; render(); }
+function selDay(k){ S.sel = k; render(); }
+function mv(n){ let [y,m] = S.ym; m += n; if (m<0){m=11;y--;} if (m>11){m=0;y++;} S.ym=[y,m]; render(); }
+function setLang(l){ S.lang = l; store.set('fact-lang', l); document.documentElement.lang = l==='zh'?'zh-Hant':l; render(); }
+function shareApp(){
+  const url = APP_URL || location.href;
+  try{ navigator.clipboard.writeText(url).then(()=>toast(t('copied')), ()=>toast(url)); }catch(e){ toast(url); }
+}
+function calLink(p){
+  const c = p.church==='all' ? null : churchOf(p.church);
+  const d0 = p.date.replace(/-/g,''), d1 = (p.endDate && p.endDate>=p.date ? p.endDate : p.date).replace(/-/g,'');
+  let dates;
+  if (p.start){ const e = p.end || p.start; dates = `${d0}T${p.start.replace(':','')}00/${d1}T${e.replace(':','')}00`; }
+  else dates = `${d0}/${addDays(p.endDate && p.endDate>=p.date ? p.endDate : p.date, 1).replace(/-/g,'')}`;
+  const q = new URLSearchParams({ action:'TEMPLATE', text:`${L(p.title)} · FACT${c?' '+L(c.name):''}`, dates, ctz:'Asia/Taipei',
+    details: L(p.body), location: c ? c.addr.en : '' });
+  return 'https://calendar.google.com/calendar/render?' + q.toString();
+}
+function toast(msg){
+  let el = document.getElementById('toast');
+  if (!el){ el = document.createElement('div'); el.id='toast'; document.body.appendChild(el); }
+  el.textContent = msg; el.className = 'show'; clearTimeout(el._t); el._t = setTimeout(()=>el.className='', 2200);
+}
+
+/* ---------- Server actions ---------- */
+async function withBusy(fn){
+  const card = document.querySelector('.sheet-card'); if (card) card.classList.add('busy');
+  try{ return await fn(); }
+  catch(e){ const err = document.getElementById('f-err'); if (err) err.textContent = errMsg(e); else toast(errMsg(e)); return null; }
+  finally{ const c2 = document.querySelector('.sheet-card'); if (c2) c2.classList.remove('busy'); }
+}
+async function saveItem(){
+  const err = document.getElementById('f-err');
+  const title = { en:val('f-title'), zh:val('f-title-zh'), tl:val('f-title-tl') };
+  const body = { en:val('f-body'), zh:val('f-body-zh'), tl:val('f-body-tl') };
+  if (!title.en){ err.textContent = t('need'); return; }
+  const K = ED.kind, ev = K==='event';
+  if (K!=='news' && !val('f-date')){ err.textContent = t('needDate'); return; }
+  if (K==='sermon' && !val('f-fb')){ err.textContent = t('needLink'); return; }
+  if (val('f-fb') && !linkOk(val('f-fb'))){ err.textContent = t('eBAD_LINK'); return; }
+  const rec = { id: ED.id || '', kind: K, title, body, church: val('f-church') || 'all', pinned: ED.pinned, until: ED.pinned ? val('f-until') : '',
+    date: K!=='news' ? val('f-date') : '', endDate: ev ? val('f-enddate') : '',
+    start: ev ? val('f-start') : '', end: ev ? val('f-end') : '', deadline: ev ? val('f-deadline') : '', fb: val('f-fb') };
+  const saved = await withBusy(() => api('api_savePost', CODE, rec));
+  if (!saved) return;
+  if (saved.date && saved.kind==='event'){ S.sel = saved.date; const d = new Date(saved.date+'T00:00:00'); S.ym = [d.getFullYear(), d.getMonth()]; }
+  closeSheet(); toast(saved.kind==='event' ? t('savedCal') : t('saved')); await reload();
+}
+async function delItem(){
+  const ok = await withBusy(() => api('api_deletePost', CODE, ED.id));
+  if (ok === null) return;
+  closeSheet(); toast(t('deleted')); await reload();
+}
+async function saveArt(){
+  if (!val('f-title')){ document.getElementById('f-err').textContent = t('need'); return; }
+  const rec = { id: ED.id || '', church: val('f-church')||'all', cat: val('f-cat'), author: val('f-author'),
+    title:{en:val('f-title'), zh:val('f-title-zh'), tl:val('f-title-tl')}, body:{en:val('f-body'), zh:val('f-body-zh'), tl:val('f-body-tl')} };
+  const saved = await withBusy(() => api('api_saveArticle', CODE, rec));
+  if (!saved) return;
+  closeSheet(); toast(t('saved')); await reload();
+}
+async function delArt(){
+  const ok = await withBusy(() => api('api_deleteArticle', CODE, ED.id));
+  if (ok === null) return;
+  closeSheet(); toast(t('deleted')); await reload();
+}
+async function saveChain(){
+  if (!val('f-title')){ document.getElementById('f-err').textContent = t('need'); return; }
+  const rec = { id: ED.id || '', title:{en:val('f-title'), zh:val('f-title-zh')}, church:val('f-church')||'all',
+    start: val('f-date') || TODAY, days: val('f-days'), from: val('f-from'), to: val('f-to'), step: val('f-step') };
+  const id = await withBusy(() => api('api_saveChain', CODE, rec));
+  if (!id) return;
+  closeSheet(); toast(t('saved')); await reload();
+}
+async function delChain(){
+  const ok = await withBusy(() => api('api_deleteChain', CODE, ED.id));
+  if (ok === null) return;
+  closeSheet(); toast(t('deleted')); await reload();
+}
+async function saveSlot(){
+  const name = val('f-name'); if (!name){ document.getElementById('f-err').textContent = t('needName'); return; }
+  const tok = await withBusy(() => api('api_signupSlot', ED.cid, ED.key, name, store.get('fact-slot-'+ED.cid+ED.key,'')));
+  if (!tok) return;
+  addToken(tok); store.set('fact-slot-'+ED.cid+ED.key, tok); store.set('fact-myname', name);
+  closeSheet(); toast(t('signed')); await reload();
+}
+async function clearSlot(){
+  const tok = store.get('fact-slot-'+ED.cid+ED.key, '');
+  const ok = await withBusy(() => api('api_clearSlot', ED.cid, ED.key, tok, CODE));
+  if (ok === null) return;
+  closeSheet(); toast(t('deleted')); await reload();
+}
+async function savePrayer(){
+  const text = val('f-req'); if (!text){ document.getElementById('f-err').textContent = t('needReq'); return; }
+  const r = await withBusy(() => api('api_submitPrayer', { name: val('f-name'), church: S.home, vis: ED.vis, text }));
+  if (!r) return;
+  addToken(r.token); store.set('fact-pr-'+r.id, r.token);
+  closeSheet(); toast(t('sent')); await reload();
+}
+async function saveUpdate(){
+  const text = val('f-upd'); if (!text){ document.getElementById('f-err').textContent = t('needReq'); return; }
+  const ok = await withBusy(() => api('api_prayerUpdate', ED.id, text, ED.answered, store.get('fact-pr-'+ED.id,''), CODE));
+  if (ok === null) return;
+  closeSheet(); toast(t('saved')); await reload();
+}
+async function hidePrayer(id){
+  try{ await api('api_hidePrayer', id, store.get('fact-pr-'+id,''), CODE); toast(t('removed')); await reload(); }
+  catch(e){ toast(errMsg(e)); }
+}
+async function prayFor(id){
+  const on = PRAYED.includes(id);
+  PRAYED = on ? PRAYED.filter(x=>x!==id) : [...PRAYED, id]; saveJSON('fact-prayed', PRAYED);
+  const r = PRAYERS.find(x=>x.id===id); if (r) r.count = Math.max(0, (r.count||0) + (on?-1:1));
+  render();
+  try{ const c = await api('api_pray', id, on ? -1 : 1); if (r){ r.count = c; render(); } }catch(e){ toast(errMsg(e)); }
+}
+async function autoTr(btn){
+  const texts = { title: val('f-title'), body: val('f-body') };
+  if (!texts.title && !texts.body) return;
+  const label = btn.innerHTML; btn.disabled = true; btn.textContent = t('translating');
+  try{
+    const r = await api('api_translate', CODE, texts);
+    const fill = (id, v) => { const el = document.getElementById(id); if (el && !el.value.trim() && v) el.value = v; };
+    fill('f-title-zh', r.title.zh); fill('f-title-tl', r.title.tl); fill('f-body-zh', r.body.zh); fill('f-body-tl', r.body.tl);
+  }catch(e){ toast(errMsg(e)); }
+  btn.disabled = false; btn.innerHTML = label;
+}
+/* translators: only the Chinese / Tagalog boxes can be changed */
+function trLock(){
+  if (!S.tr) return;
+  ['f-title','f-body','f-church','f-date','f-enddate','f-start','f-end','f-deadline','f-until','f-cat','f-author','yn-no','yn-yes']
+    .forEach(id => { const el = document.getElementById(id); if (el) el.disabled = true; });
+  document.querySelectorAll('.sheet-card .pinrow, .sheet-card .btn.danger').forEach(el => el.style.display = 'none');
+  const h = document.querySelector('.sheet-card h3'); if (h) h.insertAdjacentHTML('afterend', `<p class="hint">${t('trOnly')}</p>`);
+}
+const _openEditor = openEditor; openEditor = function(...a){ _openEditor(...a); trLock(); };
+const _openArtEditor = openArtEditor; openArtEditor = function(...a){ _openArtEditor(...a); trLock(); };
+
+/* ---------- Sign in / co-worker management ---------- */
+const roleName = r => t({admin:'rAdmin', pastor:'rPastor', staff:'rStaff', translator:'rTranslator'}[r] || 'rStaff');
+function openLogin(){
+  openSheet(`<h3>${svg('lock')} ${t('loginTitle')}</h3>
+    <label>${t('codeLabel')}<input id="f-code" class="codein" maxlength="6" autocomplete="off" autocapitalize="characters"></label>
+    <p class="hint">${t('loginHint')}</p>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns"><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('cancel')}</button>
+      <button class="btn primary" onclick="doLogin()">${t('signIn')}</button></div>`);
+  setTimeout(() => { const el = document.getElementById('f-code'); if (el) el.focus(); }, 50);
+}
+async function doLogin(){
+  const code = val('f-code').toUpperCase(); if (!code) return;
+  const me = await withBusy(() => api('api_login', code));
+  if (!me) return;
+  CODE = code; store.set('fact-code', code);
+  if (me.church !== 'all' && me.church !== S.home){ S.home = me.church; store.set('fact-home', me.church); LOADED = false; }
+  closeSheet(); toast(t('signedIn')); await reload();
+}
+async function logout(){ CODE = ''; store.set('fact-code', ''); ME = null; S.staff = false; S.tr = false; toast(t('signedOut')); go('more'); await reload(); }
+
+let STAFF = null;
+function viewStaff(){
+  if (!ME || ME.role !== 'admin') return `<div class="card"><p class="empty">${t('eNO_PERMISSION')}</p></div>`;
+  if (STAFF === null){ api('api_listStaff', CODE).then(l => { STAFF = l; render(); }).catch(e => toast(errMsg(e))); return `<div class="loading"><div class="spin"></div></div>`; }
+  const chName = c => c === 'all' ? t('allCh') : L(churchOf(c).name);
+  return `<div class="h2row"><h2>${t('staffMgr')}</h2><button class="addbtn" onclick="openAddStaff()">${svg('plus')}${t('addStaff')}</button></div>
+  <div class="card">${STAFF.map(u => `<div class="staff-row ${u.active?'':'off'}">
+      <div class="who"><b>${esc(u.name)}</b><small>${roleName(u.role)} · ${esc(chName(u.church))}</small></div>
+      <span class="code">${esc(u.code)}</span>
+      ${u.id !== ME.id ? `<button class="btn" onclick="setStaffActive('${u.id}', ${!u.active})">${u.active ? t('disable') : t('enable')}</button>` : ''}
+    </div>`).join('')}</div>`;
+}
+function openAddStaff(){
+  openSheet(`<h3>${svg('users')} ${t('addStaff')}</h3>
+    <label>${t('staffName')} <em>*</em><input id="f-name"></label>
+    <label>${t('fChurch')}<select id="f-church">${CHURCHES.map(c=>`<option value="${c.id}" ${c.id===S.home?'selected':''}>${esc(L(c.name))}</option>`).join('')}</select></label>
+    <label>${t('role')}<select id="f-role">
+      <option value="staff">${t('rStaff')}</option><option value="translator">${t('rTranslator')}</option>
+      <option value="pastor">${t('rPastor')}</option><option value="admin">${t('rAdmin')}</option></select></label>
+    <p class="err" id="f-err"></p>
+    <div class="sheet-btns"><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('cancel')}</button>
+      <button class="btn primary" onclick="addStaff()">${t('save')}</button></div>`);
+}
+async function addStaff(){
+  const name = val('f-name'); if (!name){ document.getElementById('f-err').textContent = t('eNEED_NAME'); return; }
+  const u = await withBusy(() => api('api_addStaff', CODE, { name, church: val('f-church'), role: val('f-role') }));
+  if (!u) return;
+  STAFF = null;
+  openSheet(`<h3>${svg('check')} ${t('saved')}</h3><p style="margin:6px 0 10px">${esc(t('newCodeMsg').replace('{n}', u.name))}</p>
+    <p style="text-align:center;margin:10px 0 18px"><span class="code" style="font-size:28px">${esc(u.code)}</span></p>
+    <div class="sheet-btns"><span style="flex:1"></span><button class="btn primary" onclick="closeSheet();render()">OK</button></div>`);
+}
+async function setStaffActive(id, active){
+  try{ await api('api_setStaffActive', CODE, id, active); STAFF = null; render(); }catch(e){ toast(errMsg(e)); }
+}
+
+/* ---------- Church chooser ---------- */
+function openChooser(){
+  const el = document.getElementById('chooser');
+  el.innerHTML = `<div class="ch-wrap">
+    <img src="${document.querySelector('header img').src}" alt="">
+    <h1>FACT Taiwan</h1><p>${t('sub')}</p>
+    <div class="lang">${[['en','EN'],['zh','中'],['tl','TL']].map(([k,l]) => `<button class="${S.lang===k?'on':''}" onclick="S.lang='${k}';store.set('fact-lang','${k}');openChooser()">${l}</button>`).join('')}</div>
+    <div class="ch-q">${t('chooseCh')}</div>
+    ${CHURCHES.map(c => `<button class="ch-btn ${S.home===c.id?'on':''}" onclick="pickChurch('${c.id}')"><i style="background:${c.color}"></i>
+      <div><b>${esc(L(c.name))}</b><span>${esc(L(c.addr))}</span></div></button>`).join('')}
+    <p style="margin-top:8px">${t('chooseSub')}</p></div>`;
+  el.className = 'open';
+}
+function pickChurch(id){
+  const changed = S.home !== id;
+  S.home = id; store.set('fact-home', id); document.getElementById('chooser').className = ''; S.tab = 'home';
+  if (changed){ const c = loadJSON('fact-cache-' + id, null); if (c) applyData(c); else LOADED = false; }
+  render(); window.scrollTo(0,0); reload(); applyDeep();
+}
+
+/* ---------- Render ---------- */
+const TABS = [['home','home'],['cal','cal'],['pray','prayer'],['read','book'],['more','more']];
+const NAVKEY = {media:'more', churches:'more', staffmgr:'more', beliefs:'read', new:'home'};
+function render(){
+  document.getElementById('subtitle').innerHTML = S.home ? `<button class="chsw" onclick="openChooser()">\u{1F4CD} ${esc(L(myChurch().name))} ▾</button>` : t('sub');
+  document.getElementById('lang').innerHTML = [['en','EN'],['zh','中'],['tl','TL']]
+    .map(([k,l]) => `<button class="${S.lang===k?'on':''}" onclick="setLang('${k}')">${l}</button>`).join('');
+  document.getElementById('nav').innerHTML = TABS
+    .map(([k,ic]) => `<button class="${(NAVKEY[S.tab]||S.tab)===k?'on':''}" onclick="go('${k}')">${svg(ic)}${t(k)}</button>`).join('');
+  const views = {home:viewHome, cal:viewCal, media:viewMedia, churches:viewChurches, more:viewMore, pray:viewPray, read:viewRead, staffmgr:viewStaff, beliefs:viewBeliefs, new:viewNew};
+  document.getElementById('main').innerHTML = (ME ? `<div class="staffbar">${svg('pen')}${t('signedIn')}：${esc(ME.name)} · ${roleName(ME.role)}${ME.church!=='all'?' · '+esc(L(churchOf(ME.church).name)):''}</div>` : '') +
+    (!LOADED ? (LOAD_ERR ? `<div class="loading"><p>${t('netErr')}</p><button class="btn primary" onclick="LOAD_ERR=false;render();reload()">${t('retry')}</button></div>`
+                         : `<div class="loading"><div class="spin"></div>${t('loadingTxt')}</div>`) : views[S.tab]());
+}
+document.documentElement.lang = S.lang==='zh'?'zh-Hant':S.lang;
+if (!churchOf(S.home)) S.home = '';
+if (S.home){ const c = loadJSON('fact-cache-' + S.home, null); if (c) applyData(c); }
+render();
+let DEEP = null;
+function applyDeep(){
+  if (!DEEP) return; const p = DEEP; DEEP = null;
+  if (p.l && T[p.l]) setLang(p.l);
+  if (p.p === 'new') go('new');
+  if (p.t && TRACTS.find(x => x.id===p.t)){ S.tab='read'; S.cat='G'; render(); openTract(p.t, p.l==='zh'||p.l==='tl'||p.l==='en'||p.l==='both' ? p.l : undefined); }
+}
+(function(){
+  const q = new URLSearchParams(location.search), p = {};
+  q.forEach((v,k) => p[k] = v);
+  if (!p.t && !p.p && !p.c) return;
+  DEEP = p;
+  try{ history.replaceState(null, '', location.pathname); }catch(e){}
+  if (p.c && churchOf(p.c) && !S.home){ setTimeout(() => pickChurch(p.c), 0); }
+  else if (S.home) setTimeout(applyDeep, 0);
+})();
+if (!S.home) openChooser(); else reload();
+if ('serviceWorker' in navigator){ window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{})); }
+</script>
+</body>
+</html>
