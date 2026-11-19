@@ -245,6 +245,20 @@ h2:first-child{margin-top:4px}
 .upd small{display:block;color:var(--muted);font-size:13px}
 .badge{display:inline-block;font-size:12.5px;font-weight:700;border-radius:8px;padding:1px 7px}
 .badge.ans{background:#E3F3EA;color:#1E6B42}
+.badge.todo{background:var(--orange-soft);color:#A4501A}.badge.ok{background:#E3F3EA;color:#1E6B42}
+.cta{display:flex;width:100%;justify-content:center;padding:13px;font-size:17px;margin:4px 0 14px}.cta svg{width:20px;height:20px}
+.tcta{background:var(--orange-soft);border-radius:14px;padding:16px;margin:20px 0 4px;text-align:center}
+.tcta b{display:block;margin-bottom:10px;font-size:16.5px;color:var(--navy)}.tcta svg{width:18px;height:18px}
+.note svg{width:15px;height:15px;vertical-align:-2px}
+.radio.row3{flex-direction:row}.radio.row3 button{flex:1;justify-content:center;text-align:center}
+.ct .who{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.ct .who b{font-size:17px}.ct .who>span:last-child{margin-left:auto;color:var(--muted);font-size:14px}
+.ct .how{margin:8px 0;font-size:16.5px}.ct .how a,.ct .how span{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-weight:600;word-break:break-all}
+.ct .how svg{width:18px;height:18px;flex:none}.ct p{margin:4px 0 8px;font-size:16px;line-height:1.6}
+.lineb{background:#06C755;color:#fff;border-radius:6px;padding:1px 6px;font-size:13px}
+.ct small{color:var(--muted);display:block;margin-bottom:10px;font-size:14px}.ct .btns{display:flex;gap:8px;align-items:center}.ct.done{opacity:.72}
+.stt{width:100%;border-collapse:collapse;font-size:16px}.stt th{white-space:nowrap;font-size:13.5px;color:var(--muted);font-weight:600;text-align:right;padding:4px 6px}
+.stt td{padding:9px 6px;border-top:1px solid #EEF1F5;text-align:right}.stt td:first-child{text-align:left}
+.stt tr.sub td{font-size:14.5px;color:var(--muted);padding:4px 6px;border-top:0}
 .badge.priv{background:var(--wine-soft);color:var(--wine)}
 .radio{display:flex;flex-direction:column;gap:6px;margin:4px 0 12px}
 .radio button{display:flex;align-items:center;gap:8px;text-align:left;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:15.5px;background:#fff}
@@ -515,12 +529,52 @@ const T5 = {
       eSLOT_TAKEN:'May kumuha na ng oras na ito. Pumili ng iba.', eNOT_FOUND:'Naalis na ito.', eCANNOT_DISABLE_SELF:'Hindi mo puwedeng i-off ang sarili mo.'}
 };
 Object.keys(T5).forEach(k => Object.assign(T[k], T5[k]));
+const T6 = {
+  en:{cSend:'Send', contactBtn:'I would like to get to know the church', contactH:'Get to know us', contactP:'Leave your name and how to reach you. A co-worker will contact you soon.',
+      cName:'Your name', cHow:'How should we contact you?', cFb:'Facebook / Messenger', cLine:'LINE', cPhone:'Phone',
+      cHandleFb:'Your Facebook name or profile link', cHandleLine:'Your LINE ID', cHandlePhone:'Your phone number',
+      cNote:'Anything you would like to tell us? (optional)', cNotePh:'For example, which service you would like to come to',
+      cPrivacy:'Only our church co-workers can see this, and we use it only to contact you.', cThanks:'Thank you! A co-worker will contact you soon.',
+      eNEED_CONTACT:'Please tell us how to contact you.', tractCta:'Would you like to know more about God and our church?',
+      contacts:'Newcomer contacts', cPending:'To contact', cDone:'Contacted', cMarkDone:'Mark as contacted', cUndo:'Mark as not contacted',
+      cBy:'by {n}', cNone:'No one has left their contact details yet.', cDelConfirm:'Delete this contact? This cannot be undone.', cFrom:'From',
+      srcNew:'Newcomer page', srcChurch:'Churches page', srcMore:'More page',
+      stats:'View counts', stVisit:'Website visits', stShare:'Opened from a shared link or QR code', stNew:'Newcomer page', stBeliefs:'Our Beliefs',
+      stContact:'Left contact details', st7:'7 days', st30:'30 days', stAll:'All', stTracts:'Gospel tracts',
+      stNote:'Each visitor is counted once per visit. Views while signed in as a co-worker are not counted.'},
+  zh:{cSend:'送出', contactBtn:'我想認識教會', contactH:'認識我們', contactP:'留下你的名字和聯絡方式，同工會盡快和你聯絡。',
+      cName:'你的名字', cHow:'我們怎麼聯絡你？', cFb:'Facebook／Messenger', cLine:'LINE', cPhone:'電話',
+      cHandleFb:'你的 Facebook 名字或個人頁連結', cHandleLine:'你的 LINE ID', cHandlePhone:'你的電話號碼',
+      cNote:'想跟我們說什麼嗎？（可留空）', cNotePh:'例如：想參加哪一場聚會',
+      cPrivacy:'只有教會同工看得到，只用來聯絡你。', cThanks:'謝謝你！同工會盡快和你聯絡。',
+      eNEED_CONTACT:'請留下聯絡方式。', tractCta:'想更認識神和我們的教會嗎？',
+      contacts:'新朋友聯絡', cPending:'待聯絡', cDone:'已聯絡', cMarkDone:'標記為已聯絡', cUndo:'改回待聯絡',
+      cBy:'{n} 已聯絡', cNone:'目前還沒有人留下聯絡方式。', cDelConfirm:'確定要刪除這筆聯絡資料嗎？刪除後無法復原。', cFrom:'來自',
+      srcNew:'新朋友專區', srcChurch:'教會頁面', srcMore:'更多',
+      stats:'瀏覽統計', stVisit:'網站造訪', stShare:'從分享連結或 QR code 進來', stNew:'新朋友專區', stBeliefs:'我們的信仰',
+      stContact:'留下聯絡方式', st7:'近 7 天', st30:'近 30 天', stAll:'全部', stTracts:'福音單張',
+      stNote:'同一個人每次瀏覽只算一次；同工登入時的瀏覽不計算。'},
+  tl:{cSend:'Ipadala', contactBtn:'Gusto kong makilala ang iglesia', contactH:'Kilalanin kami', contactP:'Iwan ang pangalan mo at kung paano ka makokontak. Kokontakin ka agad ng isang tagapaglingkod.',
+      cName:'Pangalan mo', cHow:'Paano ka namin makokontak?', cFb:'Facebook / Messenger', cLine:'LINE', cPhone:'Telepono',
+      cHandleFb:'Pangalan mo sa Facebook o link ng profile', cHandleLine:'LINE ID mo', cHandlePhone:'Numero ng telepono mo',
+      cNote:'May gusto ka bang sabihin sa amin? (opsyonal)', cNotePh:'Halimbawa: aling pagsamba ang gusto mong puntahan',
+      cPrivacy:'Ang mga tagapaglingkod lang ng iglesia ang makakakita nito, at gagamitin lang ito para kontakin ka.', cThanks:'Salamat! Kokontakin ka agad ng isang tagapaglingkod.',
+      eNEED_CONTACT:'Pakilagay kung paano ka makokontak.', tractCta:'Gusto mo bang mas makilala ang Diyos at ang aming iglesia?',
+      contacts:'Mga bagong kaibigan', cPending:'Kokontakin pa', cDone:'Nakontak na', cMarkDone:'Markahang nakontak na', cUndo:'Ibalik sa kokontakin pa',
+      cBy:'ni {n}', cNone:'Wala pang nag-iwan ng contact.', cDelConfirm:'Burahin ang contact na ito? Hindi na ito maibabalik.', cFrom:'Mula sa',
+      srcNew:'Pahina ng bagong dating', srcChurch:'Pahina ng mga iglesia', srcMore:'Iba pa',
+      stats:'Bilang ng tumingin', stVisit:'Pagbisita sa website', stShare:'Binuksan mula sa link o QR code', stNew:'Pahina ng bagong dating', stBeliefs:'Ang Aming Paniniwala',
+      stContact:'Nag-iwan ng contact', st7:'7 araw', st30:'30 araw', stAll:'Lahat', stTracts:'Mga gospel tract',
+      stNote:'Isang beses lang binibilang ang bawat bisita bawat pagbisita. Hindi kasama ang pagtingin habang naka-sign in bilang tagapaglingkod.'}
+};
+Object.keys(T6).forEach(k => Object.assign(T[k], T6[k]));
 const DOW = {en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], zh:['日','一','二','三','四','五','六'], tl:['Lin','Lun','Mar','Miy','Huw','Biy','Sab']};
 const MON = {en:['January','February','March','April','May','June','July','August','September','October','November','December'],
   tl:['Enero','Pebrero','Marso','Abril','Mayo','Hunyo','Hulyo','Agosto','Setyembre','Oktubre','Nobyembre','Disyembre']};
 
 /* ---------- Icons ---------- */
 const I = {
+  chart:'<path d="M4 20V11M10 20V5M16 20v-6M3 20h18"/>',
   home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
   cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   media:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>',
@@ -574,7 +628,7 @@ function api(fn, ...args){
 }
 function errMsg(e){
   const m = String((e && e.message) || e || '');
-  const k = ['NOT_STAFF','BAD_CODE','NO_PERMISSION','NEED_TITLE','NEED_NAME','NEED_TEXT','SLOT_TAKEN','NOT_FOUND','CANNOT_DISABLE_SELF'].find(x => m.indexOf(x) >= 0);
+  const k = ['NOT_STAFF','BAD_CODE','NO_PERMISSION','NEED_TITLE','NEED_NAME','NEED_TEXT','SLOT_TAKEN','NOT_FOUND','CANNOT_DISABLE_SELF','NEED_CONTACT'].find(x => m.indexOf(x) >= 0);
   return k ? t('e'+k) : t('netErr');
 }
 function addToken(tok){ if (tok && !TOKENS.includes(tok)){ TOKENS.push(tok); saveJSON('fact-tokens', TOKENS); } }
@@ -794,7 +848,7 @@ function viewChurches(){
       </div></div>`;
   };
   const mine = myChurch(), others = CHURCHES.filter(c => c !== mine);
-  return `<h2>${t('churches')}</h2>${card(mine)}<h2>${t('otherCh')}</h2>${others.map(card).join('')}`;
+  return `<h2>${t('churches')}</h2>${card(mine)}<button class="btn primary cta" onclick="openContact('church')">${svg('heart')}${t('contactBtn')}</button><h2>${t('otherCh')}</h2>${others.map(card).join('')}`;
 }
 
 const linkTo = q => { const base = APP_URL || ''; const u = new URLSearchParams(Object.assign({c:S.home}, q)).toString(); return base ? base + '?' + u : ''; };
@@ -845,6 +899,7 @@ function viewNew(){
       <a class="btn" href="tel:${c.phone.replace(/\s/g,'')}">${svg('phone')}${t('call')}</a>
       <a class="btn" href="${c.fb}" target="_blank" rel="noopener">${svg('fb')}${t('fbPage')}</a>
     </div></div>
+  <button class="btn primary cta" onclick="openContact('new')">${svg('heart')}${t('contactBtn')}</button>
   <h2>${t('pathH')}</h2><p class="note">${t('pathP')}</p>
   <div class="path">${steps.map(([k,ti,sub,act],i) => `<button class="${readDone(k)?'done':''}" onclick="${act}"><i>${readDone(k)?'✓':i+1}</i><div><b>${ti}</b><span>${sub}</span></div></button>`).join('')}</div>
   <a class="linkrow" onclick="go('pray')">${svg('prayer')}${t('needPrayer')} ›</a>
@@ -859,10 +914,12 @@ function viewMore(){
   </div>
   <div class="card menu">
     <button onclick="go('new')">${svg('heart')}${t('newcomer')}</button>
+    <button onclick="openContact('more')">${svg('phone')}${t('contactBtn')}</button>
     <button onclick="openShare(linkTo({}), 'FACT Taiwan')">${svg('share')}${t('invite')}</button>
   </div>
   <div class="card menu">
-    ${ME ? `${ME.role==='admin' ? `<button onclick="go('staffmgr')">${svg('users')}${t('staffMgr')}</button>` : ''}
+    ${ME ? `${ME.role!=='translator' ? `<button onclick="CONTACTS=null;go('contacts')">${svg('mail')}${t('contacts')}</button><button onclick="STATS=null;go('stats')">${svg('chart')}${t('stats')}</button>` : ''}
+      ${ME.role==='admin' ? `<button onclick="go('staffmgr')">${svg('users')}${t('staffMgr')}</button>` : ''}
       <button onclick="logout()">${svg('out')}${t('logout')}<span class="sub">${esc(ME.name)} · ${roleName(ME.role)}</span></button>`
       : `<button onclick="openLogin()">${svg('lock')}${t('login')}</button>`}
   </div>`;
@@ -1034,9 +1091,10 @@ function tractCard(x){
   return `<div class="card art tcard" onclick="openTract('${x.id}')">${tractCover(x)}
     <div class="tx"><p>${esc(txt)}</p><small>FACT · ${esc(lg==='zh' ? x.t.en : x.t.zh)}</small></div></div>`;
 }
-function openTract(id, mode){
+function openTract(id, mode, sw){
   const x = TRACTS.find(y => y.id===id); if (!x) return; markRead(id);
   const m = mode || S.trMode || tLg(); S.trMode = m;
+  if (!sw) hit('t:'+id+':'+m, 't:'+id);
   const pick = p => m==='zh' ? p[2] : m==='tl' ? p[3] : p[1];
   const pics = (TRACT_IMG[x.id] && TRACT_IMG[x.id].pics) || [];
   let hcount = 0;
@@ -1049,8 +1107,9 @@ function openTract(id, mode){
   const tl = m==='both' ? 'zh' : m;
   openSheet(`<div class="reader tract">${tractCover(x, true, tl)}
     <small style="color:var(--muted)">${esc(tl==='zh' ? x.t.en : x.t.zh)}</small>
-    <div class="seg">${[['zh','trZh'],['en','trEn'],['tl','trTl'],['both','trBoth']].map(([k,l]) => `<button class="${m===k?'on':''}" onclick="openTract('${x.id}','${k}')">${t(l)}</button>`).join('')}</div>
-    ${body}</div>
+    <div class="seg">${[['zh','trZh'],['en','trEn'],['tl','trTl'],['both','trBoth']].map(([k,l]) => `<button class="${m===k?'on':''}" onclick="openTract('${x.id}','${k}',1)">${t(l)}</button>`).join('')}</div>
+    ${body}
+    <div class="tcta"><b>${t('tractCta')}</b><button class="btn primary" onclick="openContact('t:${x.id}')">${svg('heart')}${t('contactBtn')}</button></div></div>
     <div class="sheet-btns"><button class="btn" onclick="openShare(linkTo({t:'${x.id}', l:'${tl}'}), '${esc((x.t[tl]||x.t.en)).replace(/'/g,'&#39;')}')">${svg('share')}${t('shareTract')}</button><span style="flex:1"></span><button class="btn" onclick="closeSheet()">${t('close')}</button></div>`);
   const sc = document.querySelector('.sheet-card'); if (sc && mode) sc.scrollTop = 0;
 }
@@ -1233,6 +1292,7 @@ let HDEPTH = 0, SHEET_PUSHED = false, IGNORE_POP = false;
 function go(tab, fromPop){
   if (!fromPop && tab !== S.tab){ try{ history.pushState({ tab }, ''); HDEPTH++; }catch(e){} }
   S.tab = tab; render(); window.scrollTo(0,0);
+  if (tab === 'new') hit('p:new'); else if (tab === 'beliefs') hit('p:beliefs');
 }
 function goBack(){ if (HDEPTH > 0) history.back(); else go(NAVKEY[S.tab] || 'home'); }
 window.addEventListener('popstate', ev => {
@@ -1467,16 +1527,100 @@ function pickChurch(id){
   render(); window.scrollTo(0,0); reload(); applyDeep();
 }
 
+/* ---------- Newcomer contact form ---------- */
+function hit(key, once){
+  if (CODE) return;
+  try{ const k = 'fact-hit-' + (once || key); if (sessionStorage.getItem(k)) return; sessionStorage.setItem(k, '1'); }catch(e){}
+  try{ api('api_hit', key).catch(() => {}); }catch(e){}
+}
+function openContact(src){
+  ED = { how:'fb', src: src || '' };
+  openSheet(`<h3>${svg('heart')} ${t('contactH')}</h3>
+    <p class="note" style="padding:0 0 8px">${t('contactP')}</p>
+    <label>${t('cName')} <em>*</em><input id="f-name" autocomplete="name"></label>
+    <p class="q">${t('cHow')}</p>
+    <div class="radio row3">${[['fb','cFb'],['line','cLine'],['phone','cPhone']].map(([k,l]) => `<button id="h-${k}" class="${k==='fb'?'on':''}" onclick="setHow('${k}')">${t(l)}</button>`).join('')}</div>
+    <label><span id="f-hl">${t('cHandleFb')}</span> <em>*</em><input id="f-handle" autocomplete="off"></label>
+    <label>${t('cNote')}<textarea id="f-note" rows="3" placeholder="${esc(t('cNotePh'))}"></textarea></label>
+    <input id="f-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <p class="note" style="padding:4px 0 0">${svg('lock')} ${t('cPrivacy')}</p>
+    <p class="err" id="f-err"></p><div class="sheet-btns"><span style="flex:1"></span>
+      <button class="btn" onclick="closeSheet()">${t('cancel')}</button><button class="btn primary" onclick="saveContact()">${t('cSend')}</button></div>`);
+}
+function setHow(k){
+  ED.how = k;
+  ['fb','line','phone'].forEach(x => document.getElementById('h-'+x).className = x===k ? 'on' : '');
+  document.getElementById('f-hl').textContent = t({fb:'cHandleFb', line:'cHandleLine', phone:'cHandlePhone'}[k]);
+  document.getElementById('f-handle').type = k==='phone' ? 'tel' : 'text';
+}
+async function saveContact(){
+  const name = val('f-name'), handle = val('f-handle'), err = document.getElementById('f-err');
+  if (!name){ err.textContent = t('eNEED_NAME'); return; }
+  if (!handle){ err.textContent = t('eNEED_CONTACT'); return; }
+  const r = await withBusy(() => api('api_submitContact', { name, handle, how: ED.how, note: val('f-note'), hp: val('f-hp'), church: S.home || 'tc', lang: S.lang, src: ED.src }));
+  if (r === null) return;
+  openSheet(`<h3>${svg('check')} ${t('cThanks')}</h3><div class="sheet-btns"><span style="flex:1"></span><button class="btn primary" onclick="closeSheet()">OK</button></div>`);
+}
+let CONTACTS = null, STATS = null;
+const noPerm = () => `<div class="card"><p class="empty">${t('eNO_PERMISSION')}</p></div>`;
+const spinner = () => `<div class="loading"><div class="spin"></div></div>`;
+function srcName(s){
+  if (!s) return '';
+  if (s.indexOf('t:') === 0){ const x = TRACTS.find(y => y.id === s.slice(2)); return x ? (x.t[tLg()] || x.t.en) : s; }
+  const k = {new:'srcNew', church:'srcChurch', more:'srcMore'}[s]; return k ? t(k) : s;
+}
+function contactHow(c){
+  const h = esc(c.handle);
+  if (c.how === 'phone') return `<a href="tel:${h.replace(/[^\d+]/g,'')}">${svg('phone')}${h}</a>`;
+  if (c.how === 'line') return `<span><b class="lineb">LINE</b>${h}</span>`;
+  return /^https?:\/\//i.test(c.handle) ? `<a href="${h}" target="_blank" rel="noopener">${svg('fb')}${h}</a>` : `<span>${svg('fb')}${h}</span>`;
+}
+function viewContacts(){
+  if (!ME || ME.role === 'translator') return noPerm();
+  if (CONTACTS === null){ api('api_listContacts', CODE).then(l => { CONTACTS = l; render(); }).catch(e => toast(errMsg(e))); return spinner(); }
+  const LG = {en:'English', zh:'中文', tl:'Tagalog'};
+  const card = c => `<div class="card ct ${c.done?'done':''}">
+    <div class="who"><b>${esc(c.name)}</b><span class="badge ${c.done?'ok':'todo'}">${c.done ? t('cDone') : t('cPending')}</span><span>${shortDate(c.date)}</span></div>
+    <div class="how">${contactHow(c)}</div>
+    ${c.note ? `<p>${esc(c.note)}</p>` : ''}
+    <small>${[ME.role==='admin' ? esc(L(churchOf(c.church).name)) : '', c.src ? t('cFrom') + ' ' + esc(srcName(c.src)) : '', LG[c.lang] || '', c.done && c.doneBy ? esc(t('cBy').replace('{n}', c.doneBy)) : ''].filter(Boolean).join(' · ')}</small>
+    <div class="btns"><button class="btn ${c.done?'':'primary'}" onclick="setContactDone('${c.id}', ${!c.done})">${c.done ? t('cUndo') : svg('check') + t('cMarkDone')}</button>
+      <span style="flex:1"></span><button class="btn danger" onclick="delContact('${c.id}')">${t('del')}</button></div></div>`;
+  return `<h2>${t('contacts')}</h2>${CONTACTS.length ? CONTACTS.map(card).join('') : `<div class="card"><p class="empty">${t('cNone')}</p></div>`}`;
+}
+async function setContactDone(id, done){
+  try{ await api('api_setContactDone', CODE, id, done); CONTACTS = null; render(); }catch(e){ toast(errMsg(e)); }
+}
+async function delContact(id){
+  if (!confirm(t('cDelConfirm'))) return;
+  try{ await api('api_deleteContact', CODE, id); CONTACTS = null; render(); }catch(e){ toast(errMsg(e)); }
+}
+function viewStats(){
+  if (!ME || ME.role === 'translator') return noPerm();
+  if (STATS === null){ api('api_stats', CODE).then(d => { STATS = d; render(); }).catch(e => toast(errMsg(e))); return spinner(); }
+  const g = k => STATS[k] || {d7:0, d30:0, all:0};
+  const sum = ks => ks.reduce((o,k) => { const x = g(k); o.d7 += x.d7; o.d30 += x.d30; o.all += x.all; return o; }, {d7:0, d30:0, all:0});
+  const row = (label, o, sub) => `<tr class="${sub?'sub':''}"><td>${label}</td><td>${o.d7}</td><td>${o.d30}</td><td>${o.all}</td></tr>`;
+  const head = `<tr><th></th><th>${t('st7')}</th><th>${t('st30')}</th><th>${t('stAll')}</th></tr>`;
+  const lg = tLg(), LG = {zh:'中文', en:'English', tl:'Tagalog'};
+  const tracts = TRACTS.map(x => row(`<b>${esc(x.t[lg] || x.t.en)}</b>`, sum(['zh','en','tl','both'].map(l => 't:'+x.id+':'+l)))
+    + ['zh','en','tl'].map(l => row('&emsp;' + LG[l], g('t:'+x.id+':'+l), true)).join('')).join('');
+  return `<h2>${t('stats')}</h2>
+    <div class="card"><table class="stt">${head}${row(t('stVisit'), g('visit'))}${row(t('stShare'), g('in:share'))}${row(t('stNew'), g('p:new'))}${row(t('stBeliefs'), g('p:beliefs'))}${row(t('stContact'), g('contact'))}</table></div>
+    <h2>${t('stTracts')}</h2><div class="card"><table class="stt">${head}${tracts}</table></div>
+    <p class="note">${t('stNote')}</p>`;
+}
+
 /* ---------- Render ---------- */
 const TABS = [['home','home'],['cal','cal'],['pray','prayer'],['read','book'],['more','more']];
-const NAVKEY = {media:'more', churches:'more', staffmgr:'more', beliefs:'read', new:'home'};
+const NAVKEY = {media:'more', churches:'more', staffmgr:'more', contacts:'more', stats:'more', beliefs:'read', new:'home'};
 function render(){
   document.getElementById('subtitle').innerHTML = S.home ? `<button class="chsw" onclick="openChooser()">\u{1F4CD} ${esc(L(myChurch().name))} ▾</button>` : t('sub');
   document.getElementById('lang').innerHTML = [['en','EN'],['zh','中'],['tl','TL']]
     .map(([k,l]) => `<button class="${S.lang===k?'on':''}" onclick="setLang('${k}')">${l}</button>`).join('');
   document.getElementById('nav').innerHTML = TABS
     .map(([k,ic]) => `<button class="${(NAVKEY[S.tab]||S.tab)===k?'on':''}" onclick="go('${k}')">${svg(ic)}${t(k)}</button>`).join('');
-  const views = {home:viewHome, cal:viewCal, media:viewMedia, churches:viewChurches, more:viewMore, pray:viewPray, read:viewRead, staffmgr:viewStaff, beliefs:viewBeliefs, new:viewNew};
+  const views = {home:viewHome, cal:viewCal, media:viewMedia, churches:viewChurches, more:viewMore, pray:viewPray, read:viewRead, staffmgr:viewStaff, contacts:viewContacts, stats:viewStats, beliefs:viewBeliefs, new:viewNew};
   document.getElementById('main').innerHTML = (ME ? `<div class="staffbar">${svg('pen')}${t('signedIn')}：${esc(ME.name)} · ${roleName(ME.role)}${ME.church!=='all'?' · '+esc(L(churchOf(ME.church).name)):''}</div>` : '') +
     (NAVKEY[S.tab] && LOADED ? `<button class="backbtn" onclick="goBack()">‹ ${t('back')}</button>` : '') +
     (!LOADED ? (LOAD_ERR ? `<div class="loading"><p>${t('netErr')}</p><button class="btn primary" onclick="LOAD_ERR=false;render();reload()">${t('retry')}</button></div>`
@@ -1489,6 +1633,7 @@ render();
 let DEEP = null;
 function applyDeep(){
   if (!DEEP) return; const p = DEEP; DEEP = null;
+  if (p.t || p.p) hit('in:share');
   if (p.l && T[p.l]) setLang(p.l);
   if (p.p === 'new') go('new');
   if (p.t && TRACTS.find(x => x.id===p.t)){ S.tab='read'; S.cat='G'; render(); openTract(p.t, p.l==='zh'||p.l==='tl'||p.l==='en'||p.l==='both' ? p.l : undefined); }
@@ -1502,6 +1647,7 @@ function applyDeep(){
   if (p.c && churchOf(p.c) && !S.home){ setTimeout(() => pickChurch(p.c), 0); }
   else if (S.home) setTimeout(applyDeep, 0);
 })();
+hit('visit');
 if (!S.home) openChooser(); else reload();
 if ('serviceWorker' in navigator){ window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{})); }
 </script>
